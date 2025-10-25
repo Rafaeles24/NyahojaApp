@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id         Int    @id @default(autoincrement())
+  discord_id String @unique
+
+  guilds UserInGuild[]
+
+  @@map("usuarios")
+}
+
+/**
+ * enum TipoMoneda {
+ * Oro
+ * Plata
+ * Cobre
+ * }
+ * model Moneda {
+ * id Int @id @default(autoincrement())
+ * nombre String @default("Capuccino")
+ * created_at DateTime @default(now())
+ * carteras Cartera[]
+ * }
+ */
+
+model Guild {
+  id         Int @id @default(autoincrement())
+  discord_id Int @unique
+
+  partidas          Partidas[]
+  usuarios_en_guild UserInGuild[]
+
+  @@map("guilds")
+}
+
+model UserInGuild {
+  id         Int @id @default(autoincrement())
+  usuario_id Int
+  guild_id   Int
+
+  usuario Usuario @relation(fields: [usuario_id], references: [id])
+  guild   Guild   @relation(fields: [guild_id], references: [id])
+
+  @@map("usuarios_en_guild")
+}
+
+/**
+ * model Cartera {
+ * id Int @id @default(autoincrement())
+ * usuario_id Int
+ * guild_id Int
+ * moneda_id Int
+ * cantidad Int @default(0)
+ * created_at DateTime @default(now())
+ * usuario Usuario @relation(fields: [usuario_id], references: [id])
+ * guild Guild @relation(fields: [guild_id], references: [id])
+ * }
+ */
+
+//Juegos de nyahoja
+model Juegos {
+  id           Int    @id @default(autoincrement())
+  nombre       String
+  veces_jugado Int    @default(0)
+
+  partidas Partidas[]
+
+  @@map("juegos_registrados")
+}
+
+model Partidas {
+  id             Int    @id @default(autoincrement())
+  guild_id       Int
+  juego_id       Int
+  estado_partida String @default("espera")
+
+  guild     Guild                @relation(fields: [guild_id], references: [id])
+  juego     Juegos               @relation(fields: [juego_id], references: [id])
+  jugadores JugadoresEnPartida[]
+
+  @@map("partidas")
+}
+
+model JugadoresEnPartida {
+  id         Int    @id @default(autoincrement())
+  partida_id Int
+  user_id    Int
+  username   String
+
+  partida Partidas @relation(fields: [partida_id], references: [id])
+
+  @@map("jugadores_en_partida")
+}
