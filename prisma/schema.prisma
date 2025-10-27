@@ -14,60 +14,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//USUARIO DE DISCORD
 model Usuario {
-  id Int @id @default(autoincrement())
-  discord_id String @unique
+  discord_id String @id
 
-  guilds UserInGuild[]
+  guilds GuildMember[]
   @@map("usuarios")
 }
 
-/* enum TipoMoneda {
-  Oro
-  Plata
-  Cobre
-}
-
-model Moneda {
-  id Int @id @default(autoincrement())
-  nombre String @default("Capuccino")
-  created_at DateTime @default(now())
-
-  carteras Cartera[]
-}
-*/
-
+//DATOS DE GUILD DE DISCORD
 model Guild {
-  id Int @id @default(autoincrement())
-  discord_id Int @unique
+  discord_id String @id
 
-  partidas Partidas[]
-  usuarios_en_guild UserInGuild[]
+  partidas Partida[]
+  miembros GuildMember[]
   @@map("guilds")
 }
 
-model UserInGuild {
-  id Int @id @default(autoincrement())
-  usuario_id Int
-  guild_id Int
+//DATOS DEL USUARIO DENTRO DE UNA GUILD
+model GuildMember {
+  guild_id String
+  usuario_id String
+  partida_id Int?
+  created_at DateTime @default(now())
+  
+  //El miembro de la guild es un usuario
+  usuario Usuario @relation(fields: [usuario_id], references: [discord_id], onDelete: Cascade, onUpdate: Cascade)
+  //El miembro pertenece a una guild
+  guild Guild @relation(fields: [guild_id], references: [discord_id], onDelete: Cascade, onUpdate: Cascade)
+  //El miembro esta en una partida o no
+  partida Partida? @relation(fields: [partida_id], references: [id], onDelete: SetNull)
 
-  usuario Usuario @relation(fields: [usuario_id], references: [id])
-  guild Guild @relation(fields: [guild_id], references: [id])
+  @@id([usuario_id, guild_id])
+  @@index([partida_id])
   @@map("usuarios_en_guild")
 }
 
-/* model Cartera {
-  id Int @id @default(autoincrement())
-  usuario_id Int
-  guild_id Int
-  moneda_id Int
-  cantidad Int @default(0)
-  created_at DateTime @default(now())
-
-  usuario Usuario @relation(fields: [usuario_id], references: [id])
-  guild Guild @relation(fields: [guild_id], references: [id])
-}
- */
 
 //Juegos de nyahoja
 model Juegos {
@@ -75,31 +57,20 @@ model Juegos {
   nombre String
   veces_jugado Int @default(0)
 
-  partidas Partidas[]
+  partidas Partida[]
   @@map("juegos_registrados")
 }
 
-model Partidas {
+model Partida {
   id Int @id @default(autoincrement())
-  guild_id Int
+  guild_id String
   juego_id Int
   estado_partida String @default("espera")
+  created_at DateTime @default(now())
 
-  guild Guild @relation(fields: [guild_id], references: [id])
+  guild Guild @relation(fields: [guild_id], references: [discord_id])
   juego Juegos @relation(fields: [juego_id], references: [id])
-  jugadores JugadoresEnPartida[]
+  miembros GuildMember[]
 
   @@map("partidas")
 }
-
-model JugadoresEnPartida {
-  id Int @id @default(autoincrement())
-  partida_id Int
-  user_id Int
-  username String
-
-  partida Partidas @relation(fields: [partida_id], references: [id])
-  
-  @@map("jugadores_en_partida")
-}
-

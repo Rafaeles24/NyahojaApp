@@ -2370,22 +2370,20 @@ export namespace Prisma {
 
   export type GuildAvgAggregateOutputType = {
     id: number | null
-    discord_id: number | null
   }
 
   export type GuildSumAggregateOutputType = {
     id: number | null
-    discord_id: number | null
   }
 
   export type GuildMinAggregateOutputType = {
     id: number | null
-    discord_id: number | null
+    discord_id: string | null
   }
 
   export type GuildMaxAggregateOutputType = {
     id: number | null
-    discord_id: number | null
+    discord_id: string | null
   }
 
   export type GuildCountAggregateOutputType = {
@@ -2397,12 +2395,10 @@ export namespace Prisma {
 
   export type GuildAvgAggregateInputType = {
     id?: true
-    discord_id?: true
   }
 
   export type GuildSumAggregateInputType = {
     id?: true
-    discord_id?: true
   }
 
   export type GuildMinAggregateInputType = {
@@ -2509,7 +2505,7 @@ export namespace Prisma {
 
   export type GuildGroupByOutputType = {
     id: number
-    discord_id: number
+    discord_id: string
     _count: GuildCountAggregateOutputType | null
     _avg: GuildAvgAggregateOutputType | null
     _sum: GuildSumAggregateOutputType | null
@@ -2561,7 +2557,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      discord_id: number
+      discord_id: string
     }, ExtArgs["result"]["guild"]>
     composites: {}
   }
@@ -2934,7 +2930,7 @@ export namespace Prisma {
    */
   interface GuildFieldRefs {
     readonly id: FieldRef<"Guild", 'Int'>
-    readonly discord_id: FieldRef<"Guild", 'Int'>
+    readonly discord_id: FieldRef<"Guild", 'String'>
   }
     
 
@@ -3358,26 +3354,22 @@ export namespace Prisma {
 
   export type UserInGuildAvgAggregateOutputType = {
     id: number | null
-    usuario_id: number | null
-    guild_id: number | null
   }
 
   export type UserInGuildSumAggregateOutputType = {
     id: number | null
-    usuario_id: number | null
-    guild_id: number | null
   }
 
   export type UserInGuildMinAggregateOutputType = {
     id: number | null
-    usuario_id: number | null
-    guild_id: number | null
+    usuario_id: string | null
+    guild_id: string | null
   }
 
   export type UserInGuildMaxAggregateOutputType = {
     id: number | null
-    usuario_id: number | null
-    guild_id: number | null
+    usuario_id: string | null
+    guild_id: string | null
   }
 
   export type UserInGuildCountAggregateOutputType = {
@@ -3390,14 +3382,10 @@ export namespace Prisma {
 
   export type UserInGuildAvgAggregateInputType = {
     id?: true
-    usuario_id?: true
-    guild_id?: true
   }
 
   export type UserInGuildSumAggregateInputType = {
     id?: true
-    usuario_id?: true
-    guild_id?: true
   }
 
   export type UserInGuildMinAggregateInputType = {
@@ -3507,8 +3495,8 @@ export namespace Prisma {
 
   export type UserInGuildGroupByOutputType = {
     id: number
-    usuario_id: number
-    guild_id: number
+    usuario_id: string
+    guild_id: string
     _count: UserInGuildCountAggregateOutputType | null
     _avg: UserInGuildAvgAggregateOutputType | null
     _sum: UserInGuildSumAggregateOutputType | null
@@ -3560,8 +3548,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      usuario_id: number
-      guild_id: number
+      usuario_id: string
+      guild_id: string
     }, ExtArgs["result"]["userInGuild"]>
     composites: {}
   }
@@ -3934,8 +3922,8 @@ export namespace Prisma {
    */
   interface UserInGuildFieldRefs {
     readonly id: FieldRef<"UserInGuild", 'Int'>
-    readonly usuario_id: FieldRef<"UserInGuild", 'Int'>
-    readonly guild_id: FieldRef<"UserInGuild", 'Int'>
+    readonly usuario_id: FieldRef<"UserInGuild", 'String'>
+    readonly guild_id: FieldRef<"UserInGuild", 'String'>
   }
     
 
@@ -5282,28 +5270,28 @@ export namespace Prisma {
 
   export type PartidasAvgAggregateOutputType = {
     id: number | null
-    guild_id: number | null
     juego_id: number | null
   }
 
   export type PartidasSumAggregateOutputType = {
     id: number | null
-    guild_id: number | null
     juego_id: number | null
   }
 
   export type PartidasMinAggregateOutputType = {
     id: number | null
-    guild_id: number | null
+    guild_id: string | null
     juego_id: number | null
     estado_partida: string | null
+    created_at: Date | null
   }
 
   export type PartidasMaxAggregateOutputType = {
     id: number | null
-    guild_id: number | null
+    guild_id: string | null
     juego_id: number | null
     estado_partida: string | null
+    created_at: Date | null
   }
 
   export type PartidasCountAggregateOutputType = {
@@ -5311,19 +5299,18 @@ export namespace Prisma {
     guild_id: number
     juego_id: number
     estado_partida: number
+    created_at: number
     _all: number
   }
 
 
   export type PartidasAvgAggregateInputType = {
     id?: true
-    guild_id?: true
     juego_id?: true
   }
 
   export type PartidasSumAggregateInputType = {
     id?: true
-    guild_id?: true
     juego_id?: true
   }
 
@@ -5332,6 +5319,7 @@ export namespace Prisma {
     guild_id?: true
     juego_id?: true
     estado_partida?: true
+    created_at?: true
   }
 
   export type PartidasMaxAggregateInputType = {
@@ -5339,6 +5327,7 @@ export namespace Prisma {
     guild_id?: true
     juego_id?: true
     estado_partida?: true
+    created_at?: true
   }
 
   export type PartidasCountAggregateInputType = {
@@ -5346,6 +5335,7 @@ export namespace Prisma {
     guild_id?: true
     juego_id?: true
     estado_partida?: true
+    created_at?: true
     _all?: true
   }
 
@@ -5437,9 +5427,10 @@ export namespace Prisma {
 
   export type PartidasGroupByOutputType = {
     id: number
-    guild_id: number
+    guild_id: string
     juego_id: number
     estado_partida: string
+    created_at: Date
     _count: PartidasCountAggregateOutputType | null
     _avg: PartidasAvgAggregateOutputType | null
     _sum: PartidasSumAggregateOutputType | null
@@ -5466,6 +5457,7 @@ export namespace Prisma {
     guild_id?: boolean
     juego_id?: boolean
     estado_partida?: boolean
+    created_at?: boolean
     guild?: boolean | GuildDefaultArgs<ExtArgs>
     juego?: boolean | JuegosDefaultArgs<ExtArgs>
     jugadores?: boolean | Partidas$jugadoresArgs<ExtArgs>
@@ -5479,9 +5471,10 @@ export namespace Prisma {
     guild_id?: boolean
     juego_id?: boolean
     estado_partida?: boolean
+    created_at?: boolean
   }
 
-  export type PartidasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "guild_id" | "juego_id" | "estado_partida", ExtArgs["result"]["partidas"]>
+  export type PartidasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "guild_id" | "juego_id" | "estado_partida" | "created_at", ExtArgs["result"]["partidas"]>
   export type PartidasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guild?: boolean | GuildDefaultArgs<ExtArgs>
     juego?: boolean | JuegosDefaultArgs<ExtArgs>
@@ -5498,9 +5491,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      guild_id: number
+      guild_id: string
       juego_id: number
       estado_partida: string
+      created_at: Date
     }, ExtArgs["result"]["partidas"]>
     composites: {}
   }
@@ -5874,9 +5868,10 @@ export namespace Prisma {
    */
   interface PartidasFieldRefs {
     readonly id: FieldRef<"Partidas", 'Int'>
-    readonly guild_id: FieldRef<"Partidas", 'Int'>
+    readonly guild_id: FieldRef<"Partidas", 'String'>
     readonly juego_id: FieldRef<"Partidas", 'Int'>
     readonly estado_partida: FieldRef<"Partidas", 'String'>
+    readonly created_at: FieldRef<"Partidas", 'DateTime'>
   }
     
 
@@ -6277,34 +6272,29 @@ export namespace Prisma {
   export type JugadoresEnPartidaAvgAggregateOutputType = {
     id: number | null
     partida_id: number | null
-    user_id: number | null
   }
 
   export type JugadoresEnPartidaSumAggregateOutputType = {
     id: number | null
     partida_id: number | null
-    user_id: number | null
   }
 
   export type JugadoresEnPartidaMinAggregateOutputType = {
     id: number | null
     partida_id: number | null
-    user_id: number | null
-    username: string | null
+    user_id: string | null
   }
 
   export type JugadoresEnPartidaMaxAggregateOutputType = {
     id: number | null
     partida_id: number | null
-    user_id: number | null
-    username: string | null
+    user_id: string | null
   }
 
   export type JugadoresEnPartidaCountAggregateOutputType = {
     id: number
     partida_id: number
     user_id: number
-    username: number
     _all: number
   }
 
@@ -6312,34 +6302,29 @@ export namespace Prisma {
   export type JugadoresEnPartidaAvgAggregateInputType = {
     id?: true
     partida_id?: true
-    user_id?: true
   }
 
   export type JugadoresEnPartidaSumAggregateInputType = {
     id?: true
     partida_id?: true
-    user_id?: true
   }
 
   export type JugadoresEnPartidaMinAggregateInputType = {
     id?: true
     partida_id?: true
     user_id?: true
-    username?: true
   }
 
   export type JugadoresEnPartidaMaxAggregateInputType = {
     id?: true
     partida_id?: true
     user_id?: true
-    username?: true
   }
 
   export type JugadoresEnPartidaCountAggregateInputType = {
     id?: true
     partida_id?: true
     user_id?: true
-    username?: true
     _all?: true
   }
 
@@ -6432,8 +6417,7 @@ export namespace Prisma {
   export type JugadoresEnPartidaGroupByOutputType = {
     id: number
     partida_id: number
-    user_id: number
-    username: string
+    user_id: string
     _count: JugadoresEnPartidaCountAggregateOutputType | null
     _avg: JugadoresEnPartidaAvgAggregateOutputType | null
     _sum: JugadoresEnPartidaSumAggregateOutputType | null
@@ -6459,7 +6443,6 @@ export namespace Prisma {
     id?: boolean
     partida_id?: boolean
     user_id?: boolean
-    username?: boolean
     partida?: boolean | PartidasDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jugadoresEnPartida"]>
 
@@ -6469,10 +6452,9 @@ export namespace Prisma {
     id?: boolean
     partida_id?: boolean
     user_id?: boolean
-    username?: boolean
   }
 
-  export type JugadoresEnPartidaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "partida_id" | "user_id" | "username", ExtArgs["result"]["jugadoresEnPartida"]>
+  export type JugadoresEnPartidaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "partida_id" | "user_id", ExtArgs["result"]["jugadoresEnPartida"]>
   export type JugadoresEnPartidaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     partida?: boolean | PartidasDefaultArgs<ExtArgs>
   }
@@ -6485,8 +6467,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       partida_id: number
-      user_id: number
-      username: string
+      user_id: string
     }, ExtArgs["result"]["jugadoresEnPartida"]>
     composites: {}
   }
@@ -6859,8 +6840,7 @@ export namespace Prisma {
   interface JugadoresEnPartidaFieldRefs {
     readonly id: FieldRef<"JugadoresEnPartida", 'Int'>
     readonly partida_id: FieldRef<"JugadoresEnPartida", 'Int'>
-    readonly user_id: FieldRef<"JugadoresEnPartida", 'Int'>
-    readonly username: FieldRef<"JugadoresEnPartida", 'String'>
+    readonly user_id: FieldRef<"JugadoresEnPartida", 'String'>
   }
     
 
@@ -7274,7 +7254,8 @@ export namespace Prisma {
     id: 'id',
     guild_id: 'guild_id',
     juego_id: 'juego_id',
-    estado_partida: 'estado_partida'
+    estado_partida: 'estado_partida',
+    created_at: 'created_at'
   };
 
   export type PartidasScalarFieldEnum = (typeof PartidasScalarFieldEnum)[keyof typeof PartidasScalarFieldEnum]
@@ -7283,8 +7264,7 @@ export namespace Prisma {
   export const JugadoresEnPartidaScalarFieldEnum: {
     id: 'id',
     partida_id: 'partida_id',
-    user_id: 'user_id',
-    username: 'username'
+    user_id: 'user_id'
   };
 
   export type JugadoresEnPartidaScalarFieldEnum = (typeof JugadoresEnPartidaScalarFieldEnum)[keyof typeof JugadoresEnPartidaScalarFieldEnum]
@@ -7305,6 +7285,21 @@ export namespace Prisma {
   export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
 
 
+  export const GuildOrderByRelevanceFieldEnum: {
+    discord_id: 'discord_id'
+  };
+
+  export type GuildOrderByRelevanceFieldEnum = (typeof GuildOrderByRelevanceFieldEnum)[keyof typeof GuildOrderByRelevanceFieldEnum]
+
+
+  export const UserInGuildOrderByRelevanceFieldEnum: {
+    usuario_id: 'usuario_id',
+    guild_id: 'guild_id'
+  };
+
+  export type UserInGuildOrderByRelevanceFieldEnum = (typeof UserInGuildOrderByRelevanceFieldEnum)[keyof typeof UserInGuildOrderByRelevanceFieldEnum]
+
+
   export const JuegosOrderByRelevanceFieldEnum: {
     nombre: 'nombre'
   };
@@ -7313,6 +7308,7 @@ export namespace Prisma {
 
 
   export const PartidasOrderByRelevanceFieldEnum: {
+    guild_id: 'guild_id',
     estado_partida: 'estado_partida'
   };
 
@@ -7320,7 +7316,7 @@ export namespace Prisma {
 
 
   export const JugadoresEnPartidaOrderByRelevanceFieldEnum: {
-    username: 'username'
+    user_id: 'user_id'
   };
 
   export type JugadoresEnPartidaOrderByRelevanceFieldEnum = (typeof JugadoresEnPartidaOrderByRelevanceFieldEnum)[keyof typeof JugadoresEnPartidaOrderByRelevanceFieldEnum]
@@ -7342,6 +7338,13 @@ export namespace Prisma {
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
@@ -7403,7 +7406,7 @@ export namespace Prisma {
     OR?: GuildWhereInput[]
     NOT?: GuildWhereInput | GuildWhereInput[]
     id?: IntFilter<"Guild"> | number
-    discord_id?: IntFilter<"Guild"> | number
+    discord_id?: StringFilter<"Guild"> | string
     partidas?: PartidasListRelationFilter
     usuarios_en_guild?: UserInGuildListRelationFilter
   }
@@ -7413,11 +7416,12 @@ export namespace Prisma {
     discord_id?: SortOrder
     partidas?: PartidasOrderByRelationAggregateInput
     usuarios_en_guild?: UserInGuildOrderByRelationAggregateInput
+    _relevance?: GuildOrderByRelevanceInput
   }
 
   export type GuildWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    discord_id?: number
+    discord_id?: string
     AND?: GuildWhereInput | GuildWhereInput[]
     OR?: GuildWhereInput[]
     NOT?: GuildWhereInput | GuildWhereInput[]
@@ -7440,7 +7444,7 @@ export namespace Prisma {
     OR?: GuildScalarWhereWithAggregatesInput[]
     NOT?: GuildScalarWhereWithAggregatesInput | GuildScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Guild"> | number
-    discord_id?: IntWithAggregatesFilter<"Guild"> | number
+    discord_id?: StringWithAggregatesFilter<"Guild"> | string
   }
 
   export type UserInGuildWhereInput = {
@@ -7448,8 +7452,8 @@ export namespace Prisma {
     OR?: UserInGuildWhereInput[]
     NOT?: UserInGuildWhereInput | UserInGuildWhereInput[]
     id?: IntFilter<"UserInGuild"> | number
-    usuario_id?: IntFilter<"UserInGuild"> | number
-    guild_id?: IntFilter<"UserInGuild"> | number
+    usuario_id?: StringFilter<"UserInGuild"> | string
+    guild_id?: StringFilter<"UserInGuild"> | string
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
   }
@@ -7460,6 +7464,7 @@ export namespace Prisma {
     guild_id?: SortOrder
     usuario?: UsuarioOrderByWithRelationInput
     guild?: GuildOrderByWithRelationInput
+    _relevance?: UserInGuildOrderByRelevanceInput
   }
 
   export type UserInGuildWhereUniqueInput = Prisma.AtLeast<{
@@ -7467,8 +7472,8 @@ export namespace Prisma {
     AND?: UserInGuildWhereInput | UserInGuildWhereInput[]
     OR?: UserInGuildWhereInput[]
     NOT?: UserInGuildWhereInput | UserInGuildWhereInput[]
-    usuario_id?: IntFilter<"UserInGuild"> | number
-    guild_id?: IntFilter<"UserInGuild"> | number
+    usuario_id?: StringFilter<"UserInGuild"> | string
+    guild_id?: StringFilter<"UserInGuild"> | string
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
   }, "id">
@@ -7489,8 +7494,8 @@ export namespace Prisma {
     OR?: UserInGuildScalarWhereWithAggregatesInput[]
     NOT?: UserInGuildScalarWhereWithAggregatesInput | UserInGuildScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"UserInGuild"> | number
-    usuario_id?: IntWithAggregatesFilter<"UserInGuild"> | number
-    guild_id?: IntWithAggregatesFilter<"UserInGuild"> | number
+    usuario_id?: StringWithAggregatesFilter<"UserInGuild"> | string
+    guild_id?: StringWithAggregatesFilter<"UserInGuild"> | string
   }
 
   export type JuegosWhereInput = {
@@ -7546,9 +7551,10 @@ export namespace Prisma {
     OR?: PartidasWhereInput[]
     NOT?: PartidasWhereInput | PartidasWhereInput[]
     id?: IntFilter<"Partidas"> | number
-    guild_id?: IntFilter<"Partidas"> | number
+    guild_id?: StringFilter<"Partidas"> | string
     juego_id?: IntFilter<"Partidas"> | number
     estado_partida?: StringFilter<"Partidas"> | string
+    created_at?: DateTimeFilter<"Partidas"> | Date | string
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
     juego?: XOR<JuegosScalarRelationFilter, JuegosWhereInput>
     jugadores?: JugadoresEnPartidaListRelationFilter
@@ -7559,6 +7565,7 @@ export namespace Prisma {
     guild_id?: SortOrder
     juego_id?: SortOrder
     estado_partida?: SortOrder
+    created_at?: SortOrder
     guild?: GuildOrderByWithRelationInput
     juego?: JuegosOrderByWithRelationInput
     jugadores?: JugadoresEnPartidaOrderByRelationAggregateInput
@@ -7570,9 +7577,10 @@ export namespace Prisma {
     AND?: PartidasWhereInput | PartidasWhereInput[]
     OR?: PartidasWhereInput[]
     NOT?: PartidasWhereInput | PartidasWhereInput[]
-    guild_id?: IntFilter<"Partidas"> | number
+    guild_id?: StringFilter<"Partidas"> | string
     juego_id?: IntFilter<"Partidas"> | number
     estado_partida?: StringFilter<"Partidas"> | string
+    created_at?: DateTimeFilter<"Partidas"> | Date | string
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
     juego?: XOR<JuegosScalarRelationFilter, JuegosWhereInput>
     jugadores?: JugadoresEnPartidaListRelationFilter
@@ -7583,6 +7591,7 @@ export namespace Prisma {
     guild_id?: SortOrder
     juego_id?: SortOrder
     estado_partida?: SortOrder
+    created_at?: SortOrder
     _count?: PartidasCountOrderByAggregateInput
     _avg?: PartidasAvgOrderByAggregateInput
     _max?: PartidasMaxOrderByAggregateInput
@@ -7595,9 +7604,10 @@ export namespace Prisma {
     OR?: PartidasScalarWhereWithAggregatesInput[]
     NOT?: PartidasScalarWhereWithAggregatesInput | PartidasScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Partidas"> | number
-    guild_id?: IntWithAggregatesFilter<"Partidas"> | number
+    guild_id?: StringWithAggregatesFilter<"Partidas"> | string
     juego_id?: IntWithAggregatesFilter<"Partidas"> | number
     estado_partida?: StringWithAggregatesFilter<"Partidas"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Partidas"> | Date | string
   }
 
   export type JugadoresEnPartidaWhereInput = {
@@ -7606,8 +7616,7 @@ export namespace Prisma {
     NOT?: JugadoresEnPartidaWhereInput | JugadoresEnPartidaWhereInput[]
     id?: IntFilter<"JugadoresEnPartida"> | number
     partida_id?: IntFilter<"JugadoresEnPartida"> | number
-    user_id?: IntFilter<"JugadoresEnPartida"> | number
-    username?: StringFilter<"JugadoresEnPartida"> | string
+    user_id?: StringFilter<"JugadoresEnPartida"> | string
     partida?: XOR<PartidasScalarRelationFilter, PartidasWhereInput>
   }
 
@@ -7615,27 +7624,25 @@ export namespace Prisma {
     id?: SortOrder
     partida_id?: SortOrder
     user_id?: SortOrder
-    username?: SortOrder
     partida?: PartidasOrderByWithRelationInput
     _relevance?: JugadoresEnPartidaOrderByRelevanceInput
   }
 
   export type JugadoresEnPartidaWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    partida_id_user_id?: JugadoresEnPartidaPartida_idUser_idCompoundUniqueInput
     AND?: JugadoresEnPartidaWhereInput | JugadoresEnPartidaWhereInput[]
     OR?: JugadoresEnPartidaWhereInput[]
     NOT?: JugadoresEnPartidaWhereInput | JugadoresEnPartidaWhereInput[]
     partida_id?: IntFilter<"JugadoresEnPartida"> | number
-    user_id?: IntFilter<"JugadoresEnPartida"> | number
-    username?: StringFilter<"JugadoresEnPartida"> | string
+    user_id?: StringFilter<"JugadoresEnPartida"> | string
     partida?: XOR<PartidasScalarRelationFilter, PartidasWhereInput>
-  }, "id">
+  }, "id" | "partida_id_user_id">
 
   export type JugadoresEnPartidaOrderByWithAggregationInput = {
     id?: SortOrder
     partida_id?: SortOrder
     user_id?: SortOrder
-    username?: SortOrder
     _count?: JugadoresEnPartidaCountOrderByAggregateInput
     _avg?: JugadoresEnPartidaAvgOrderByAggregateInput
     _max?: JugadoresEnPartidaMaxOrderByAggregateInput
@@ -7649,8 +7656,7 @@ export namespace Prisma {
     NOT?: JugadoresEnPartidaScalarWhereWithAggregatesInput | JugadoresEnPartidaScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"JugadoresEnPartida"> | number
     partida_id?: IntWithAggregatesFilter<"JugadoresEnPartida"> | number
-    user_id?: IntWithAggregatesFilter<"JugadoresEnPartida"> | number
-    username?: StringWithAggregatesFilter<"JugadoresEnPartida"> | string
+    user_id?: StringWithAggregatesFilter<"JugadoresEnPartida"> | string
   }
 
   export type UsuarioCreateInput = {
@@ -7690,43 +7696,43 @@ export namespace Prisma {
   }
 
   export type GuildCreateInput = {
-    discord_id: number
+    discord_id: string
     partidas?: PartidasCreateNestedManyWithoutGuildInput
     usuarios_en_guild?: UserInGuildCreateNestedManyWithoutGuildInput
   }
 
   export type GuildUncheckedCreateInput = {
     id?: number
-    discord_id: number
+    discord_id: string
     partidas?: PartidasUncheckedCreateNestedManyWithoutGuildInput
     usuarios_en_guild?: UserInGuildUncheckedCreateNestedManyWithoutGuildInput
   }
 
   export type GuildUpdateInput = {
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
     partidas?: PartidasUpdateManyWithoutGuildNestedInput
     usuarios_en_guild?: UserInGuildUpdateManyWithoutGuildNestedInput
   }
 
   export type GuildUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
     partidas?: PartidasUncheckedUpdateManyWithoutGuildNestedInput
     usuarios_en_guild?: UserInGuildUncheckedUpdateManyWithoutGuildNestedInput
   }
 
   export type GuildCreateManyInput = {
     id?: number
-    discord_id: number
+    discord_id: string
   }
 
   export type GuildUpdateManyMutationInput = {
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type GuildUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserInGuildCreateInput = {
@@ -7736,8 +7742,8 @@ export namespace Prisma {
 
   export type UserInGuildUncheckedCreateInput = {
     id?: number
-    usuario_id: number
-    guild_id: number
+    usuario_id: string
+    guild_id: string
   }
 
   export type UserInGuildUpdateInput = {
@@ -7747,14 +7753,14 @@ export namespace Prisma {
 
   export type UserInGuildUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    usuario_id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    guild_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserInGuildCreateManyInput = {
     id?: number
-    usuario_id: number
-    guild_id: number
+    usuario_id: string
+    guild_id: string
   }
 
   export type UserInGuildUpdateManyMutationInput = {
@@ -7763,8 +7769,8 @@ export namespace Prisma {
 
   export type UserInGuildUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    usuario_id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    guild_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type JuegosCreateInput = {
@@ -7812,6 +7818,7 @@ export namespace Prisma {
 
   export type PartidasCreateInput = {
     estado_partida?: string
+    created_at?: Date | string
     guild: GuildCreateNestedOneWithoutPartidasInput
     juego: JuegosCreateNestedOneWithoutPartidasInput
     jugadores?: JugadoresEnPartidaCreateNestedManyWithoutPartidaInput
@@ -7819,14 +7826,16 @@ export namespace Prisma {
 
   export type PartidasUncheckedCreateInput = {
     id?: number
-    guild_id: number
+    guild_id: string
     juego_id: number
     estado_partida?: string
+    created_at?: Date | string
     jugadores?: JugadoresEnPartidaUncheckedCreateNestedManyWithoutPartidaInput
   }
 
   export type PartidasUpdateInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     guild?: GuildUpdateOneRequiredWithoutPartidasNestedInput
     juego?: JuegosUpdateOneRequiredWithoutPartidasNestedInput
     jugadores?: JugadoresEnPartidaUpdateManyWithoutPartidaNestedInput
@@ -7834,73 +7843,70 @@ export namespace Prisma {
 
   export type PartidasUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    guild_id?: StringFieldUpdateOperationsInput | string
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     jugadores?: JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaNestedInput
   }
 
   export type PartidasCreateManyInput = {
     id?: number
-    guild_id: number
+    guild_id: string
     juego_id: number
     estado_partida?: string
+    created_at?: Date | string
   }
 
   export type PartidasUpdateManyMutationInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PartidasUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    guild_id?: StringFieldUpdateOperationsInput | string
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JugadoresEnPartidaCreateInput = {
-    user_id: number
-    username: string
+    user_id: string
     partida: PartidasCreateNestedOneWithoutJugadoresInput
   }
 
   export type JugadoresEnPartidaUncheckedCreateInput = {
     id?: number
     partida_id: number
-    user_id: number
-    username: string
+    user_id: string
   }
 
   export type JugadoresEnPartidaUpdateInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     partida?: PartidasUpdateOneRequiredWithoutJugadoresNestedInput
   }
 
   export type JugadoresEnPartidaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     partida_id?: IntFieldUpdateOperationsInput | number
-    user_id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type JugadoresEnPartidaCreateManyInput = {
     id?: number
     partida_id: number
-    user_id: number
-    username: string
+    user_id: string
   }
 
   export type JugadoresEnPartidaUpdateManyMutationInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type JugadoresEnPartidaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     partida_id?: IntFieldUpdateOperationsInput | number
-    user_id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8012,6 +8018,12 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type GuildOrderByRelevanceInput = {
+    fields: GuildOrderByRelevanceFieldEnum | GuildOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type GuildCountOrderByAggregateInput = {
     id?: SortOrder
     discord_id?: SortOrder
@@ -8019,7 +8031,6 @@ export namespace Prisma {
 
   export type GuildAvgOrderByAggregateInput = {
     id?: SortOrder
-    discord_id?: SortOrder
   }
 
   export type GuildMaxOrderByAggregateInput = {
@@ -8034,7 +8045,6 @@ export namespace Prisma {
 
   export type GuildSumOrderByAggregateInput = {
     id?: SortOrder
-    discord_id?: SortOrder
   }
 
   export type UsuarioScalarRelationFilter = {
@@ -8047,6 +8057,12 @@ export namespace Prisma {
     isNot?: GuildWhereInput
   }
 
+  export type UserInGuildOrderByRelevanceInput = {
+    fields: UserInGuildOrderByRelevanceFieldEnum | UserInGuildOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type UserInGuildCountOrderByAggregateInput = {
     id?: SortOrder
     usuario_id?: SortOrder
@@ -8055,8 +8071,6 @@ export namespace Prisma {
 
   export type UserInGuildAvgOrderByAggregateInput = {
     id?: SortOrder
-    usuario_id?: SortOrder
-    guild_id?: SortOrder
   }
 
   export type UserInGuildMaxOrderByAggregateInput = {
@@ -8073,8 +8087,6 @@ export namespace Prisma {
 
   export type UserInGuildSumOrderByAggregateInput = {
     id?: SortOrder
-    usuario_id?: SortOrder
-    guild_id?: SortOrder
   }
 
   export type JuegosOrderByRelevanceInput = {
@@ -8111,6 +8123,17 @@ export namespace Prisma {
     veces_jugado?: SortOrder
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type JuegosScalarRelationFilter = {
     is?: JuegosWhereInput
     isNot?: JuegosWhereInput
@@ -8137,11 +8160,11 @@ export namespace Prisma {
     guild_id?: SortOrder
     juego_id?: SortOrder
     estado_partida?: SortOrder
+    created_at?: SortOrder
   }
 
   export type PartidasAvgOrderByAggregateInput = {
     id?: SortOrder
-    guild_id?: SortOrder
     juego_id?: SortOrder
   }
 
@@ -8150,6 +8173,7 @@ export namespace Prisma {
     guild_id?: SortOrder
     juego_id?: SortOrder
     estado_partida?: SortOrder
+    created_at?: SortOrder
   }
 
   export type PartidasMinOrderByAggregateInput = {
@@ -8157,12 +8181,26 @@ export namespace Prisma {
     guild_id?: SortOrder
     juego_id?: SortOrder
     estado_partida?: SortOrder
+    created_at?: SortOrder
   }
 
   export type PartidasSumOrderByAggregateInput = {
     id?: SortOrder
-    guild_id?: SortOrder
     juego_id?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type PartidasScalarRelationFilter = {
@@ -8176,37 +8214,37 @@ export namespace Prisma {
     search: string
   }
 
+  export type JugadoresEnPartidaPartida_idUser_idCompoundUniqueInput = {
+    partida_id: number
+    user_id: string
+  }
+
   export type JugadoresEnPartidaCountOrderByAggregateInput = {
     id?: SortOrder
     partida_id?: SortOrder
     user_id?: SortOrder
-    username?: SortOrder
   }
 
   export type JugadoresEnPartidaAvgOrderByAggregateInput = {
     id?: SortOrder
     partida_id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type JugadoresEnPartidaMaxOrderByAggregateInput = {
     id?: SortOrder
     partida_id?: SortOrder
     user_id?: SortOrder
-    username?: SortOrder
   }
 
   export type JugadoresEnPartidaMinOrderByAggregateInput = {
     id?: SortOrder
     partida_id?: SortOrder
     user_id?: SortOrder
-    username?: SortOrder
   }
 
   export type JugadoresEnPartidaSumOrderByAggregateInput = {
     id?: SortOrder
     partida_id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type UserInGuildCreateNestedManyWithoutUsuarioInput = {
@@ -8443,6 +8481,10 @@ export namespace Prisma {
     connect?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type GuildUpdateOneRequiredWithoutPartidasNestedInput = {
     create?: XOR<GuildCreateWithoutPartidasInput, GuildUncheckedCreateWithoutPartidasInput>
     connectOrCreate?: GuildCreateOrConnectWithoutPartidasInput
@@ -8572,13 +8614,38 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type UserInGuildCreateWithoutUsuarioInput = {
     guild: GuildCreateNestedOneWithoutUsuarios_en_guildInput
   }
 
   export type UserInGuildUncheckedCreateWithoutUsuarioInput = {
     id?: number
-    guild_id: number
+    guild_id: string
   }
 
   export type UserInGuildCreateOrConnectWithoutUsuarioInput = {
@@ -8612,12 +8679,13 @@ export namespace Prisma {
     OR?: UserInGuildScalarWhereInput[]
     NOT?: UserInGuildScalarWhereInput | UserInGuildScalarWhereInput[]
     id?: IntFilter<"UserInGuild"> | number
-    usuario_id?: IntFilter<"UserInGuild"> | number
-    guild_id?: IntFilter<"UserInGuild"> | number
+    usuario_id?: StringFilter<"UserInGuild"> | string
+    guild_id?: StringFilter<"UserInGuild"> | string
   }
 
   export type PartidasCreateWithoutGuildInput = {
     estado_partida?: string
+    created_at?: Date | string
     juego: JuegosCreateNestedOneWithoutPartidasInput
     jugadores?: JugadoresEnPartidaCreateNestedManyWithoutPartidaInput
   }
@@ -8626,6 +8694,7 @@ export namespace Prisma {
     id?: number
     juego_id: number
     estado_partida?: string
+    created_at?: Date | string
     jugadores?: JugadoresEnPartidaUncheckedCreateNestedManyWithoutPartidaInput
   }
 
@@ -8645,7 +8714,7 @@ export namespace Prisma {
 
   export type UserInGuildUncheckedCreateWithoutGuildInput = {
     id?: number
-    usuario_id: number
+    usuario_id: string
   }
 
   export type UserInGuildCreateOrConnectWithoutGuildInput = {
@@ -8679,9 +8748,10 @@ export namespace Prisma {
     OR?: PartidasScalarWhereInput[]
     NOT?: PartidasScalarWhereInput | PartidasScalarWhereInput[]
     id?: IntFilter<"Partidas"> | number
-    guild_id?: IntFilter<"Partidas"> | number
+    guild_id?: StringFilter<"Partidas"> | string
     juego_id?: IntFilter<"Partidas"> | number
     estado_partida?: StringFilter<"Partidas"> | string
+    created_at?: DateTimeFilter<"Partidas"> | Date | string
   }
 
   export type UserInGuildUpsertWithWhereUniqueWithoutGuildInput = {
@@ -8715,13 +8785,13 @@ export namespace Prisma {
   }
 
   export type GuildCreateWithoutUsuarios_en_guildInput = {
-    discord_id: number
+    discord_id: string
     partidas?: PartidasCreateNestedManyWithoutGuildInput
   }
 
   export type GuildUncheckedCreateWithoutUsuarios_en_guildInput = {
     id?: number
-    discord_id: number
+    discord_id: string
     partidas?: PartidasUncheckedCreateNestedManyWithoutGuildInput
   }
 
@@ -8762,26 +8832,28 @@ export namespace Prisma {
   }
 
   export type GuildUpdateWithoutUsuarios_en_guildInput = {
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
     partidas?: PartidasUpdateManyWithoutGuildNestedInput
   }
 
   export type GuildUncheckedUpdateWithoutUsuarios_en_guildInput = {
     id?: IntFieldUpdateOperationsInput | number
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
     partidas?: PartidasUncheckedUpdateManyWithoutGuildNestedInput
   }
 
   export type PartidasCreateWithoutJuegoInput = {
     estado_partida?: string
+    created_at?: Date | string
     guild: GuildCreateNestedOneWithoutPartidasInput
     jugadores?: JugadoresEnPartidaCreateNestedManyWithoutPartidaInput
   }
 
   export type PartidasUncheckedCreateWithoutJuegoInput = {
     id?: number
-    guild_id: number
+    guild_id: string
     estado_partida?: string
+    created_at?: Date | string
     jugadores?: JugadoresEnPartidaUncheckedCreateNestedManyWithoutPartidaInput
   }
 
@@ -8812,13 +8884,13 @@ export namespace Prisma {
   }
 
   export type GuildCreateWithoutPartidasInput = {
-    discord_id: number
+    discord_id: string
     usuarios_en_guild?: UserInGuildCreateNestedManyWithoutGuildInput
   }
 
   export type GuildUncheckedCreateWithoutPartidasInput = {
     id?: number
-    discord_id: number
+    discord_id: string
     usuarios_en_guild?: UserInGuildUncheckedCreateNestedManyWithoutGuildInput
   }
 
@@ -8844,14 +8916,12 @@ export namespace Prisma {
   }
 
   export type JugadoresEnPartidaCreateWithoutPartidaInput = {
-    user_id: number
-    username: string
+    user_id: string
   }
 
   export type JugadoresEnPartidaUncheckedCreateWithoutPartidaInput = {
     id?: number
-    user_id: number
-    username: string
+    user_id: string
   }
 
   export type JugadoresEnPartidaCreateOrConnectWithoutPartidaInput = {
@@ -8876,13 +8946,13 @@ export namespace Prisma {
   }
 
   export type GuildUpdateWithoutPartidasInput = {
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
     usuarios_en_guild?: UserInGuildUpdateManyWithoutGuildNestedInput
   }
 
   export type GuildUncheckedUpdateWithoutPartidasInput = {
     id?: IntFieldUpdateOperationsInput | number
-    discord_id?: IntFieldUpdateOperationsInput | number
+    discord_id?: StringFieldUpdateOperationsInput | string
     usuarios_en_guild?: UserInGuildUncheckedUpdateManyWithoutGuildNestedInput
   }
 
@@ -8930,21 +9000,22 @@ export namespace Prisma {
     NOT?: JugadoresEnPartidaScalarWhereInput | JugadoresEnPartidaScalarWhereInput[]
     id?: IntFilter<"JugadoresEnPartida"> | number
     partida_id?: IntFilter<"JugadoresEnPartida"> | number
-    user_id?: IntFilter<"JugadoresEnPartida"> | number
-    username?: StringFilter<"JugadoresEnPartida"> | string
+    user_id?: StringFilter<"JugadoresEnPartida"> | string
   }
 
   export type PartidasCreateWithoutJugadoresInput = {
     estado_partida?: string
+    created_at?: Date | string
     guild: GuildCreateNestedOneWithoutPartidasInput
     juego: JuegosCreateNestedOneWithoutPartidasInput
   }
 
   export type PartidasUncheckedCreateWithoutJugadoresInput = {
     id?: number
-    guild_id: number
+    guild_id: string
     juego_id: number
     estado_partida?: string
+    created_at?: Date | string
   }
 
   export type PartidasCreateOrConnectWithoutJugadoresInput = {
@@ -8965,20 +9036,22 @@ export namespace Prisma {
 
   export type PartidasUpdateWithoutJugadoresInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     guild?: GuildUpdateOneRequiredWithoutPartidasNestedInput
     juego?: JuegosUpdateOneRequiredWithoutPartidasNestedInput
   }
 
   export type PartidasUncheckedUpdateWithoutJugadoresInput = {
     id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    guild_id?: StringFieldUpdateOperationsInput | string
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserInGuildCreateManyUsuarioInput = {
     id?: number
-    guild_id: number
+    guild_id: string
   }
 
   export type UserInGuildUpdateWithoutUsuarioInput = {
@@ -8987,27 +9060,29 @@ export namespace Prisma {
 
   export type UserInGuildUncheckedUpdateWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    guild_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserInGuildUncheckedUpdateManyWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    guild_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type PartidasCreateManyGuildInput = {
     id?: number
     juego_id: number
     estado_partida?: string
+    created_at?: Date | string
   }
 
   export type UserInGuildCreateManyGuildInput = {
     id?: number
-    usuario_id: number
+    usuario_id: string
   }
 
   export type PartidasUpdateWithoutGuildInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     juego?: JuegosUpdateOneRequiredWithoutPartidasNestedInput
     jugadores?: JugadoresEnPartidaUpdateManyWithoutPartidaNestedInput
   }
@@ -9016,6 +9091,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     jugadores?: JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaNestedInput
   }
 
@@ -9023,6 +9099,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserInGuildUpdateWithoutGuildInput = {
@@ -9031,60 +9108,60 @@ export namespace Prisma {
 
   export type UserInGuildUncheckedUpdateWithoutGuildInput = {
     id?: IntFieldUpdateOperationsInput | number
-    usuario_id?: IntFieldUpdateOperationsInput | number
+    usuario_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserInGuildUncheckedUpdateManyWithoutGuildInput = {
     id?: IntFieldUpdateOperationsInput | number
-    usuario_id?: IntFieldUpdateOperationsInput | number
+    usuario_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type PartidasCreateManyJuegoInput = {
     id?: number
-    guild_id: number
+    guild_id: string
     estado_partida?: string
+    created_at?: Date | string
   }
 
   export type PartidasUpdateWithoutJuegoInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     guild?: GuildUpdateOneRequiredWithoutPartidasNestedInput
     jugadores?: JugadoresEnPartidaUpdateManyWithoutPartidaNestedInput
   }
 
   export type PartidasUncheckedUpdateWithoutJuegoInput = {
     id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    guild_id?: StringFieldUpdateOperationsInput | string
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     jugadores?: JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaNestedInput
   }
 
   export type PartidasUncheckedUpdateManyWithoutJuegoInput = {
     id?: IntFieldUpdateOperationsInput | number
-    guild_id?: IntFieldUpdateOperationsInput | number
+    guild_id?: StringFieldUpdateOperationsInput | string
     estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JugadoresEnPartidaCreateManyPartidaInput = {
     id?: number
-    user_id: number
-    username: string
+    user_id: string
   }
 
   export type JugadoresEnPartidaUpdateWithoutPartidaInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type JugadoresEnPartidaUncheckedUpdateWithoutPartidaInput = {
     id?: IntFieldUpdateOperationsInput | number
-    user_id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaInput = {
     id?: IntFieldUpdateOperationsInput | number
-    user_id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
   }
 
 

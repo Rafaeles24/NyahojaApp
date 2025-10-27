@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, ComponentType } = require("discord.js");
+const { usuarioService, partidaService } = require("../../../services");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,9 +10,32 @@ module.exports = {
     async execute(interaction) {
         const retador = interaction.user;
         const target = interaction.options.getUser("target");
+        const guild = interaction.guild;
 
         if (retador.id === target.id) {
-            return interaction.reply({ content: "No puedes retar a tu alter ego.", ephemeral: true });
+            return interaction.reply({ content: ``, ephemeral: true });
+        }
+
+        //Verificar si el retado esta registrado
+        let targetVerify = await usuarioService.getDiscordUserInGuild(guild.id, target.id);
+        if (!targetVerify) {
+            targetVerify = await usuarioService.getDiscordUser(target.id);
+            if (!targetVerify) await usuarioService.createDiscordUser(target.id);
+            await usuarioService.createDiscordUserInGuild(guild.id, user.id);
+        }
+
+        const party = await partidaService.createDuelParty(guild.id, retador.id, target.id);
+
+        if (party.response === "J1_IN_PARTY") {
+            return await interaction.reply({
+                content: `Ya te encuentras en un duelo activo`,
+                ephemeral: true
+            });
+        } else if (party.response === "J2_IN_PARTY") {
+            return await interaction.reply({
+                content: `El usuario objetivo ya se encuentra en un duelo activo`,
+                ephemeral: true
+            });
         }
 
         const aceptar = new ButtonBuilder().setCustomId("duelo_accept").setLabel("Aceptar duelo").setStyle(ButtonStyle.Success);
@@ -38,7 +62,6 @@ module.exports = {
 
         collector.on("collect", async (i) => {
             try {
-                // 👇 Solo el retado puede decidir; los demás reciben aviso efímero
                 if (i.user.id !== target.id) {
                     return i.reply({ content: `Solo ${target} puede responder este duelo.`, ephemeral: true });
                 }
@@ -46,7 +69,7 @@ module.exports = {
                 if (i.customId === "duelo_accept") {
                     await i.update({
                         content: `✅ ${i.user} **aceptó** el duelo contra ${retador}! Prepárense...`,
-                        components: [] // o disableAll(message.components)
+                        components: [] 
                     });
                 } else if (i.customId === "duelo_decline") {
                     await i.update({
@@ -57,7 +80,7 @@ module.exports = {
         
                 collector.stop("answered");
             } catch (error) {
-                console.error("Error manejando el click:", error); // 👈 corregido
+                console.error("Error manejando el click:", error); 
                 if (!i.replied && !i.deferred) {
                     await i.update({
                         content: "Ocurrió un error al procesar tu elección.",

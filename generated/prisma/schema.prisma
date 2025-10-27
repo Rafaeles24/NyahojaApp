@@ -38,8 +38,8 @@ model Usuario {
  */
 
 model Guild {
-  id         Int @id @default(autoincrement())
-  discord_id Int @unique
+  id         Int    @id @default(autoincrement())
+  discord_id String @unique
 
   partidas          Partidas[]
   usuarios_en_guild UserInGuild[]
@@ -48,12 +48,12 @@ model Guild {
 }
 
 model UserInGuild {
-  id         Int @id @default(autoincrement())
-  usuario_id Int
-  guild_id   Int
+  id         Int    @id @default(autoincrement())
+  usuario_id String
+  guild_id   String
 
-  usuario Usuario @relation(fields: [usuario_id], references: [id])
-  guild   Guild   @relation(fields: [guild_id], references: [id])
+  usuario Usuario @relation(fields: [usuario_id], references: [discord_id])
+  guild   Guild   @relation(fields: [guild_id], references: [discord_id])
 
   @@map("usuarios_en_guild")
 }
@@ -83,12 +83,13 @@ model Juegos {
 }
 
 model Partidas {
-  id             Int    @id @default(autoincrement())
-  guild_id       Int
+  id             Int      @id @default(autoincrement())
+  guild_id       String
   juego_id       Int
-  estado_partida String @default("espera")
+  estado_partida String   @default("espera")
+  created_at     DateTime @default(now())
 
-  guild     Guild                @relation(fields: [guild_id], references: [id])
+  guild     Guild                @relation(fields: [guild_id], references: [discord_id])
   juego     Juegos               @relation(fields: [juego_id], references: [id])
   jugadores JugadoresEnPartida[]
 
@@ -98,10 +99,10 @@ model Partidas {
 model JugadoresEnPartida {
   id         Int    @id @default(autoincrement())
   partida_id Int
-  user_id    Int
-  username   String
+  user_id    String
 
   partida Partidas @relation(fields: [partida_id], references: [id])
 
+  @@unique([partida_id, user_id])
   @@map("jugadores_en_partida")
 }

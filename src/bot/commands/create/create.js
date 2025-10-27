@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { usuarioService } = require("../../../services");
+const { usuarioService, guildService } = require("../../../services");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,12 +7,13 @@ module.exports = {
         .setDescription("Create guild"),
     
     async execute(interaction) {
-        const user = interaction.user;
+        const guild = interaction.guild;
 
-        await usuarioService.createDiscordUser(user.id);
+        const guildData = await guildService.getGuild(guild.id);
+        if (!guildData) await guildService.createGuild(guild.id);
 
         return interaction.reply({
-            content: `Guild ${user.id} registrado`
+            content: `Guild ${guild.id} registrado`
         })
     }
 }

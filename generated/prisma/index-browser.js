@@ -146,14 +146,14 @@ exports.Prisma.PartidasScalarFieldEnum = {
   id: 'id',
   guild_id: 'guild_id',
   juego_id: 'juego_id',
-  estado_partida: 'estado_partida'
+  estado_partida: 'estado_partida',
+  created_at: 'created_at'
 };
 
 exports.Prisma.JugadoresEnPartidaScalarFieldEnum = {
   id: 'id',
   partida_id: 'partida_id',
-  user_id: 'user_id',
-  username: 'username'
+  user_id: 'user_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -165,16 +165,26 @@ exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
   discord_id: 'discord_id'
 };
 
+exports.Prisma.GuildOrderByRelevanceFieldEnum = {
+  discord_id: 'discord_id'
+};
+
+exports.Prisma.UserInGuildOrderByRelevanceFieldEnum = {
+  usuario_id: 'usuario_id',
+  guild_id: 'guild_id'
+};
+
 exports.Prisma.JuegosOrderByRelevanceFieldEnum = {
   nombre: 'nombre'
 };
 
 exports.Prisma.PartidasOrderByRelevanceFieldEnum = {
+  guild_id: 'guild_id',
   estado_partida: 'estado_partida'
 };
 
 exports.Prisma.JugadoresEnPartidaOrderByRelevanceFieldEnum = {
-  username: 'username'
+  user_id: 'user_id'
 };
 
 
