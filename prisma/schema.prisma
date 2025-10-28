@@ -47,7 +47,7 @@ model GuildMember {
 
   @@id([usuario_id, guild_id])
   @@index([partida_id])
-  @@map("usuarios_en_guild")
+  @@map("guild_member")
 }
 
 

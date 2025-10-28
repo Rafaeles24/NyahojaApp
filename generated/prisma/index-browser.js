@@ -121,19 +121,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.UsuarioScalarFieldEnum = {
-  id: 'id',
   discord_id: 'discord_id'
 };
 
 exports.Prisma.GuildScalarFieldEnum = {
-  id: 'id',
   discord_id: 'discord_id'
 };
 
-exports.Prisma.UserInGuildScalarFieldEnum = {
-  id: 'id',
+exports.Prisma.GuildMemberScalarFieldEnum = {
+  guild_id: 'guild_id',
   usuario_id: 'usuario_id',
-  guild_id: 'guild_id'
+  partida_id: 'partida_id',
+  created_at: 'created_at'
 };
 
 exports.Prisma.JuegosScalarFieldEnum = {
@@ -142,18 +141,12 @@ exports.Prisma.JuegosScalarFieldEnum = {
   veces_jugado: 'veces_jugado'
 };
 
-exports.Prisma.PartidasScalarFieldEnum = {
+exports.Prisma.PartidaScalarFieldEnum = {
   id: 'id',
   guild_id: 'guild_id',
   juego_id: 'juego_id',
   estado_partida: 'estado_partida',
   created_at: 'created_at'
-};
-
-exports.Prisma.JugadoresEnPartidaScalarFieldEnum = {
-  id: 'id',
-  partida_id: 'partida_id',
-  user_id: 'user_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -169,32 +162,32 @@ exports.Prisma.GuildOrderByRelevanceFieldEnum = {
   discord_id: 'discord_id'
 };
 
-exports.Prisma.UserInGuildOrderByRelevanceFieldEnum = {
-  usuario_id: 'usuario_id',
-  guild_id: 'guild_id'
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.GuildMemberOrderByRelevanceFieldEnum = {
+  guild_id: 'guild_id',
+  usuario_id: 'usuario_id'
 };
 
 exports.Prisma.JuegosOrderByRelevanceFieldEnum = {
   nombre: 'nombre'
 };
 
-exports.Prisma.PartidasOrderByRelevanceFieldEnum = {
+exports.Prisma.PartidaOrderByRelevanceFieldEnum = {
   guild_id: 'guild_id',
   estado_partida: 'estado_partida'
-};
-
-exports.Prisma.JugadoresEnPartidaOrderByRelevanceFieldEnum = {
-  user_id: 'user_id'
 };
 
 
 exports.Prisma.ModelName = {
   Usuario: 'Usuario',
   Guild: 'Guild',
-  UserInGuild: 'UserInGuild',
+  GuildMember: 'GuildMember',
   Juegos: 'Juegos',
-  Partidas: 'Partidas',
-  JugadoresEnPartida: 'JugadoresEnPartida'
+  Partida: 'Partida'
 };
 
 /**

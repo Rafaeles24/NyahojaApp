@@ -93,19 +93,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.UsuarioScalarFieldEnum = {
-  id: 'id',
   discord_id: 'discord_id'
 };
 
 exports.Prisma.GuildScalarFieldEnum = {
-  id: 'id',
   discord_id: 'discord_id'
 };
 
-exports.Prisma.UserInGuildScalarFieldEnum = {
-  id: 'id',
+exports.Prisma.GuildMemberScalarFieldEnum = {
+  guild_id: 'guild_id',
   usuario_id: 'usuario_id',
-  guild_id: 'guild_id'
+  partida_id: 'partida_id',
+  created_at: 'created_at'
 };
 
 exports.Prisma.JuegosScalarFieldEnum = {
@@ -114,18 +113,12 @@ exports.Prisma.JuegosScalarFieldEnum = {
   veces_jugado: 'veces_jugado'
 };
 
-exports.Prisma.PartidasScalarFieldEnum = {
+exports.Prisma.PartidaScalarFieldEnum = {
   id: 'id',
   guild_id: 'guild_id',
   juego_id: 'juego_id',
   estado_partida: 'estado_partida',
   created_at: 'created_at'
-};
-
-exports.Prisma.JugadoresEnPartidaScalarFieldEnum = {
-  id: 'id',
-  partida_id: 'partida_id',
-  user_id: 'user_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -141,32 +134,32 @@ exports.Prisma.GuildOrderByRelevanceFieldEnum = {
   discord_id: 'discord_id'
 };
 
-exports.Prisma.UserInGuildOrderByRelevanceFieldEnum = {
-  usuario_id: 'usuario_id',
-  guild_id: 'guild_id'
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.GuildMemberOrderByRelevanceFieldEnum = {
+  guild_id: 'guild_id',
+  usuario_id: 'usuario_id'
 };
 
 exports.Prisma.JuegosOrderByRelevanceFieldEnum = {
   nombre: 'nombre'
 };
 
-exports.Prisma.PartidasOrderByRelevanceFieldEnum = {
+exports.Prisma.PartidaOrderByRelevanceFieldEnum = {
   guild_id: 'guild_id',
   estado_partida: 'estado_partida'
-};
-
-exports.Prisma.JugadoresEnPartidaOrderByRelevanceFieldEnum = {
-  user_id: 'user_id'
 };
 
 
 exports.Prisma.ModelName = {
   Usuario: 'Usuario',
   Guild: 'Guild',
-  UserInGuild: 'UserInGuild',
+  GuildMember: 'GuildMember',
   Juegos: 'Juegos',
-  Partidas: 'Partidas',
-  JugadoresEnPartida: 'JugadoresEnPartida'
+  Partida: 'Partida'
 };
 /**
  * Create the Client
@@ -215,13 +208,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Usuario {\n  id         Int    @id @default(autoincrement())\n  discord_id String @unique\n\n  guilds UserInGuild[]\n\n  @@map(\"usuarios\")\n}\n\n/**\n * enum TipoMoneda {\n * Oro\n * Plata\n * Cobre\n * }\n * model Moneda {\n * id Int @id @default(autoincrement())\n * nombre String @default(\"Capuccino\")\n * created_at DateTime @default(now())\n * carteras Cartera[]\n * }\n */\n\nmodel Guild {\n  id         Int    @id @default(autoincrement())\n  discord_id String @unique\n\n  partidas          Partidas[]\n  usuarios_en_guild UserInGuild[]\n\n  @@map(\"guilds\")\n}\n\nmodel UserInGuild {\n  id         Int    @id @default(autoincrement())\n  usuario_id String\n  guild_id   String\n\n  usuario Usuario @relation(fields: [usuario_id], references: [discord_id])\n  guild   Guild   @relation(fields: [guild_id], references: [discord_id])\n\n  @@map(\"usuarios_en_guild\")\n}\n\n/**\n * model Cartera {\n * id Int @id @default(autoincrement())\n * usuario_id Int\n * guild_id Int\n * moneda_id Int\n * cantidad Int @default(0)\n * created_at DateTime @default(now())\n * usuario Usuario @relation(fields: [usuario_id], references: [id])\n * guild Guild @relation(fields: [guild_id], references: [id])\n * }\n */\n\n//Juegos de nyahoja\nmodel Juegos {\n  id           Int    @id @default(autoincrement())\n  nombre       String\n  veces_jugado Int    @default(0)\n\n  partidas Partidas[]\n\n  @@map(\"juegos_registrados\")\n}\n\nmodel Partidas {\n  id             Int      @id @default(autoincrement())\n  guild_id       String\n  juego_id       Int\n  estado_partida String   @default(\"espera\")\n  created_at     DateTime @default(now())\n\n  guild     Guild                @relation(fields: [guild_id], references: [discord_id])\n  juego     Juegos               @relation(fields: [juego_id], references: [id])\n  jugadores JugadoresEnPartida[]\n\n  @@map(\"partidas\")\n}\n\nmodel JugadoresEnPartida {\n  id         Int    @id @default(autoincrement())\n  partida_id Int\n  user_id    String\n\n  partida Partidas @relation(fields: [partida_id], references: [id])\n\n  @@unique([partida_id, user_id])\n  @@map(\"jugadores_en_partida\")\n}\n",
-  "inlineSchemaHash": "999c581203382250e3aeed7510ac6ffcc3761e1d40dee90354ea7a77f8b36458",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n//USUARIO DE DISCORD\nmodel Usuario {\n  discord_id String @id\n\n  guilds GuildMember[]\n\n  @@map(\"usuarios\")\n}\n\n//DATOS DE GUILD DE DISCORD\nmodel Guild {\n  discord_id String @id\n\n  partidas Partida[]\n  miembros GuildMember[]\n\n  @@map(\"guilds\")\n}\n\n//DATOS DEL USUARIO DENTRO DE UNA GUILD\nmodel GuildMember {\n  guild_id   String\n  usuario_id String\n  partida_id Int?\n  created_at DateTime @default(now())\n\n  //El miembro de la guild es un usuario\n  usuario Usuario  @relation(fields: [usuario_id], references: [discord_id], onDelete: Cascade, onUpdate: Cascade)\n  //El miembro pertenece a una guild\n  guild   Guild    @relation(fields: [guild_id], references: [discord_id], onDelete: Cascade, onUpdate: Cascade)\n  //El miembro esta en una partida o no\n  partida Partida? @relation(fields: [partida_id], references: [id], onDelete: SetNull)\n\n  @@id([usuario_id, guild_id])\n  @@index([partida_id])\n  @@map(\"guild_member\")\n}\n\n//Juegos de nyahoja\nmodel Juegos {\n  id           Int    @id @default(autoincrement())\n  nombre       String\n  veces_jugado Int    @default(0)\n\n  partidas Partida[]\n\n  @@map(\"juegos_registrados\")\n}\n\nmodel Partida {\n  id             Int      @id @default(autoincrement())\n  guild_id       String\n  juego_id       Int\n  estado_partida String   @default(\"espera\")\n  created_at     DateTime @default(now())\n\n  guild    Guild         @relation(fields: [guild_id], references: [discord_id])\n  juego    Juegos        @relation(fields: [juego_id], references: [id])\n  miembros GuildMember[]\n\n  @@map(\"partidas\")\n}\n",
+  "inlineSchemaHash": "9c1c6eee9f8af54d65278bb0ab37b88932e683632ad2228090630e305ebaefd9",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Usuario\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"discord_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guilds\",\"kind\":\"object\",\"type\":\"UserInGuild\",\"relationName\":\"UserInGuildToUsuario\"}],\"dbName\":\"usuarios\"},\"Guild\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"discord_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"partidas\",\"kind\":\"object\",\"type\":\"Partidas\",\"relationName\":\"GuildToPartidas\"},{\"name\":\"usuarios_en_guild\",\"kind\":\"object\",\"type\":\"UserInGuild\",\"relationName\":\"GuildToUserInGuild\"}],\"dbName\":\"guilds\"},\"UserInGuild\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"usuario_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guild_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"UserInGuildToUsuario\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToUserInGuild\"}],\"dbName\":\"usuarios_en_guild\"},\"Juegos\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nombre\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"veces_jugado\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"partidas\",\"kind\":\"object\",\"type\":\"Partidas\",\"relationName\":\"JuegosToPartidas\"}],\"dbName\":\"juegos_registrados\"},\"Partidas\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"guild_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"juego_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"estado_partida\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToPartidas\"},{\"name\":\"juego\",\"kind\":\"object\",\"type\":\"Juegos\",\"relationName\":\"JuegosToPartidas\"},{\"name\":\"jugadores\",\"kind\":\"object\",\"type\":\"JugadoresEnPartida\",\"relationName\":\"JugadoresEnPartidaToPartidas\"}],\"dbName\":\"partidas\"},\"JugadoresEnPartida\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"partida_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"partida\",\"kind\":\"object\",\"type\":\"Partidas\",\"relationName\":\"JugadoresEnPartidaToPartidas\"}],\"dbName\":\"jugadores_en_partida\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Usuario\":{\"fields\":[{\"name\":\"discord_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"guilds\",\"kind\":\"object\",\"type\":\"GuildMember\",\"relationName\":\"GuildMemberToUsuario\"}],\"dbName\":\"usuarios\"},\"Guild\":{\"fields\":[{\"name\":\"discord_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"partidas\",\"kind\":\"object\",\"type\":\"Partida\",\"relationName\":\"GuildToPartida\"},{\"name\":\"miembros\",\"kind\":\"object\",\"type\":\"GuildMember\",\"relationName\":\"GuildToGuildMember\"}],\"dbName\":\"guilds\"},\"GuildMember\":{\"fields\":[{\"name\":\"guild_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"usuario_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"partida_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"usuario\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"GuildMemberToUsuario\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToGuildMember\"},{\"name\":\"partida\",\"kind\":\"object\",\"type\":\"Partida\",\"relationName\":\"GuildMemberToPartida\"}],\"dbName\":\"guild_member\"},\"Juegos\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nombre\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"veces_jugado\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"partidas\",\"kind\":\"object\",\"type\":\"Partida\",\"relationName\":\"JuegosToPartida\"}],\"dbName\":\"juegos_registrados\"},\"Partida\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"guild_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"juego_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"estado_partida\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"guild\",\"kind\":\"object\",\"type\":\"Guild\",\"relationName\":\"GuildToPartida\"},{\"name\":\"juego\",\"kind\":\"object\",\"type\":\"Juegos\",\"relationName\":\"JuegosToPartida\"},{\"name\":\"miembros\",\"kind\":\"object\",\"type\":\"GuildMember\",\"relationName\":\"GuildMemberToPartida\"}],\"dbName\":\"partidas\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

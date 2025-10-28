@@ -21,7 +21,7 @@ module.exports = {
         if (!targetVerify) {
             targetVerify = await usuarioService.getDiscordUser(target.id);
             if (!targetVerify) await usuarioService.createDiscordUser(target.id);
-            await usuarioService.createDiscordUserInGuild(guild.id, user.id);
+            await usuarioService.createDiscordUserInGuild(guild.id, target.id);
         }
 
         const party = await partidaService.createDuelParty(guild.id, retador.id, target.id);
@@ -48,9 +48,20 @@ module.exports = {
             fetchReply: true
         });
 
+        const filtro = (i) => {
+            if (i.user.id !== target.id) {
+                // responder a terceros, pero NO coleccionar
+                i.reply({ content: `Solo ${target} puede responder este duelo.`, ephemeral: true })
+                    .catch(() => {});
+                return false;
+            }
+            // solo aceptamos los IDs válidos
+            return i.customId === 'duelo_accept' || i.customId === 'duelo_decline';
+        };
+
         const collector = message.createMessageComponentCollector({
             componentType: ComponentType.Button,
-            filter: (i) => i.message.id === message.id,
+            filter: filtro,
             time: 30_000,
             max: 1
         });
@@ -72,6 +83,7 @@ module.exports = {
                         components: [] 
                     });
                 } else if (i.customId === "duelo_decline") {
+                    await partidaService.declinaDuelParty(party.party_id);
                     await i.update({
                         content: `❎ ${i.user} **rechazó** el duelo de ${retador}.`,
                         components: []
@@ -92,9 +104,10 @@ module.exports = {
 
         collector.on("end", async (_c, reason) => {
             if (reason === "time" && message.editable) {
+                await partidaService.declinaDuelParty(party.party_id);
                 await message.edit({
                     content: `⏳ ${target} no respondió al reto de ${retador}.`,
-                    components: disableAll(message.components)
+                    components: []
                 });
             }
         });

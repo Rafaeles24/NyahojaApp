@@ -9,10 +9,8 @@ async function getDiscordUser(discordId) {
 async function getDiscordUserInGuild(guildId, userId) {
     return await prisma.guildMember.findFirst({
         where: { 
-            guild_id_usuario_id: {
-                guild_id: guildId,
-                usuario_id: userId
-            }
+            guild_id: guildId,
+            usuario_id: userId
         }
     })
 }
@@ -32,10 +30,27 @@ async function createDiscordUser(discordId) {
 }
 
 async function createDiscordUserInGuild(guildId, userId) {
-    return await prisma.guildMember.create({
-        data: {
-            usuario_id: userId,
-            guild_id: guildId
+    return await prisma.guildMember.upsert({
+        where: {
+            usuario_id_guild_id: {
+                usuario_id: userId,
+                guild_id: guildId,
+            }
+        },
+        update: {},
+        create: {
+            guild: {
+                connectOrCreate: {
+                    where: { discord_id: guildId },
+                    create: { discord_id: guildId }
+                }
+            },
+            usuario: {
+                connectOrCreate: {
+                    where: { discord_id: userId },
+                    create: { discord_id: userId }
+                }
+            }
         }
     })
 }

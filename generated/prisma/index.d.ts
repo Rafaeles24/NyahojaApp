@@ -24,25 +24,20 @@ export type Usuario = $Result.DefaultSelection<Prisma.$UsuarioPayload>
  */
 export type Guild = $Result.DefaultSelection<Prisma.$GuildPayload>
 /**
- * Model UserInGuild
+ * Model GuildMember
  * 
  */
-export type UserInGuild = $Result.DefaultSelection<Prisma.$UserInGuildPayload>
+export type GuildMember = $Result.DefaultSelection<Prisma.$GuildMemberPayload>
 /**
  * Model Juegos
  * 
  */
 export type Juegos = $Result.DefaultSelection<Prisma.$JuegosPayload>
 /**
- * Model Partidas
+ * Model Partida
  * 
  */
-export type Partidas = $Result.DefaultSelection<Prisma.$PartidasPayload>
-/**
- * Model JugadoresEnPartida
- * 
- */
-export type JugadoresEnPartida = $Result.DefaultSelection<Prisma.$JugadoresEnPartidaPayload>
+export type Partida = $Result.DefaultSelection<Prisma.$PartidaPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,14 +178,14 @@ export class PrismaClient<
   get guild(): Prisma.GuildDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.userInGuild`: Exposes CRUD operations for the **UserInGuild** model.
+   * `prisma.guildMember`: Exposes CRUD operations for the **GuildMember** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserInGuilds
-    * const userInGuilds = await prisma.userInGuild.findMany()
+    * // Fetch zero or more GuildMembers
+    * const guildMembers = await prisma.guildMember.findMany()
     * ```
     */
-  get userInGuild(): Prisma.UserInGuildDelegate<ExtArgs, ClientOptions>;
+  get guildMember(): Prisma.GuildMemberDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.juegos`: Exposes CRUD operations for the **Juegos** model.
@@ -203,24 +198,14 @@ export class PrismaClient<
   get juegos(): Prisma.JuegosDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.partidas`: Exposes CRUD operations for the **Partidas** model.
+   * `prisma.partida`: Exposes CRUD operations for the **Partida** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Partidas
-    * const partidas = await prisma.partidas.findMany()
+    * const partidas = await prisma.partida.findMany()
     * ```
     */
-  get partidas(): Prisma.PartidasDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.jugadoresEnPartida`: Exposes CRUD operations for the **JugadoresEnPartida** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more JugadoresEnPartidas
-    * const jugadoresEnPartidas = await prisma.jugadoresEnPartida.findMany()
-    * ```
-    */
-  get jugadoresEnPartida(): Prisma.JugadoresEnPartidaDelegate<ExtArgs, ClientOptions>;
+  get partida(): Prisma.PartidaDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -664,10 +649,9 @@ export namespace Prisma {
   export const ModelName: {
     Usuario: 'Usuario',
     Guild: 'Guild',
-    UserInGuild: 'UserInGuild',
+    GuildMember: 'GuildMember',
     Juegos: 'Juegos',
-    Partidas: 'Partidas',
-    JugadoresEnPartida: 'JugadoresEnPartida'
+    Partida: 'Partida'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -686,7 +670,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "guild" | "userInGuild" | "juegos" | "partidas" | "jugadoresEnPartida"
+      modelProps: "usuario" | "guild" | "guildMember" | "juegos" | "partida"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -822,69 +806,69 @@ export namespace Prisma {
           }
         }
       }
-      UserInGuild: {
-        payload: Prisma.$UserInGuildPayload<ExtArgs>
-        fields: Prisma.UserInGuildFieldRefs
+      GuildMember: {
+        payload: Prisma.$GuildMemberPayload<ExtArgs>
+        fields: Prisma.GuildMemberFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserInGuildFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload> | null
+            args: Prisma.GuildMemberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserInGuildFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload>
+            args: Prisma.GuildMemberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload>
           }
           findFirst: {
-            args: Prisma.UserInGuildFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload> | null
+            args: Prisma.GuildMemberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserInGuildFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload>
+            args: Prisma.GuildMemberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload>
           }
           findMany: {
-            args: Prisma.UserInGuildFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload>[]
+            args: Prisma.GuildMemberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload>[]
           }
           create: {
-            args: Prisma.UserInGuildCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload>
+            args: Prisma.GuildMemberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload>
           }
           createMany: {
-            args: Prisma.UserInGuildCreateManyArgs<ExtArgs>
+            args: Prisma.GuildMemberCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.UserInGuildDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload>
+            args: Prisma.GuildMemberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload>
           }
           update: {
-            args: Prisma.UserInGuildUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload>
+            args: Prisma.GuildMemberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload>
           }
           deleteMany: {
-            args: Prisma.UserInGuildDeleteManyArgs<ExtArgs>
+            args: Prisma.GuildMemberDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserInGuildUpdateManyArgs<ExtArgs>
+            args: Prisma.GuildMemberUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.UserInGuildUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserInGuildPayload>
+            args: Prisma.GuildMemberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuildMemberPayload>
           }
           aggregate: {
-            args: Prisma.UserInGuildAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserInGuild>
+            args: Prisma.GuildMemberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGuildMember>
           }
           groupBy: {
-            args: Prisma.UserInGuildGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserInGuildGroupByOutputType>[]
+            args: Prisma.GuildMemberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GuildMemberGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserInGuildCountArgs<ExtArgs>
-            result: $Utils.Optional<UserInGuildCountAggregateOutputType> | number
+            args: Prisma.GuildMemberCountArgs<ExtArgs>
+            result: $Utils.Optional<GuildMemberCountAggregateOutputType> | number
           }
         }
       }
@@ -954,135 +938,69 @@ export namespace Prisma {
           }
         }
       }
-      Partidas: {
-        payload: Prisma.$PartidasPayload<ExtArgs>
-        fields: Prisma.PartidasFieldRefs
+      Partida: {
+        payload: Prisma.$PartidaPayload<ExtArgs>
+        fields: Prisma.PartidaFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.PartidasFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload> | null
+            args: Prisma.PartidaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.PartidasFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload>
+            args: Prisma.PartidaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload>
           }
           findFirst: {
-            args: Prisma.PartidasFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload> | null
+            args: Prisma.PartidaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.PartidasFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload>
+            args: Prisma.PartidaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload>
           }
           findMany: {
-            args: Prisma.PartidasFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload>[]
+            args: Prisma.PartidaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload>[]
           }
           create: {
-            args: Prisma.PartidasCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload>
+            args: Prisma.PartidaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload>
           }
           createMany: {
-            args: Prisma.PartidasCreateManyArgs<ExtArgs>
+            args: Prisma.PartidaCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.PartidasDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload>
+            args: Prisma.PartidaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload>
           }
           update: {
-            args: Prisma.PartidasUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload>
+            args: Prisma.PartidaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload>
           }
           deleteMany: {
-            args: Prisma.PartidasDeleteManyArgs<ExtArgs>
+            args: Prisma.PartidaDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.PartidasUpdateManyArgs<ExtArgs>
+            args: Prisma.PartidaUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.PartidasUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PartidasPayload>
+            args: Prisma.PartidaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartidaPayload>
           }
           aggregate: {
-            args: Prisma.PartidasAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePartidas>
+            args: Prisma.PartidaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePartida>
           }
           groupBy: {
-            args: Prisma.PartidasGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PartidasGroupByOutputType>[]
+            args: Prisma.PartidaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PartidaGroupByOutputType>[]
           }
           count: {
-            args: Prisma.PartidasCountArgs<ExtArgs>
-            result: $Utils.Optional<PartidasCountAggregateOutputType> | number
-          }
-        }
-      }
-      JugadoresEnPartida: {
-        payload: Prisma.$JugadoresEnPartidaPayload<ExtArgs>
-        fields: Prisma.JugadoresEnPartidaFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.JugadoresEnPartidaFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.JugadoresEnPartidaFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload>
-          }
-          findFirst: {
-            args: Prisma.JugadoresEnPartidaFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.JugadoresEnPartidaFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload>
-          }
-          findMany: {
-            args: Prisma.JugadoresEnPartidaFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload>[]
-          }
-          create: {
-            args: Prisma.JugadoresEnPartidaCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload>
-          }
-          createMany: {
-            args: Prisma.JugadoresEnPartidaCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.JugadoresEnPartidaDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload>
-          }
-          update: {
-            args: Prisma.JugadoresEnPartidaUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload>
-          }
-          deleteMany: {
-            args: Prisma.JugadoresEnPartidaDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.JugadoresEnPartidaUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.JugadoresEnPartidaUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$JugadoresEnPartidaPayload>
-          }
-          aggregate: {
-            args: Prisma.JugadoresEnPartidaAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateJugadoresEnPartida>
-          }
-          groupBy: {
-            args: Prisma.JugadoresEnPartidaGroupByArgs<ExtArgs>
-            result: $Utils.Optional<JugadoresEnPartidaGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.JugadoresEnPartidaCountArgs<ExtArgs>
-            result: $Utils.Optional<JugadoresEnPartidaCountAggregateOutputType> | number
+            args: Prisma.PartidaCountArgs<ExtArgs>
+            result: $Utils.Optional<PartidaCountAggregateOutputType> | number
           }
         }
       }
@@ -1184,10 +1102,9 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     usuario?: UsuarioOmit
     guild?: GuildOmit
-    userInGuild?: UserInGuildOmit
+    guildMember?: GuildMemberOmit
     juegos?: JuegosOmit
-    partidas?: PartidasOmit
-    jugadoresEnPartida?: JugadoresEnPartidaOmit
+    partida?: PartidaOmit
   }
 
   /* Types for Logging */
@@ -1290,7 +1207,7 @@ export namespace Prisma {
    * UsuarioCountOutputType without action
    */
   export type UsuarioCountOutputTypeCountGuildsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserInGuildWhereInput
+    where?: GuildMemberWhereInput
   }
 
 
@@ -1300,12 +1217,12 @@ export namespace Prisma {
 
   export type GuildCountOutputType = {
     partidas: number
-    usuarios_en_guild: number
+    miembros: number
   }
 
   export type GuildCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     partidas?: boolean | GuildCountOutputTypeCountPartidasArgs
-    usuarios_en_guild?: boolean | GuildCountOutputTypeCountUsuarios_en_guildArgs
+    miembros?: boolean | GuildCountOutputTypeCountMiembrosArgs
   }
 
   // Custom InputTypes
@@ -1323,14 +1240,14 @@ export namespace Prisma {
    * GuildCountOutputType without action
    */
   export type GuildCountOutputTypeCountPartidasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
   }
 
   /**
    * GuildCountOutputType without action
    */
-  export type GuildCountOutputTypeCountUsuarios_en_guildArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserInGuildWhereInput
+  export type GuildCountOutputTypeCountMiembrosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GuildMemberWhereInput
   }
 
 
@@ -1361,38 +1278,38 @@ export namespace Prisma {
    * JuegosCountOutputType without action
    */
   export type JuegosCountOutputTypeCountPartidasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
   }
 
 
   /**
-   * Count Type PartidasCountOutputType
+   * Count Type PartidaCountOutputType
    */
 
-  export type PartidasCountOutputType = {
-    jugadores: number
+  export type PartidaCountOutputType = {
+    miembros: number
   }
 
-  export type PartidasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jugadores?: boolean | PartidasCountOutputTypeCountJugadoresArgs
+  export type PartidaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    miembros?: boolean | PartidaCountOutputTypeCountMiembrosArgs
   }
 
   // Custom InputTypes
   /**
-   * PartidasCountOutputType without action
+   * PartidaCountOutputType without action
    */
-  export type PartidasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PartidasCountOutputType
+     * Select specific fields to fetch from the PartidaCountOutputType
      */
-    select?: PartidasCountOutputTypeSelect<ExtArgs> | null
+    select?: PartidaCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * PartidasCountOutputType without action
+   * PartidaCountOutputType without action
    */
-  export type PartidasCountOutputTypeCountJugadoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: JugadoresEnPartidaWhereInput
+  export type PartidaCountOutputTypeCountMiembrosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GuildMemberWhereInput
   }
 
 
@@ -1406,57 +1323,33 @@ export namespace Prisma {
 
   export type AggregateUsuario = {
     _count: UsuarioCountAggregateOutputType | null
-    _avg: UsuarioAvgAggregateOutputType | null
-    _sum: UsuarioSumAggregateOutputType | null
     _min: UsuarioMinAggregateOutputType | null
     _max: UsuarioMaxAggregateOutputType | null
   }
 
-  export type UsuarioAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UsuarioSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type UsuarioMinAggregateOutputType = {
-    id: number | null
     discord_id: string | null
   }
 
   export type UsuarioMaxAggregateOutputType = {
-    id: number | null
     discord_id: string | null
   }
 
   export type UsuarioCountAggregateOutputType = {
-    id: number
     discord_id: number
     _all: number
   }
 
 
-  export type UsuarioAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UsuarioSumAggregateInputType = {
-    id?: true
-  }
-
   export type UsuarioMinAggregateInputType = {
-    id?: true
     discord_id?: true
   }
 
   export type UsuarioMaxAggregateInputType = {
-    id?: true
     discord_id?: true
   }
 
   export type UsuarioCountAggregateInputType = {
-    id?: true
     discord_id?: true
     _all?: true
   }
@@ -1499,18 +1392,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UsuarioAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UsuarioSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UsuarioMinAggregateInputType
@@ -1541,18 +1422,13 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UsuarioCountAggregateInputType | true
-    _avg?: UsuarioAvgAggregateInputType
-    _sum?: UsuarioSumAggregateInputType
     _min?: UsuarioMinAggregateInputType
     _max?: UsuarioMaxAggregateInputType
   }
 
   export type UsuarioGroupByOutputType = {
-    id: number
     discord_id: string
     _count: UsuarioCountAggregateOutputType | null
-    _avg: UsuarioAvgAggregateOutputType | null
-    _sum: UsuarioSumAggregateOutputType | null
     _min: UsuarioMinAggregateOutputType | null
     _max: UsuarioMaxAggregateOutputType | null
   }
@@ -1572,7 +1448,6 @@ export namespace Prisma {
 
 
   export type UsuarioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     discord_id?: boolean
     guilds?: boolean | Usuario$guildsArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
@@ -1581,11 +1456,10 @@ export namespace Prisma {
 
 
   export type UsuarioSelectScalar = {
-    id?: boolean
     discord_id?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "discord_id", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"discord_id", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guilds?: boolean | Usuario$guildsArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
@@ -1594,10 +1468,9 @@ export namespace Prisma {
   export type $UsuarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Usuario"
     objects: {
-      guilds: Prisma.$UserInGuildPayload<ExtArgs>[]
+      guilds: Prisma.$GuildMemberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       discord_id: string
     }, ExtArgs["result"]["usuario"]>
     composites: {}
@@ -1682,8 +1555,8 @@ export namespace Prisma {
      * // Get first 10 Usuarios
      * const usuarios = await prisma.usuario.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const usuarioWithIdOnly = await prisma.usuario.findMany({ select: { id: true } })
+     * // Only select the `discord_id`
+     * const usuarioWithDiscord_idOnly = await prisma.usuario.findMany({ select: { discord_id: true } })
      * 
      */
     findMany<T extends UsuarioFindManyArgs>(args?: SelectSubset<T, UsuarioFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1939,7 +1812,7 @@ export namespace Prisma {
    */
   export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    guilds<T extends Usuario$guildsArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$guildsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    guilds<T extends Usuario$guildsArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$guildsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1969,7 +1842,6 @@ export namespace Prisma {
    * Fields of the Usuario model
    */
   interface UsuarioFieldRefs {
-    readonly id: FieldRef<"Usuario", 'Int'>
     readonly discord_id: FieldRef<"Usuario", 'String'>
   }
     
@@ -2318,23 +2190,23 @@ export namespace Prisma {
    */
   export type Usuario$guildsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
-    where?: UserInGuildWhereInput
-    orderBy?: UserInGuildOrderByWithRelationInput | UserInGuildOrderByWithRelationInput[]
-    cursor?: UserInGuildWhereUniqueInput
+    include?: GuildMemberInclude<ExtArgs> | null
+    where?: GuildMemberWhereInput
+    orderBy?: GuildMemberOrderByWithRelationInput | GuildMemberOrderByWithRelationInput[]
+    cursor?: GuildMemberWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserInGuildScalarFieldEnum | UserInGuildScalarFieldEnum[]
+    distinct?: GuildMemberScalarFieldEnum | GuildMemberScalarFieldEnum[]
   }
 
   /**
@@ -2362,57 +2234,33 @@ export namespace Prisma {
 
   export type AggregateGuild = {
     _count: GuildCountAggregateOutputType | null
-    _avg: GuildAvgAggregateOutputType | null
-    _sum: GuildSumAggregateOutputType | null
     _min: GuildMinAggregateOutputType | null
     _max: GuildMaxAggregateOutputType | null
   }
 
-  export type GuildAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type GuildSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type GuildMinAggregateOutputType = {
-    id: number | null
     discord_id: string | null
   }
 
   export type GuildMaxAggregateOutputType = {
-    id: number | null
     discord_id: string | null
   }
 
   export type GuildCountAggregateOutputType = {
-    id: number
     discord_id: number
     _all: number
   }
 
 
-  export type GuildAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type GuildSumAggregateInputType = {
-    id?: true
-  }
-
   export type GuildMinAggregateInputType = {
-    id?: true
     discord_id?: true
   }
 
   export type GuildMaxAggregateInputType = {
-    id?: true
     discord_id?: true
   }
 
   export type GuildCountAggregateInputType = {
-    id?: true
     discord_id?: true
     _all?: true
   }
@@ -2455,18 +2303,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: GuildAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: GuildSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: GuildMinAggregateInputType
@@ -2497,18 +2333,13 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: GuildCountAggregateInputType | true
-    _avg?: GuildAvgAggregateInputType
-    _sum?: GuildSumAggregateInputType
     _min?: GuildMinAggregateInputType
     _max?: GuildMaxAggregateInputType
   }
 
   export type GuildGroupByOutputType = {
-    id: number
     discord_id: string
     _count: GuildCountAggregateOutputType | null
-    _avg: GuildAvgAggregateOutputType | null
-    _sum: GuildSumAggregateOutputType | null
     _min: GuildMinAggregateOutputType | null
     _max: GuildMaxAggregateOutputType | null
   }
@@ -2528,35 +2359,32 @@ export namespace Prisma {
 
 
   export type GuildSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     discord_id?: boolean
     partidas?: boolean | Guild$partidasArgs<ExtArgs>
-    usuarios_en_guild?: boolean | Guild$usuarios_en_guildArgs<ExtArgs>
+    miembros?: boolean | Guild$miembrosArgs<ExtArgs>
     _count?: boolean | GuildCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["guild"]>
 
 
 
   export type GuildSelectScalar = {
-    id?: boolean
     discord_id?: boolean
   }
 
-  export type GuildOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "discord_id", ExtArgs["result"]["guild"]>
+  export type GuildOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"discord_id", ExtArgs["result"]["guild"]>
   export type GuildInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     partidas?: boolean | Guild$partidasArgs<ExtArgs>
-    usuarios_en_guild?: boolean | Guild$usuarios_en_guildArgs<ExtArgs>
+    miembros?: boolean | Guild$miembrosArgs<ExtArgs>
     _count?: boolean | GuildCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $GuildPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Guild"
     objects: {
-      partidas: Prisma.$PartidasPayload<ExtArgs>[]
-      usuarios_en_guild: Prisma.$UserInGuildPayload<ExtArgs>[]
+      partidas: Prisma.$PartidaPayload<ExtArgs>[]
+      miembros: Prisma.$GuildMemberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       discord_id: string
     }, ExtArgs["result"]["guild"]>
     composites: {}
@@ -2641,8 +2469,8 @@ export namespace Prisma {
      * // Get first 10 Guilds
      * const guilds = await prisma.guild.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const guildWithIdOnly = await prisma.guild.findMany({ select: { id: true } })
+     * // Only select the `discord_id`
+     * const guildWithDiscord_idOnly = await prisma.guild.findMany({ select: { discord_id: true } })
      * 
      */
     findMany<T extends GuildFindManyArgs>(args?: SelectSubset<T, GuildFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuildPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -2898,8 +2726,8 @@ export namespace Prisma {
    */
   export interface Prisma__GuildClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    partidas<T extends Guild$partidasArgs<ExtArgs> = {}>(args?: Subset<T, Guild$partidasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    usuarios_en_guild<T extends Guild$usuarios_en_guildArgs<ExtArgs> = {}>(args?: Subset<T, Guild$usuarios_en_guildArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    partidas<T extends Guild$partidasArgs<ExtArgs> = {}>(args?: Subset<T, Guild$partidasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    miembros<T extends Guild$miembrosArgs<ExtArgs> = {}>(args?: Subset<T, Guild$miembrosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2929,7 +2757,6 @@ export namespace Prisma {
    * Fields of the Guild model
    */
   interface GuildFieldRefs {
-    readonly id: FieldRef<"Guild", 'Int'>
     readonly discord_id: FieldRef<"Guild", 'String'>
   }
     
@@ -3278,47 +3105,47 @@ export namespace Prisma {
    */
   export type Guild$partidasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
-    where?: PartidasWhereInput
-    orderBy?: PartidasOrderByWithRelationInput | PartidasOrderByWithRelationInput[]
-    cursor?: PartidasWhereUniqueInput
+    include?: PartidaInclude<ExtArgs> | null
+    where?: PartidaWhereInput
+    orderBy?: PartidaOrderByWithRelationInput | PartidaOrderByWithRelationInput[]
+    cursor?: PartidaWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PartidasScalarFieldEnum | PartidasScalarFieldEnum[]
+    distinct?: PartidaScalarFieldEnum | PartidaScalarFieldEnum[]
   }
 
   /**
-   * Guild.usuarios_en_guild
+   * Guild.miembros
    */
-  export type Guild$usuarios_en_guildArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Guild$miembrosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
-    where?: UserInGuildWhereInput
-    orderBy?: UserInGuildOrderByWithRelationInput | UserInGuildOrderByWithRelationInput[]
-    cursor?: UserInGuildWhereUniqueInput
+    include?: GuildMemberInclude<ExtArgs> | null
+    where?: GuildMemberWhereInput
+    orderBy?: GuildMemberOrderByWithRelationInput | GuildMemberOrderByWithRelationInput[]
+    cursor?: GuildMemberWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserInGuildScalarFieldEnum | UserInGuildScalarFieldEnum[]
+    distinct?: GuildMemberScalarFieldEnum | GuildMemberScalarFieldEnum[]
   }
 
   /**
@@ -3341,352 +3168,365 @@ export namespace Prisma {
 
 
   /**
-   * Model UserInGuild
+   * Model GuildMember
    */
 
-  export type AggregateUserInGuild = {
-    _count: UserInGuildCountAggregateOutputType | null
-    _avg: UserInGuildAvgAggregateOutputType | null
-    _sum: UserInGuildSumAggregateOutputType | null
-    _min: UserInGuildMinAggregateOutputType | null
-    _max: UserInGuildMaxAggregateOutputType | null
+  export type AggregateGuildMember = {
+    _count: GuildMemberCountAggregateOutputType | null
+    _avg: GuildMemberAvgAggregateOutputType | null
+    _sum: GuildMemberSumAggregateOutputType | null
+    _min: GuildMemberMinAggregateOutputType | null
+    _max: GuildMemberMaxAggregateOutputType | null
   }
 
-  export type UserInGuildAvgAggregateOutputType = {
-    id: number | null
+  export type GuildMemberAvgAggregateOutputType = {
+    partida_id: number | null
   }
 
-  export type UserInGuildSumAggregateOutputType = {
-    id: number | null
+  export type GuildMemberSumAggregateOutputType = {
+    partida_id: number | null
   }
 
-  export type UserInGuildMinAggregateOutputType = {
-    id: number | null
-    usuario_id: string | null
+  export type GuildMemberMinAggregateOutputType = {
     guild_id: string | null
-  }
-
-  export type UserInGuildMaxAggregateOutputType = {
-    id: number | null
     usuario_id: string | null
-    guild_id: string | null
+    partida_id: number | null
+    created_at: Date | null
   }
 
-  export type UserInGuildCountAggregateOutputType = {
-    id: number
-    usuario_id: number
+  export type GuildMemberMaxAggregateOutputType = {
+    guild_id: string | null
+    usuario_id: string | null
+    partida_id: number | null
+    created_at: Date | null
+  }
+
+  export type GuildMemberCountAggregateOutputType = {
     guild_id: number
+    usuario_id: number
+    partida_id: number
+    created_at: number
     _all: number
   }
 
 
-  export type UserInGuildAvgAggregateInputType = {
-    id?: true
+  export type GuildMemberAvgAggregateInputType = {
+    partida_id?: true
   }
 
-  export type UserInGuildSumAggregateInputType = {
-    id?: true
+  export type GuildMemberSumAggregateInputType = {
+    partida_id?: true
   }
 
-  export type UserInGuildMinAggregateInputType = {
-    id?: true
-    usuario_id?: true
+  export type GuildMemberMinAggregateInputType = {
     guild_id?: true
+    usuario_id?: true
+    partida_id?: true
+    created_at?: true
   }
 
-  export type UserInGuildMaxAggregateInputType = {
-    id?: true
-    usuario_id?: true
+  export type GuildMemberMaxAggregateInputType = {
     guild_id?: true
+    usuario_id?: true
+    partida_id?: true
+    created_at?: true
   }
 
-  export type UserInGuildCountAggregateInputType = {
-    id?: true
-    usuario_id?: true
+  export type GuildMemberCountAggregateInputType = {
     guild_id?: true
+    usuario_id?: true
+    partida_id?: true
+    created_at?: true
     _all?: true
   }
 
-  export type UserInGuildAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserInGuild to aggregate.
+     * Filter which GuildMember to aggregate.
      */
-    where?: UserInGuildWhereInput
+    where?: GuildMemberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserInGuilds to fetch.
+     * Determine the order of GuildMembers to fetch.
      */
-    orderBy?: UserInGuildOrderByWithRelationInput | UserInGuildOrderByWithRelationInput[]
+    orderBy?: GuildMemberOrderByWithRelationInput | GuildMemberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserInGuildWhereUniqueInput
+    cursor?: GuildMemberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserInGuilds from the position of the cursor.
+     * Take `±n` GuildMembers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserInGuilds.
+     * Skip the first `n` GuildMembers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserInGuilds
+     * Count returned GuildMembers
     **/
-    _count?: true | UserInGuildCountAggregateInputType
+    _count?: true | GuildMemberCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserInGuildAvgAggregateInputType
+    _avg?: GuildMemberAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserInGuildSumAggregateInputType
+    _sum?: GuildMemberSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserInGuildMinAggregateInputType
+    _min?: GuildMemberMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserInGuildMaxAggregateInputType
+    _max?: GuildMemberMaxAggregateInputType
   }
 
-  export type GetUserInGuildAggregateType<T extends UserInGuildAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserInGuild]: P extends '_count' | 'count'
+  export type GetGuildMemberAggregateType<T extends GuildMemberAggregateArgs> = {
+        [P in keyof T & keyof AggregateGuildMember]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserInGuild[P]>
-      : GetScalarType<T[P], AggregateUserInGuild[P]>
+        : GetScalarType<T[P], AggregateGuildMember[P]>
+      : GetScalarType<T[P], AggregateGuildMember[P]>
   }
 
 
 
 
-  export type UserInGuildGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserInGuildWhereInput
-    orderBy?: UserInGuildOrderByWithAggregationInput | UserInGuildOrderByWithAggregationInput[]
-    by: UserInGuildScalarFieldEnum[] | UserInGuildScalarFieldEnum
-    having?: UserInGuildScalarWhereWithAggregatesInput
+  export type GuildMemberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GuildMemberWhereInput
+    orderBy?: GuildMemberOrderByWithAggregationInput | GuildMemberOrderByWithAggregationInput[]
+    by: GuildMemberScalarFieldEnum[] | GuildMemberScalarFieldEnum
+    having?: GuildMemberScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserInGuildCountAggregateInputType | true
-    _avg?: UserInGuildAvgAggregateInputType
-    _sum?: UserInGuildSumAggregateInputType
-    _min?: UserInGuildMinAggregateInputType
-    _max?: UserInGuildMaxAggregateInputType
+    _count?: GuildMemberCountAggregateInputType | true
+    _avg?: GuildMemberAvgAggregateInputType
+    _sum?: GuildMemberSumAggregateInputType
+    _min?: GuildMemberMinAggregateInputType
+    _max?: GuildMemberMaxAggregateInputType
   }
 
-  export type UserInGuildGroupByOutputType = {
-    id: number
-    usuario_id: string
+  export type GuildMemberGroupByOutputType = {
     guild_id: string
-    _count: UserInGuildCountAggregateOutputType | null
-    _avg: UserInGuildAvgAggregateOutputType | null
-    _sum: UserInGuildSumAggregateOutputType | null
-    _min: UserInGuildMinAggregateOutputType | null
-    _max: UserInGuildMaxAggregateOutputType | null
+    usuario_id: string
+    partida_id: number | null
+    created_at: Date
+    _count: GuildMemberCountAggregateOutputType | null
+    _avg: GuildMemberAvgAggregateOutputType | null
+    _sum: GuildMemberSumAggregateOutputType | null
+    _min: GuildMemberMinAggregateOutputType | null
+    _max: GuildMemberMaxAggregateOutputType | null
   }
 
-  type GetUserInGuildGroupByPayload<T extends UserInGuildGroupByArgs> = Prisma.PrismaPromise<
+  type GetGuildMemberGroupByPayload<T extends GuildMemberGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserInGuildGroupByOutputType, T['by']> &
+      PickEnumerable<GuildMemberGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserInGuildGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof GuildMemberGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserInGuildGroupByOutputType[P]>
-            : GetScalarType<T[P], UserInGuildGroupByOutputType[P]>
+              : GetScalarType<T[P], GuildMemberGroupByOutputType[P]>
+            : GetScalarType<T[P], GuildMemberGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserInGuildSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    usuario_id?: boolean
+  export type GuildMemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     guild_id?: boolean
+    usuario_id?: boolean
+    partida_id?: boolean
+    created_at?: boolean
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     guild?: boolean | GuildDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userInGuild"]>
+    partida?: boolean | GuildMember$partidaArgs<ExtArgs>
+  }, ExtArgs["result"]["guildMember"]>
 
 
 
-  export type UserInGuildSelectScalar = {
-    id?: boolean
-    usuario_id?: boolean
+  export type GuildMemberSelectScalar = {
     guild_id?: boolean
+    usuario_id?: boolean
+    partida_id?: boolean
+    created_at?: boolean
   }
 
-  export type UserInGuildOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "usuario_id" | "guild_id", ExtArgs["result"]["userInGuild"]>
-  export type UserInGuildInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"guild_id" | "usuario_id" | "partida_id" | "created_at", ExtArgs["result"]["guildMember"]>
+  export type GuildMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     guild?: boolean | GuildDefaultArgs<ExtArgs>
+    partida?: boolean | GuildMember$partidaArgs<ExtArgs>
   }
 
-  export type $UserInGuildPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserInGuild"
+  export type $GuildMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GuildMember"
     objects: {
       usuario: Prisma.$UsuarioPayload<ExtArgs>
       guild: Prisma.$GuildPayload<ExtArgs>
+      partida: Prisma.$PartidaPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      usuario_id: string
       guild_id: string
-    }, ExtArgs["result"]["userInGuild"]>
+      usuario_id: string
+      partida_id: number | null
+      created_at: Date
+    }, ExtArgs["result"]["guildMember"]>
     composites: {}
   }
 
-  type UserInGuildGetPayload<S extends boolean | null | undefined | UserInGuildDefaultArgs> = $Result.GetResult<Prisma.$UserInGuildPayload, S>
+  type GuildMemberGetPayload<S extends boolean | null | undefined | GuildMemberDefaultArgs> = $Result.GetResult<Prisma.$GuildMemberPayload, S>
 
-  type UserInGuildCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserInGuildFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserInGuildCountAggregateInputType | true
+  type GuildMemberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GuildMemberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GuildMemberCountAggregateInputType | true
     }
 
-  export interface UserInGuildDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserInGuild'], meta: { name: 'UserInGuild' } }
+  export interface GuildMemberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GuildMember'], meta: { name: 'GuildMember' } }
     /**
-     * Find zero or one UserInGuild that matches the filter.
-     * @param {UserInGuildFindUniqueArgs} args - Arguments to find a UserInGuild
+     * Find zero or one GuildMember that matches the filter.
+     * @param {GuildMemberFindUniqueArgs} args - Arguments to find a GuildMember
      * @example
-     * // Get one UserInGuild
-     * const userInGuild = await prisma.userInGuild.findUnique({
+     * // Get one GuildMember
+     * const guildMember = await prisma.guildMember.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserInGuildFindUniqueArgs>(args: SelectSubset<T, UserInGuildFindUniqueArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends GuildMemberFindUniqueArgs>(args: SelectSubset<T, GuildMemberFindUniqueArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one UserInGuild that matches the filter or throw an error with `error.code='P2025'`
+     * Find one GuildMember that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserInGuildFindUniqueOrThrowArgs} args - Arguments to find a UserInGuild
+     * @param {GuildMemberFindUniqueOrThrowArgs} args - Arguments to find a GuildMember
      * @example
-     * // Get one UserInGuild
-     * const userInGuild = await prisma.userInGuild.findUniqueOrThrow({
+     * // Get one GuildMember
+     * const guildMember = await prisma.guildMember.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserInGuildFindUniqueOrThrowArgs>(args: SelectSubset<T, UserInGuildFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends GuildMemberFindUniqueOrThrowArgs>(args: SelectSubset<T, GuildMemberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserInGuild that matches the filter.
+     * Find the first GuildMember that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserInGuildFindFirstArgs} args - Arguments to find a UserInGuild
+     * @param {GuildMemberFindFirstArgs} args - Arguments to find a GuildMember
      * @example
-     * // Get one UserInGuild
-     * const userInGuild = await prisma.userInGuild.findFirst({
+     * // Get one GuildMember
+     * const guildMember = await prisma.guildMember.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserInGuildFindFirstArgs>(args?: SelectSubset<T, UserInGuildFindFirstArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends GuildMemberFindFirstArgs>(args?: SelectSubset<T, GuildMemberFindFirstArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserInGuild that matches the filter or
+     * Find the first GuildMember that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserInGuildFindFirstOrThrowArgs} args - Arguments to find a UserInGuild
+     * @param {GuildMemberFindFirstOrThrowArgs} args - Arguments to find a GuildMember
      * @example
-     * // Get one UserInGuild
-     * const userInGuild = await prisma.userInGuild.findFirstOrThrow({
+     * // Get one GuildMember
+     * const guildMember = await prisma.guildMember.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserInGuildFindFirstOrThrowArgs>(args?: SelectSubset<T, UserInGuildFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends GuildMemberFindFirstOrThrowArgs>(args?: SelectSubset<T, GuildMemberFindFirstOrThrowArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more UserInGuilds that matches the filter.
+     * Find zero or more GuildMembers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserInGuildFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {GuildMemberFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserInGuilds
-     * const userInGuilds = await prisma.userInGuild.findMany()
+     * // Get all GuildMembers
+     * const guildMembers = await prisma.guildMember.findMany()
      * 
-     * // Get first 10 UserInGuilds
-     * const userInGuilds = await prisma.userInGuild.findMany({ take: 10 })
+     * // Get first 10 GuildMembers
+     * const guildMembers = await prisma.guildMember.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const userInGuildWithIdOnly = await prisma.userInGuild.findMany({ select: { id: true } })
+     * // Only select the `guild_id`
+     * const guildMemberWithGuild_idOnly = await prisma.guildMember.findMany({ select: { guild_id: true } })
      * 
      */
-    findMany<T extends UserInGuildFindManyArgs>(args?: SelectSubset<T, UserInGuildFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends GuildMemberFindManyArgs>(args?: SelectSubset<T, GuildMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a UserInGuild.
-     * @param {UserInGuildCreateArgs} args - Arguments to create a UserInGuild.
+     * Create a GuildMember.
+     * @param {GuildMemberCreateArgs} args - Arguments to create a GuildMember.
      * @example
-     * // Create one UserInGuild
-     * const UserInGuild = await prisma.userInGuild.create({
+     * // Create one GuildMember
+     * const GuildMember = await prisma.guildMember.create({
      *   data: {
-     *     // ... data to create a UserInGuild
+     *     // ... data to create a GuildMember
      *   }
      * })
      * 
      */
-    create<T extends UserInGuildCreateArgs>(args: SelectSubset<T, UserInGuildCreateArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends GuildMemberCreateArgs>(args: SelectSubset<T, GuildMemberCreateArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many UserInGuilds.
-     * @param {UserInGuildCreateManyArgs} args - Arguments to create many UserInGuilds.
+     * Create many GuildMembers.
+     * @param {GuildMemberCreateManyArgs} args - Arguments to create many GuildMembers.
      * @example
-     * // Create many UserInGuilds
-     * const userInGuild = await prisma.userInGuild.createMany({
+     * // Create many GuildMembers
+     * const guildMember = await prisma.guildMember.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserInGuildCreateManyArgs>(args?: SelectSubset<T, UserInGuildCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends GuildMemberCreateManyArgs>(args?: SelectSubset<T, GuildMemberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a UserInGuild.
-     * @param {UserInGuildDeleteArgs} args - Arguments to delete one UserInGuild.
+     * Delete a GuildMember.
+     * @param {GuildMemberDeleteArgs} args - Arguments to delete one GuildMember.
      * @example
-     * // Delete one UserInGuild
-     * const UserInGuild = await prisma.userInGuild.delete({
+     * // Delete one GuildMember
+     * const GuildMember = await prisma.guildMember.delete({
      *   where: {
-     *     // ... filter to delete one UserInGuild
+     *     // ... filter to delete one GuildMember
      *   }
      * })
      * 
      */
-    delete<T extends UserInGuildDeleteArgs>(args: SelectSubset<T, UserInGuildDeleteArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends GuildMemberDeleteArgs>(args: SelectSubset<T, GuildMemberDeleteArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one UserInGuild.
-     * @param {UserInGuildUpdateArgs} args - Arguments to update one UserInGuild.
+     * Update one GuildMember.
+     * @param {GuildMemberUpdateArgs} args - Arguments to update one GuildMember.
      * @example
-     * // Update one UserInGuild
-     * const userInGuild = await prisma.userInGuild.update({
+     * // Update one GuildMember
+     * const guildMember = await prisma.guildMember.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3696,30 +3536,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserInGuildUpdateArgs>(args: SelectSubset<T, UserInGuildUpdateArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends GuildMemberUpdateArgs>(args: SelectSubset<T, GuildMemberUpdateArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more UserInGuilds.
-     * @param {UserInGuildDeleteManyArgs} args - Arguments to filter UserInGuilds to delete.
+     * Delete zero or more GuildMembers.
+     * @param {GuildMemberDeleteManyArgs} args - Arguments to filter GuildMembers to delete.
      * @example
-     * // Delete a few UserInGuilds
-     * const { count } = await prisma.userInGuild.deleteMany({
+     * // Delete a few GuildMembers
+     * const { count } = await prisma.guildMember.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserInGuildDeleteManyArgs>(args?: SelectSubset<T, UserInGuildDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends GuildMemberDeleteManyArgs>(args?: SelectSubset<T, GuildMemberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserInGuilds.
+     * Update zero or more GuildMembers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserInGuildUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {GuildMemberUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserInGuilds
-     * const userInGuild = await prisma.userInGuild.updateMany({
+     * // Update many GuildMembers
+     * const guildMember = await prisma.guildMember.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3729,56 +3569,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserInGuildUpdateManyArgs>(args: SelectSubset<T, UserInGuildUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends GuildMemberUpdateManyArgs>(args: SelectSubset<T, GuildMemberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one UserInGuild.
-     * @param {UserInGuildUpsertArgs} args - Arguments to update or create a UserInGuild.
+     * Create or update one GuildMember.
+     * @param {GuildMemberUpsertArgs} args - Arguments to update or create a GuildMember.
      * @example
-     * // Update or create a UserInGuild
-     * const userInGuild = await prisma.userInGuild.upsert({
+     * // Update or create a GuildMember
+     * const guildMember = await prisma.guildMember.upsert({
      *   create: {
-     *     // ... data to create a UserInGuild
+     *     // ... data to create a GuildMember
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserInGuild we want to update
+     *     // ... the filter for the GuildMember we want to update
      *   }
      * })
      */
-    upsert<T extends UserInGuildUpsertArgs>(args: SelectSubset<T, UserInGuildUpsertArgs<ExtArgs>>): Prisma__UserInGuildClient<$Result.GetResult<Prisma.$UserInGuildPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends GuildMemberUpsertArgs>(args: SelectSubset<T, GuildMemberUpsertArgs<ExtArgs>>): Prisma__GuildMemberClient<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of UserInGuilds.
+     * Count the number of GuildMembers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserInGuildCountArgs} args - Arguments to filter UserInGuilds to count.
+     * @param {GuildMemberCountArgs} args - Arguments to filter GuildMembers to count.
      * @example
-     * // Count the number of UserInGuilds
-     * const count = await prisma.userInGuild.count({
+     * // Count the number of GuildMembers
+     * const count = await prisma.guildMember.count({
      *   where: {
-     *     // ... the filter for the UserInGuilds we want to count
+     *     // ... the filter for the GuildMembers we want to count
      *   }
      * })
     **/
-    count<T extends UserInGuildCountArgs>(
-      args?: Subset<T, UserInGuildCountArgs>,
+    count<T extends GuildMemberCountArgs>(
+      args?: Subset<T, GuildMemberCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserInGuildCountAggregateOutputType>
+          : GetScalarType<T['select'], GuildMemberCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserInGuild.
+     * Allows you to perform aggregations operations on a GuildMember.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserInGuildAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {GuildMemberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3798,13 +3638,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserInGuildAggregateArgs>(args: Subset<T, UserInGuildAggregateArgs>): Prisma.PrismaPromise<GetUserInGuildAggregateType<T>>
+    aggregate<T extends GuildMemberAggregateArgs>(args: Subset<T, GuildMemberAggregateArgs>): Prisma.PrismaPromise<GetGuildMemberAggregateType<T>>
 
     /**
-     * Group by UserInGuild.
+     * Group by GuildMember.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserInGuildGroupByArgs} args - Group by arguments.
+     * @param {GuildMemberGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3819,14 +3659,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserInGuildGroupByArgs,
+      T extends GuildMemberGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserInGuildGroupByArgs['orderBy'] }
-        : { orderBy?: UserInGuildGroupByArgs['orderBy'] },
+        ? { orderBy: GuildMemberGroupByArgs['orderBy'] }
+        : { orderBy?: GuildMemberGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3875,23 +3715,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserInGuildGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserInGuildGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, GuildMemberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGuildMemberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserInGuild model
+   * Fields of the GuildMember model
    */
-  readonly fields: UserInGuildFieldRefs;
+  readonly fields: GuildMemberFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserInGuild.
+   * The delegate class that acts as a "Promise-like" for GuildMember.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserInGuildClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__GuildMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     guild<T extends GuildDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GuildDefaultArgs<ExtArgs>>): Prisma__GuildClient<$Result.GetResult<Prisma.$GuildPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    partida<T extends GuildMember$partidaArgs<ExtArgs> = {}>(args?: Subset<T, GuildMember$partidaArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3918,370 +3759,390 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserInGuild model
+   * Fields of the GuildMember model
    */
-  interface UserInGuildFieldRefs {
-    readonly id: FieldRef<"UserInGuild", 'Int'>
-    readonly usuario_id: FieldRef<"UserInGuild", 'String'>
-    readonly guild_id: FieldRef<"UserInGuild", 'String'>
+  interface GuildMemberFieldRefs {
+    readonly guild_id: FieldRef<"GuildMember", 'String'>
+    readonly usuario_id: FieldRef<"GuildMember", 'String'>
+    readonly partida_id: FieldRef<"GuildMember", 'Int'>
+    readonly created_at: FieldRef<"GuildMember", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserInGuild findUnique
+   * GuildMember findUnique
    */
-  export type UserInGuildFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * Filter, which UserInGuild to fetch.
+     * Filter, which GuildMember to fetch.
      */
-    where: UserInGuildWhereUniqueInput
+    where: GuildMemberWhereUniqueInput
   }
 
   /**
-   * UserInGuild findUniqueOrThrow
+   * GuildMember findUniqueOrThrow
    */
-  export type UserInGuildFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * Filter, which UserInGuild to fetch.
+     * Filter, which GuildMember to fetch.
      */
-    where: UserInGuildWhereUniqueInput
+    where: GuildMemberWhereUniqueInput
   }
 
   /**
-   * UserInGuild findFirst
+   * GuildMember findFirst
    */
-  export type UserInGuildFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * Filter, which UserInGuild to fetch.
+     * Filter, which GuildMember to fetch.
      */
-    where?: UserInGuildWhereInput
+    where?: GuildMemberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserInGuilds to fetch.
+     * Determine the order of GuildMembers to fetch.
      */
-    orderBy?: UserInGuildOrderByWithRelationInput | UserInGuildOrderByWithRelationInput[]
+    orderBy?: GuildMemberOrderByWithRelationInput | GuildMemberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserInGuilds.
+     * Sets the position for searching for GuildMembers.
      */
-    cursor?: UserInGuildWhereUniqueInput
+    cursor?: GuildMemberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserInGuilds from the position of the cursor.
+     * Take `±n` GuildMembers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserInGuilds.
+     * Skip the first `n` GuildMembers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserInGuilds.
+     * Filter by unique combinations of GuildMembers.
      */
-    distinct?: UserInGuildScalarFieldEnum | UserInGuildScalarFieldEnum[]
+    distinct?: GuildMemberScalarFieldEnum | GuildMemberScalarFieldEnum[]
   }
 
   /**
-   * UserInGuild findFirstOrThrow
+   * GuildMember findFirstOrThrow
    */
-  export type UserInGuildFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * Filter, which UserInGuild to fetch.
+     * Filter, which GuildMember to fetch.
      */
-    where?: UserInGuildWhereInput
+    where?: GuildMemberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserInGuilds to fetch.
+     * Determine the order of GuildMembers to fetch.
      */
-    orderBy?: UserInGuildOrderByWithRelationInput | UserInGuildOrderByWithRelationInput[]
+    orderBy?: GuildMemberOrderByWithRelationInput | GuildMemberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserInGuilds.
+     * Sets the position for searching for GuildMembers.
      */
-    cursor?: UserInGuildWhereUniqueInput
+    cursor?: GuildMemberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserInGuilds from the position of the cursor.
+     * Take `±n` GuildMembers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserInGuilds.
+     * Skip the first `n` GuildMembers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserInGuilds.
+     * Filter by unique combinations of GuildMembers.
      */
-    distinct?: UserInGuildScalarFieldEnum | UserInGuildScalarFieldEnum[]
+    distinct?: GuildMemberScalarFieldEnum | GuildMemberScalarFieldEnum[]
   }
 
   /**
-   * UserInGuild findMany
+   * GuildMember findMany
    */
-  export type UserInGuildFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * Filter, which UserInGuilds to fetch.
+     * Filter, which GuildMembers to fetch.
      */
-    where?: UserInGuildWhereInput
+    where?: GuildMemberWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserInGuilds to fetch.
+     * Determine the order of GuildMembers to fetch.
      */
-    orderBy?: UserInGuildOrderByWithRelationInput | UserInGuildOrderByWithRelationInput[]
+    orderBy?: GuildMemberOrderByWithRelationInput | GuildMemberOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserInGuilds.
+     * Sets the position for listing GuildMembers.
      */
-    cursor?: UserInGuildWhereUniqueInput
+    cursor?: GuildMemberWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserInGuilds from the position of the cursor.
+     * Take `±n` GuildMembers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserInGuilds.
+     * Skip the first `n` GuildMembers.
      */
     skip?: number
-    distinct?: UserInGuildScalarFieldEnum | UserInGuildScalarFieldEnum[]
+    distinct?: GuildMemberScalarFieldEnum | GuildMemberScalarFieldEnum[]
   }
 
   /**
-   * UserInGuild create
+   * GuildMember create
    */
-  export type UserInGuildCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserInGuild.
+     * The data needed to create a GuildMember.
      */
-    data: XOR<UserInGuildCreateInput, UserInGuildUncheckedCreateInput>
+    data: XOR<GuildMemberCreateInput, GuildMemberUncheckedCreateInput>
   }
 
   /**
-   * UserInGuild createMany
+   * GuildMember createMany
    */
-  export type UserInGuildCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserInGuilds.
+     * The data used to create many GuildMembers.
      */
-    data: UserInGuildCreateManyInput | UserInGuildCreateManyInput[]
+    data: GuildMemberCreateManyInput | GuildMemberCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserInGuild update
+   * GuildMember update
    */
-  export type UserInGuildUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserInGuild.
+     * The data needed to update a GuildMember.
      */
-    data: XOR<UserInGuildUpdateInput, UserInGuildUncheckedUpdateInput>
+    data: XOR<GuildMemberUpdateInput, GuildMemberUncheckedUpdateInput>
     /**
-     * Choose, which UserInGuild to update.
+     * Choose, which GuildMember to update.
      */
-    where: UserInGuildWhereUniqueInput
+    where: GuildMemberWhereUniqueInput
   }
 
   /**
-   * UserInGuild updateMany
+   * GuildMember updateMany
    */
-  export type UserInGuildUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserInGuilds.
+     * The data used to update GuildMembers.
      */
-    data: XOR<UserInGuildUpdateManyMutationInput, UserInGuildUncheckedUpdateManyInput>
+    data: XOR<GuildMemberUpdateManyMutationInput, GuildMemberUncheckedUpdateManyInput>
     /**
-     * Filter which UserInGuilds to update
+     * Filter which GuildMembers to update
      */
-    where?: UserInGuildWhereInput
+    where?: GuildMemberWhereInput
     /**
-     * Limit how many UserInGuilds to update.
+     * Limit how many GuildMembers to update.
      */
     limit?: number
   }
 
   /**
-   * UserInGuild upsert
+   * GuildMember upsert
    */
-  export type UserInGuildUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserInGuild to update in case it exists.
+     * The filter to search for the GuildMember to update in case it exists.
      */
-    where: UserInGuildWhereUniqueInput
+    where: GuildMemberWhereUniqueInput
     /**
-     * In case the UserInGuild found by the `where` argument doesn't exist, create a new UserInGuild with this data.
+     * In case the GuildMember found by the `where` argument doesn't exist, create a new GuildMember with this data.
      */
-    create: XOR<UserInGuildCreateInput, UserInGuildUncheckedCreateInput>
+    create: XOR<GuildMemberCreateInput, GuildMemberUncheckedCreateInput>
     /**
-     * In case the UserInGuild was found with the provided `where` argument, update it with this data.
+     * In case the GuildMember was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserInGuildUpdateInput, UserInGuildUncheckedUpdateInput>
+    update: XOR<GuildMemberUpdateInput, GuildMemberUncheckedUpdateInput>
   }
 
   /**
-   * UserInGuild delete
+   * GuildMember delete
    */
-  export type UserInGuildDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the GuildMember
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: GuildMemberInclude<ExtArgs> | null
     /**
-     * Filter which UserInGuild to delete.
+     * Filter which GuildMember to delete.
      */
-    where: UserInGuildWhereUniqueInput
+    where: GuildMemberWhereUniqueInput
   }
 
   /**
-   * UserInGuild deleteMany
+   * GuildMember deleteMany
    */
-  export type UserInGuildDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMemberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserInGuilds to delete
+     * Filter which GuildMembers to delete
      */
-    where?: UserInGuildWhereInput
+    where?: GuildMemberWhereInput
     /**
-     * Limit how many UserInGuilds to delete.
+     * Limit how many GuildMembers to delete.
      */
     limit?: number
   }
 
   /**
-   * UserInGuild without action
+   * GuildMember.partida
    */
-  export type UserInGuildDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GuildMember$partidaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserInGuild
+     * Select specific fields to fetch from the Partida
      */
-    select?: UserInGuildSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserInGuild
+     * Omit specific fields from the Partida
      */
-    omit?: UserInGuildOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInGuildInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
+    where?: PartidaWhereInput
+  }
+
+  /**
+   * GuildMember without action
+   */
+  export type GuildMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuildMember
+     */
+    select?: GuildMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuildMember
+     */
+    omit?: GuildMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuildMemberInclude<ExtArgs> | null
   }
 
 
@@ -4492,7 +4353,7 @@ export namespace Prisma {
   export type $JuegosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Juegos"
     objects: {
-      partidas: Prisma.$PartidasPayload<ExtArgs>[]
+      partidas: Prisma.$PartidaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4838,7 +4699,7 @@ export namespace Prisma {
    */
   export interface Prisma__JuegosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    partidas<T extends Juegos$partidasArgs<ExtArgs> = {}>(args?: Subset<T, Juegos$partidasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    partidas<T extends Juegos$partidasArgs<ExtArgs> = {}>(args?: Subset<T, Juegos$partidasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5218,23 +5079,23 @@ export namespace Prisma {
    */
   export type Juegos$partidasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
-    where?: PartidasWhereInput
-    orderBy?: PartidasOrderByWithRelationInput | PartidasOrderByWithRelationInput[]
-    cursor?: PartidasWhereUniqueInput
+    include?: PartidaInclude<ExtArgs> | null
+    where?: PartidaWhereInput
+    orderBy?: PartidaOrderByWithRelationInput | PartidaOrderByWithRelationInput[]
+    cursor?: PartidaWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PartidasScalarFieldEnum | PartidasScalarFieldEnum[]
+    distinct?: PartidaScalarFieldEnum | PartidaScalarFieldEnum[]
   }
 
   /**
@@ -5257,36 +5118,28 @@ export namespace Prisma {
 
 
   /**
-   * Model Partidas
+   * Model Partida
    */
 
-  export type AggregatePartidas = {
-    _count: PartidasCountAggregateOutputType | null
-    _avg: PartidasAvgAggregateOutputType | null
-    _sum: PartidasSumAggregateOutputType | null
-    _min: PartidasMinAggregateOutputType | null
-    _max: PartidasMaxAggregateOutputType | null
+  export type AggregatePartida = {
+    _count: PartidaCountAggregateOutputType | null
+    _avg: PartidaAvgAggregateOutputType | null
+    _sum: PartidaSumAggregateOutputType | null
+    _min: PartidaMinAggregateOutputType | null
+    _max: PartidaMaxAggregateOutputType | null
   }
 
-  export type PartidasAvgAggregateOutputType = {
+  export type PartidaAvgAggregateOutputType = {
     id: number | null
     juego_id: number | null
   }
 
-  export type PartidasSumAggregateOutputType = {
+  export type PartidaSumAggregateOutputType = {
     id: number | null
     juego_id: number | null
   }
 
-  export type PartidasMinAggregateOutputType = {
-    id: number | null
-    guild_id: string | null
-    juego_id: number | null
-    estado_partida: string | null
-    created_at: Date | null
-  }
-
-  export type PartidasMaxAggregateOutputType = {
+  export type PartidaMinAggregateOutputType = {
     id: number | null
     guild_id: string | null
     juego_id: number | null
@@ -5294,7 +5147,15 @@ export namespace Prisma {
     created_at: Date | null
   }
 
-  export type PartidasCountAggregateOutputType = {
+  export type PartidaMaxAggregateOutputType = {
+    id: number | null
+    guild_id: string | null
+    juego_id: number | null
+    estado_partida: string | null
+    created_at: Date | null
+  }
+
+  export type PartidaCountAggregateOutputType = {
     id: number
     guild_id: number
     juego_id: number
@@ -5304,25 +5165,17 @@ export namespace Prisma {
   }
 
 
-  export type PartidasAvgAggregateInputType = {
+  export type PartidaAvgAggregateInputType = {
     id?: true
     juego_id?: true
   }
 
-  export type PartidasSumAggregateInputType = {
+  export type PartidaSumAggregateInputType = {
     id?: true
     juego_id?: true
   }
 
-  export type PartidasMinAggregateInputType = {
-    id?: true
-    guild_id?: true
-    juego_id?: true
-    estado_partida?: true
-    created_at?: true
-  }
-
-  export type PartidasMaxAggregateInputType = {
+  export type PartidaMinAggregateInputType = {
     id?: true
     guild_id?: true
     juego_id?: true
@@ -5330,7 +5183,15 @@ export namespace Prisma {
     created_at?: true
   }
 
-  export type PartidasCountAggregateInputType = {
+  export type PartidaMaxAggregateInputType = {
+    id?: true
+    guild_id?: true
+    juego_id?: true
+    estado_partida?: true
+    created_at?: true
+  }
+
+  export type PartidaCountAggregateInputType = {
     id?: true
     guild_id?: true
     juego_id?: true
@@ -5339,23 +5200,23 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PartidasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Partidas to aggregate.
+     * Filter which Partida to aggregate.
      */
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Partidas to fetch.
      */
-    orderBy?: PartidasOrderByWithRelationInput | PartidasOrderByWithRelationInput[]
+    orderBy?: PartidaOrderByWithRelationInput | PartidaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: PartidasWhereUniqueInput
+    cursor?: PartidaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -5373,86 +5234,86 @@ export namespace Prisma {
      * 
      * Count returned Partidas
     **/
-    _count?: true | PartidasCountAggregateInputType
+    _count?: true | PartidaCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: PartidasAvgAggregateInputType
+    _avg?: PartidaAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: PartidasSumAggregateInputType
+    _sum?: PartidaSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: PartidasMinAggregateInputType
+    _min?: PartidaMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: PartidasMaxAggregateInputType
+    _max?: PartidaMaxAggregateInputType
   }
 
-  export type GetPartidasAggregateType<T extends PartidasAggregateArgs> = {
-        [P in keyof T & keyof AggregatePartidas]: P extends '_count' | 'count'
+  export type GetPartidaAggregateType<T extends PartidaAggregateArgs> = {
+        [P in keyof T & keyof AggregatePartida]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregatePartidas[P]>
-      : GetScalarType<T[P], AggregatePartidas[P]>
+        : GetScalarType<T[P], AggregatePartida[P]>
+      : GetScalarType<T[P], AggregatePartida[P]>
   }
 
 
 
 
-  export type PartidasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PartidasWhereInput
-    orderBy?: PartidasOrderByWithAggregationInput | PartidasOrderByWithAggregationInput[]
-    by: PartidasScalarFieldEnum[] | PartidasScalarFieldEnum
-    having?: PartidasScalarWhereWithAggregatesInput
+  export type PartidaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PartidaWhereInput
+    orderBy?: PartidaOrderByWithAggregationInput | PartidaOrderByWithAggregationInput[]
+    by: PartidaScalarFieldEnum[] | PartidaScalarFieldEnum
+    having?: PartidaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: PartidasCountAggregateInputType | true
-    _avg?: PartidasAvgAggregateInputType
-    _sum?: PartidasSumAggregateInputType
-    _min?: PartidasMinAggregateInputType
-    _max?: PartidasMaxAggregateInputType
+    _count?: PartidaCountAggregateInputType | true
+    _avg?: PartidaAvgAggregateInputType
+    _sum?: PartidaSumAggregateInputType
+    _min?: PartidaMinAggregateInputType
+    _max?: PartidaMaxAggregateInputType
   }
 
-  export type PartidasGroupByOutputType = {
+  export type PartidaGroupByOutputType = {
     id: number
     guild_id: string
     juego_id: number
     estado_partida: string
     created_at: Date
-    _count: PartidasCountAggregateOutputType | null
-    _avg: PartidasAvgAggregateOutputType | null
-    _sum: PartidasSumAggregateOutputType | null
-    _min: PartidasMinAggregateOutputType | null
-    _max: PartidasMaxAggregateOutputType | null
+    _count: PartidaCountAggregateOutputType | null
+    _avg: PartidaAvgAggregateOutputType | null
+    _sum: PartidaSumAggregateOutputType | null
+    _min: PartidaMinAggregateOutputType | null
+    _max: PartidaMaxAggregateOutputType | null
   }
 
-  type GetPartidasGroupByPayload<T extends PartidasGroupByArgs> = Prisma.PrismaPromise<
+  type GetPartidaGroupByPayload<T extends PartidaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<PartidasGroupByOutputType, T['by']> &
+      PickEnumerable<PartidaGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof PartidasGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PartidaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], PartidasGroupByOutputType[P]>
-            : GetScalarType<T[P], PartidasGroupByOutputType[P]>
+              : GetScalarType<T[P], PartidaGroupByOutputType[P]>
+            : GetScalarType<T[P], PartidaGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type PartidasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PartidaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     guild_id?: boolean
     juego_id?: boolean
@@ -5460,13 +5321,13 @@ export namespace Prisma {
     created_at?: boolean
     guild?: boolean | GuildDefaultArgs<ExtArgs>
     juego?: boolean | JuegosDefaultArgs<ExtArgs>
-    jugadores?: boolean | Partidas$jugadoresArgs<ExtArgs>
-    _count?: boolean | PartidasCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["partidas"]>
+    miembros?: boolean | Partida$miembrosArgs<ExtArgs>
+    _count?: boolean | PartidaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["partida"]>
 
 
 
-  export type PartidasSelectScalar = {
+  export type PartidaSelectScalar = {
     id?: boolean
     guild_id?: boolean
     juego_id?: boolean
@@ -5474,20 +5335,20 @@ export namespace Prisma {
     created_at?: boolean
   }
 
-  export type PartidasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "guild_id" | "juego_id" | "estado_partida" | "created_at", ExtArgs["result"]["partidas"]>
-  export type PartidasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "guild_id" | "juego_id" | "estado_partida" | "created_at", ExtArgs["result"]["partida"]>
+  export type PartidaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guild?: boolean | GuildDefaultArgs<ExtArgs>
     juego?: boolean | JuegosDefaultArgs<ExtArgs>
-    jugadores?: boolean | Partidas$jugadoresArgs<ExtArgs>
-    _count?: boolean | PartidasCountOutputTypeDefaultArgs<ExtArgs>
+    miembros?: boolean | Partida$miembrosArgs<ExtArgs>
+    _count?: boolean | PartidaCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $PartidasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Partidas"
+  export type $PartidaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Partida"
     objects: {
       guild: Prisma.$GuildPayload<ExtArgs>
       juego: Prisma.$JuegosPayload<ExtArgs>
-      jugadores: Prisma.$JugadoresEnPartidaPayload<ExtArgs>[]
+      miembros: Prisma.$GuildMemberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5495,143 +5356,143 @@ export namespace Prisma {
       juego_id: number
       estado_partida: string
       created_at: Date
-    }, ExtArgs["result"]["partidas"]>
+    }, ExtArgs["result"]["partida"]>
     composites: {}
   }
 
-  type PartidasGetPayload<S extends boolean | null | undefined | PartidasDefaultArgs> = $Result.GetResult<Prisma.$PartidasPayload, S>
+  type PartidaGetPayload<S extends boolean | null | undefined | PartidaDefaultArgs> = $Result.GetResult<Prisma.$PartidaPayload, S>
 
-  type PartidasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PartidasFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PartidasCountAggregateInputType | true
+  type PartidaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PartidaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PartidaCountAggregateInputType | true
     }
 
-  export interface PartidasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Partidas'], meta: { name: 'Partidas' } }
+  export interface PartidaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Partida'], meta: { name: 'Partida' } }
     /**
-     * Find zero or one Partidas that matches the filter.
-     * @param {PartidasFindUniqueArgs} args - Arguments to find a Partidas
+     * Find zero or one Partida that matches the filter.
+     * @param {PartidaFindUniqueArgs} args - Arguments to find a Partida
      * @example
-     * // Get one Partidas
-     * const partidas = await prisma.partidas.findUnique({
+     * // Get one Partida
+     * const partida = await prisma.partida.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends PartidasFindUniqueArgs>(args: SelectSubset<T, PartidasFindUniqueArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PartidaFindUniqueArgs>(args: SelectSubset<T, PartidaFindUniqueArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Partidas that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Partida that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {PartidasFindUniqueOrThrowArgs} args - Arguments to find a Partidas
+     * @param {PartidaFindUniqueOrThrowArgs} args - Arguments to find a Partida
      * @example
-     * // Get one Partidas
-     * const partidas = await prisma.partidas.findUniqueOrThrow({
+     * // Get one Partida
+     * const partida = await prisma.partida.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends PartidasFindUniqueOrThrowArgs>(args: SelectSubset<T, PartidasFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PartidaFindUniqueOrThrowArgs>(args: SelectSubset<T, PartidaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Partidas that matches the filter.
+     * Find the first Partida that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PartidasFindFirstArgs} args - Arguments to find a Partidas
+     * @param {PartidaFindFirstArgs} args - Arguments to find a Partida
      * @example
-     * // Get one Partidas
-     * const partidas = await prisma.partidas.findFirst({
+     * // Get one Partida
+     * const partida = await prisma.partida.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends PartidasFindFirstArgs>(args?: SelectSubset<T, PartidasFindFirstArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PartidaFindFirstArgs>(args?: SelectSubset<T, PartidaFindFirstArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Partidas that matches the filter or
+     * Find the first Partida that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PartidasFindFirstOrThrowArgs} args - Arguments to find a Partidas
+     * @param {PartidaFindFirstOrThrowArgs} args - Arguments to find a Partida
      * @example
-     * // Get one Partidas
-     * const partidas = await prisma.partidas.findFirstOrThrow({
+     * // Get one Partida
+     * const partida = await prisma.partida.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends PartidasFindFirstOrThrowArgs>(args?: SelectSubset<T, PartidasFindFirstOrThrowArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PartidaFindFirstOrThrowArgs>(args?: SelectSubset<T, PartidaFindFirstOrThrowArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Partidas that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PartidasFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PartidaFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Partidas
-     * const partidas = await prisma.partidas.findMany()
+     * const partidas = await prisma.partida.findMany()
      * 
      * // Get first 10 Partidas
-     * const partidas = await prisma.partidas.findMany({ take: 10 })
+     * const partidas = await prisma.partida.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const partidasWithIdOnly = await prisma.partidas.findMany({ select: { id: true } })
+     * const partidaWithIdOnly = await prisma.partida.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends PartidasFindManyArgs>(args?: SelectSubset<T, PartidasFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PartidaFindManyArgs>(args?: SelectSubset<T, PartidaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Partidas.
-     * @param {PartidasCreateArgs} args - Arguments to create a Partidas.
+     * Create a Partida.
+     * @param {PartidaCreateArgs} args - Arguments to create a Partida.
      * @example
-     * // Create one Partidas
-     * const Partidas = await prisma.partidas.create({
+     * // Create one Partida
+     * const Partida = await prisma.partida.create({
      *   data: {
-     *     // ... data to create a Partidas
+     *     // ... data to create a Partida
      *   }
      * })
      * 
      */
-    create<T extends PartidasCreateArgs>(args: SelectSubset<T, PartidasCreateArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PartidaCreateArgs>(args: SelectSubset<T, PartidaCreateArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Partidas.
-     * @param {PartidasCreateManyArgs} args - Arguments to create many Partidas.
+     * @param {PartidaCreateManyArgs} args - Arguments to create many Partidas.
      * @example
      * // Create many Partidas
-     * const partidas = await prisma.partidas.createMany({
+     * const partida = await prisma.partida.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends PartidasCreateManyArgs>(args?: SelectSubset<T, PartidasCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PartidaCreateManyArgs>(args?: SelectSubset<T, PartidaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Partidas.
-     * @param {PartidasDeleteArgs} args - Arguments to delete one Partidas.
+     * Delete a Partida.
+     * @param {PartidaDeleteArgs} args - Arguments to delete one Partida.
      * @example
-     * // Delete one Partidas
-     * const Partidas = await prisma.partidas.delete({
+     * // Delete one Partida
+     * const Partida = await prisma.partida.delete({
      *   where: {
-     *     // ... filter to delete one Partidas
+     *     // ... filter to delete one Partida
      *   }
      * })
      * 
      */
-    delete<T extends PartidasDeleteArgs>(args: SelectSubset<T, PartidasDeleteArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends PartidaDeleteArgs>(args: SelectSubset<T, PartidaDeleteArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Partidas.
-     * @param {PartidasUpdateArgs} args - Arguments to update one Partidas.
+     * Update one Partida.
+     * @param {PartidaUpdateArgs} args - Arguments to update one Partida.
      * @example
-     * // Update one Partidas
-     * const partidas = await prisma.partidas.update({
+     * // Update one Partida
+     * const partida = await prisma.partida.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5641,30 +5502,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends PartidasUpdateArgs>(args: SelectSubset<T, PartidasUpdateArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends PartidaUpdateArgs>(args: SelectSubset<T, PartidaUpdateArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Partidas.
-     * @param {PartidasDeleteManyArgs} args - Arguments to filter Partidas to delete.
+     * @param {PartidaDeleteManyArgs} args - Arguments to filter Partidas to delete.
      * @example
      * // Delete a few Partidas
-     * const { count } = await prisma.partidas.deleteMany({
+     * const { count } = await prisma.partida.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends PartidasDeleteManyArgs>(args?: SelectSubset<T, PartidasDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PartidaDeleteManyArgs>(args?: SelectSubset<T, PartidaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Partidas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PartidasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PartidaUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Partidas
-     * const partidas = await prisma.partidas.updateMany({
+     * const partida = await prisma.partida.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5674,56 +5535,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends PartidasUpdateManyArgs>(args: SelectSubset<T, PartidasUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PartidaUpdateManyArgs>(args: SelectSubset<T, PartidaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Partidas.
-     * @param {PartidasUpsertArgs} args - Arguments to update or create a Partidas.
+     * Create or update one Partida.
+     * @param {PartidaUpsertArgs} args - Arguments to update or create a Partida.
      * @example
-     * // Update or create a Partidas
-     * const partidas = await prisma.partidas.upsert({
+     * // Update or create a Partida
+     * const partida = await prisma.partida.upsert({
      *   create: {
-     *     // ... data to create a Partidas
+     *     // ... data to create a Partida
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Partidas we want to update
+     *     // ... the filter for the Partida we want to update
      *   }
      * })
      */
-    upsert<T extends PartidasUpsertArgs>(args: SelectSubset<T, PartidasUpsertArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PartidaUpsertArgs>(args: SelectSubset<T, PartidaUpsertArgs<ExtArgs>>): Prisma__PartidaClient<$Result.GetResult<Prisma.$PartidaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Partidas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PartidasCountArgs} args - Arguments to filter Partidas to count.
+     * @param {PartidaCountArgs} args - Arguments to filter Partidas to count.
      * @example
      * // Count the number of Partidas
-     * const count = await prisma.partidas.count({
+     * const count = await prisma.partida.count({
      *   where: {
      *     // ... the filter for the Partidas we want to count
      *   }
      * })
     **/
-    count<T extends PartidasCountArgs>(
-      args?: Subset<T, PartidasCountArgs>,
+    count<T extends PartidaCountArgs>(
+      args?: Subset<T, PartidaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], PartidasCountAggregateOutputType>
+          : GetScalarType<T['select'], PartidaCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Partidas.
+     * Allows you to perform aggregations operations on a Partida.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PartidasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PartidaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5743,13 +5604,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends PartidasAggregateArgs>(args: Subset<T, PartidasAggregateArgs>): Prisma.PrismaPromise<GetPartidasAggregateType<T>>
+    aggregate<T extends PartidaAggregateArgs>(args: Subset<T, PartidaAggregateArgs>): Prisma.PrismaPromise<GetPartidaAggregateType<T>>
 
     /**
-     * Group by Partidas.
+     * Group by Partida.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PartidasGroupByArgs} args - Group by arguments.
+     * @param {PartidaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5764,14 +5625,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PartidasGroupByArgs,
+      T extends PartidaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PartidasGroupByArgs['orderBy'] }
-        : { orderBy?: PartidasGroupByArgs['orderBy'] },
+        ? { orderBy: PartidaGroupByArgs['orderBy'] }
+        : { orderBy?: PartidaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5820,24 +5681,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PartidasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPartidasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PartidaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPartidaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Partidas model
+   * Fields of the Partida model
    */
-  readonly fields: PartidasFieldRefs;
+  readonly fields: PartidaFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Partidas.
+   * The delegate class that acts as a "Promise-like" for Partida.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PartidasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PartidaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     guild<T extends GuildDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GuildDefaultArgs<ExtArgs>>): Prisma__GuildClient<$Result.GetResult<Prisma.$GuildPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     juego<T extends JuegosDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JuegosDefaultArgs<ExtArgs>>): Prisma__JuegosClient<$Result.GetResult<Prisma.$JuegosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    jugadores<T extends Partidas$jugadoresArgs<ExtArgs> = {}>(args?: Subset<T, Partidas$jugadoresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    miembros<T extends Partida$miembrosArgs<ExtArgs> = {}>(args?: Subset<T, Partida$miembrosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuildMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5864,94 +5725,94 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Partidas model
+   * Fields of the Partida model
    */
-  interface PartidasFieldRefs {
-    readonly id: FieldRef<"Partidas", 'Int'>
-    readonly guild_id: FieldRef<"Partidas", 'String'>
-    readonly juego_id: FieldRef<"Partidas", 'Int'>
-    readonly estado_partida: FieldRef<"Partidas", 'String'>
-    readonly created_at: FieldRef<"Partidas", 'DateTime'>
+  interface PartidaFieldRefs {
+    readonly id: FieldRef<"Partida", 'Int'>
+    readonly guild_id: FieldRef<"Partida", 'String'>
+    readonly juego_id: FieldRef<"Partida", 'Int'>
+    readonly estado_partida: FieldRef<"Partida", 'String'>
+    readonly created_at: FieldRef<"Partida", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Partidas findUnique
+   * Partida findUnique
    */
-  export type PartidasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * Filter, which Partidas to fetch.
+     * Filter, which Partida to fetch.
      */
-    where: PartidasWhereUniqueInput
+    where: PartidaWhereUniqueInput
   }
 
   /**
-   * Partidas findUniqueOrThrow
+   * Partida findUniqueOrThrow
    */
-  export type PartidasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * Filter, which Partidas to fetch.
+     * Filter, which Partida to fetch.
      */
-    where: PartidasWhereUniqueInput
+    where: PartidaWhereUniqueInput
   }
 
   /**
-   * Partidas findFirst
+   * Partida findFirst
    */
-  export type PartidasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * Filter, which Partidas to fetch.
+     * Filter, which Partida to fetch.
      */
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Partidas to fetch.
      */
-    orderBy?: PartidasOrderByWithRelationInput | PartidasOrderByWithRelationInput[]
+    orderBy?: PartidaOrderByWithRelationInput | PartidaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for searching for Partidas.
      */
-    cursor?: PartidasWhereUniqueInput
+    cursor?: PartidaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -5969,41 +5830,41 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of Partidas.
      */
-    distinct?: PartidasScalarFieldEnum | PartidasScalarFieldEnum[]
+    distinct?: PartidaScalarFieldEnum | PartidaScalarFieldEnum[]
   }
 
   /**
-   * Partidas findFirstOrThrow
+   * Partida findFirstOrThrow
    */
-  export type PartidasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * Filter, which Partidas to fetch.
+     * Filter, which Partida to fetch.
      */
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Partidas to fetch.
      */
-    orderBy?: PartidasOrderByWithRelationInput | PartidasOrderByWithRelationInput[]
+    orderBy?: PartidaOrderByWithRelationInput | PartidaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for searching for Partidas.
      */
-    cursor?: PartidasWhereUniqueInput
+    cursor?: PartidaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -6021,41 +5882,41 @@ export namespace Prisma {
      * 
      * Filter by unique combinations of Partidas.
      */
-    distinct?: PartidasScalarFieldEnum | PartidasScalarFieldEnum[]
+    distinct?: PartidaScalarFieldEnum | PartidaScalarFieldEnum[]
   }
 
   /**
-   * Partidas findMany
+   * Partida findMany
    */
-  export type PartidasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
      * Filter, which Partidas to fetch.
      */
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Partidas to fetch.
      */
-    orderBy?: PartidasOrderByWithRelationInput | PartidasOrderByWithRelationInput[]
+    orderBy?: PartidaOrderByWithRelationInput | PartidaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for listing Partidas.
      */
-    cursor?: PartidasWhereUniqueInput
+    cursor?: PartidaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -6068,80 +5929,80 @@ export namespace Prisma {
      * Skip the first `n` Partidas.
      */
     skip?: number
-    distinct?: PartidasScalarFieldEnum | PartidasScalarFieldEnum[]
+    distinct?: PartidaScalarFieldEnum | PartidaScalarFieldEnum[]
   }
 
   /**
-   * Partidas create
+   * Partida create
    */
-  export type PartidasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * The data needed to create a Partidas.
+     * The data needed to create a Partida.
      */
-    data: XOR<PartidasCreateInput, PartidasUncheckedCreateInput>
+    data: XOR<PartidaCreateInput, PartidaUncheckedCreateInput>
   }
 
   /**
-   * Partidas createMany
+   * Partida createMany
    */
-  export type PartidasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Partidas.
      */
-    data: PartidasCreateManyInput | PartidasCreateManyInput[]
+    data: PartidaCreateManyInput | PartidaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Partidas update
+   * Partida update
    */
-  export type PartidasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * The data needed to update a Partidas.
+     * The data needed to update a Partida.
      */
-    data: XOR<PartidasUpdateInput, PartidasUncheckedUpdateInput>
+    data: XOR<PartidaUpdateInput, PartidaUncheckedUpdateInput>
     /**
-     * Choose, which Partidas to update.
+     * Choose, which Partida to update.
      */
-    where: PartidasWhereUniqueInput
+    where: PartidaWhereUniqueInput
   }
 
   /**
-   * Partidas updateMany
+   * Partida updateMany
    */
-  export type PartidasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Partidas.
      */
-    data: XOR<PartidasUpdateManyMutationInput, PartidasUncheckedUpdateManyInput>
+    data: XOR<PartidaUpdateManyMutationInput, PartidaUncheckedUpdateManyInput>
     /**
      * Filter which Partidas to update
      */
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
     /**
      * Limit how many Partidas to update.
      */
@@ -6149,65 +6010,65 @@ export namespace Prisma {
   }
 
   /**
-   * Partidas upsert
+   * Partida upsert
    */
-  export type PartidasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * The filter to search for the Partidas to update in case it exists.
+     * The filter to search for the Partida to update in case it exists.
      */
-    where: PartidasWhereUniqueInput
+    where: PartidaWhereUniqueInput
     /**
-     * In case the Partidas found by the `where` argument doesn't exist, create a new Partidas with this data.
+     * In case the Partida found by the `where` argument doesn't exist, create a new Partida with this data.
      */
-    create: XOR<PartidasCreateInput, PartidasUncheckedCreateInput>
+    create: XOR<PartidaCreateInput, PartidaUncheckedCreateInput>
     /**
-     * In case the Partidas was found with the provided `where` argument, update it with this data.
+     * In case the Partida was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<PartidasUpdateInput, PartidasUncheckedUpdateInput>
+    update: XOR<PartidaUpdateInput, PartidaUncheckedUpdateInput>
   }
 
   /**
-   * Partidas delete
+   * Partida delete
    */
-  export type PartidasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
     /**
-     * Filter which Partidas to delete.
+     * Filter which Partida to delete.
      */
-    where: PartidasWhereUniqueInput
+    where: PartidaWhereUniqueInput
   }
 
   /**
-   * Partidas deleteMany
+   * Partida deleteMany
    */
-  export type PartidasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Partidas to delete
      */
-    where?: PartidasWhereInput
+    where?: PartidaWhereInput
     /**
      * Limit how many Partidas to delete.
      */
@@ -6215,990 +6076,45 @@ export namespace Prisma {
   }
 
   /**
-   * Partidas.jugadores
+   * Partida.miembros
    */
-  export type Partidas$jugadoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Partida$miembrosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the JugadoresEnPartida
+     * Select specific fields to fetch from the GuildMember
      */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
+    select?: GuildMemberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the JugadoresEnPartida
+     * Omit specific fields from the GuildMember
      */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
+    omit?: GuildMemberOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    where?: JugadoresEnPartidaWhereInput
-    orderBy?: JugadoresEnPartidaOrderByWithRelationInput | JugadoresEnPartidaOrderByWithRelationInput[]
-    cursor?: JugadoresEnPartidaWhereUniqueInput
+    include?: GuildMemberInclude<ExtArgs> | null
+    where?: GuildMemberWhereInput
+    orderBy?: GuildMemberOrderByWithRelationInput | GuildMemberOrderByWithRelationInput[]
+    cursor?: GuildMemberWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: JugadoresEnPartidaScalarFieldEnum | JugadoresEnPartidaScalarFieldEnum[]
+    distinct?: GuildMemberScalarFieldEnum | GuildMemberScalarFieldEnum[]
   }
 
   /**
-   * Partidas without action
+   * Partida without action
    */
-  export type PartidasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PartidaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Partidas
+     * Select specific fields to fetch from the Partida
      */
-    select?: PartidasSelect<ExtArgs> | null
+    select?: PartidaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Partidas
+     * Omit specific fields from the Partida
      */
-    omit?: PartidasOmit<ExtArgs> | null
+    omit?: PartidaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PartidasInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model JugadoresEnPartida
-   */
-
-  export type AggregateJugadoresEnPartida = {
-    _count: JugadoresEnPartidaCountAggregateOutputType | null
-    _avg: JugadoresEnPartidaAvgAggregateOutputType | null
-    _sum: JugadoresEnPartidaSumAggregateOutputType | null
-    _min: JugadoresEnPartidaMinAggregateOutputType | null
-    _max: JugadoresEnPartidaMaxAggregateOutputType | null
-  }
-
-  export type JugadoresEnPartidaAvgAggregateOutputType = {
-    id: number | null
-    partida_id: number | null
-  }
-
-  export type JugadoresEnPartidaSumAggregateOutputType = {
-    id: number | null
-    partida_id: number | null
-  }
-
-  export type JugadoresEnPartidaMinAggregateOutputType = {
-    id: number | null
-    partida_id: number | null
-    user_id: string | null
-  }
-
-  export type JugadoresEnPartidaMaxAggregateOutputType = {
-    id: number | null
-    partida_id: number | null
-    user_id: string | null
-  }
-
-  export type JugadoresEnPartidaCountAggregateOutputType = {
-    id: number
-    partida_id: number
-    user_id: number
-    _all: number
-  }
-
-
-  export type JugadoresEnPartidaAvgAggregateInputType = {
-    id?: true
-    partida_id?: true
-  }
-
-  export type JugadoresEnPartidaSumAggregateInputType = {
-    id?: true
-    partida_id?: true
-  }
-
-  export type JugadoresEnPartidaMinAggregateInputType = {
-    id?: true
-    partida_id?: true
-    user_id?: true
-  }
-
-  export type JugadoresEnPartidaMaxAggregateInputType = {
-    id?: true
-    partida_id?: true
-    user_id?: true
-  }
-
-  export type JugadoresEnPartidaCountAggregateInputType = {
-    id?: true
-    partida_id?: true
-    user_id?: true
-    _all?: true
-  }
-
-  export type JugadoresEnPartidaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which JugadoresEnPartida to aggregate.
-     */
-    where?: JugadoresEnPartidaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of JugadoresEnPartidas to fetch.
-     */
-    orderBy?: JugadoresEnPartidaOrderByWithRelationInput | JugadoresEnPartidaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: JugadoresEnPartidaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` JugadoresEnPartidas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` JugadoresEnPartidas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned JugadoresEnPartidas
-    **/
-    _count?: true | JugadoresEnPartidaCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: JugadoresEnPartidaAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: JugadoresEnPartidaSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: JugadoresEnPartidaMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: JugadoresEnPartidaMaxAggregateInputType
-  }
-
-  export type GetJugadoresEnPartidaAggregateType<T extends JugadoresEnPartidaAggregateArgs> = {
-        [P in keyof T & keyof AggregateJugadoresEnPartida]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateJugadoresEnPartida[P]>
-      : GetScalarType<T[P], AggregateJugadoresEnPartida[P]>
-  }
-
-
-
-
-  export type JugadoresEnPartidaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: JugadoresEnPartidaWhereInput
-    orderBy?: JugadoresEnPartidaOrderByWithAggregationInput | JugadoresEnPartidaOrderByWithAggregationInput[]
-    by: JugadoresEnPartidaScalarFieldEnum[] | JugadoresEnPartidaScalarFieldEnum
-    having?: JugadoresEnPartidaScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: JugadoresEnPartidaCountAggregateInputType | true
-    _avg?: JugadoresEnPartidaAvgAggregateInputType
-    _sum?: JugadoresEnPartidaSumAggregateInputType
-    _min?: JugadoresEnPartidaMinAggregateInputType
-    _max?: JugadoresEnPartidaMaxAggregateInputType
-  }
-
-  export type JugadoresEnPartidaGroupByOutputType = {
-    id: number
-    partida_id: number
-    user_id: string
-    _count: JugadoresEnPartidaCountAggregateOutputType | null
-    _avg: JugadoresEnPartidaAvgAggregateOutputType | null
-    _sum: JugadoresEnPartidaSumAggregateOutputType | null
-    _min: JugadoresEnPartidaMinAggregateOutputType | null
-    _max: JugadoresEnPartidaMaxAggregateOutputType | null
-  }
-
-  type GetJugadoresEnPartidaGroupByPayload<T extends JugadoresEnPartidaGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<JugadoresEnPartidaGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof JugadoresEnPartidaGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], JugadoresEnPartidaGroupByOutputType[P]>
-            : GetScalarType<T[P], JugadoresEnPartidaGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type JugadoresEnPartidaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    partida_id?: boolean
-    user_id?: boolean
-    partida?: boolean | PartidasDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["jugadoresEnPartida"]>
-
-
-
-  export type JugadoresEnPartidaSelectScalar = {
-    id?: boolean
-    partida_id?: boolean
-    user_id?: boolean
-  }
-
-  export type JugadoresEnPartidaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "partida_id" | "user_id", ExtArgs["result"]["jugadoresEnPartida"]>
-  export type JugadoresEnPartidaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    partida?: boolean | PartidasDefaultArgs<ExtArgs>
-  }
-
-  export type $JugadoresEnPartidaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "JugadoresEnPartida"
-    objects: {
-      partida: Prisma.$PartidasPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      partida_id: number
-      user_id: string
-    }, ExtArgs["result"]["jugadoresEnPartida"]>
-    composites: {}
-  }
-
-  type JugadoresEnPartidaGetPayload<S extends boolean | null | undefined | JugadoresEnPartidaDefaultArgs> = $Result.GetResult<Prisma.$JugadoresEnPartidaPayload, S>
-
-  type JugadoresEnPartidaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<JugadoresEnPartidaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: JugadoresEnPartidaCountAggregateInputType | true
-    }
-
-  export interface JugadoresEnPartidaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['JugadoresEnPartida'], meta: { name: 'JugadoresEnPartida' } }
-    /**
-     * Find zero or one JugadoresEnPartida that matches the filter.
-     * @param {JugadoresEnPartidaFindUniqueArgs} args - Arguments to find a JugadoresEnPartida
-     * @example
-     * // Get one JugadoresEnPartida
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends JugadoresEnPartidaFindUniqueArgs>(args: SelectSubset<T, JugadoresEnPartidaFindUniqueArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one JugadoresEnPartida that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {JugadoresEnPartidaFindUniqueOrThrowArgs} args - Arguments to find a JugadoresEnPartida
-     * @example
-     * // Get one JugadoresEnPartida
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends JugadoresEnPartidaFindUniqueOrThrowArgs>(args: SelectSubset<T, JugadoresEnPartidaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first JugadoresEnPartida that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {JugadoresEnPartidaFindFirstArgs} args - Arguments to find a JugadoresEnPartida
-     * @example
-     * // Get one JugadoresEnPartida
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends JugadoresEnPartidaFindFirstArgs>(args?: SelectSubset<T, JugadoresEnPartidaFindFirstArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first JugadoresEnPartida that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {JugadoresEnPartidaFindFirstOrThrowArgs} args - Arguments to find a JugadoresEnPartida
-     * @example
-     * // Get one JugadoresEnPartida
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends JugadoresEnPartidaFindFirstOrThrowArgs>(args?: SelectSubset<T, JugadoresEnPartidaFindFirstOrThrowArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more JugadoresEnPartidas that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {JugadoresEnPartidaFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all JugadoresEnPartidas
-     * const jugadoresEnPartidas = await prisma.jugadoresEnPartida.findMany()
-     * 
-     * // Get first 10 JugadoresEnPartidas
-     * const jugadoresEnPartidas = await prisma.jugadoresEnPartida.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const jugadoresEnPartidaWithIdOnly = await prisma.jugadoresEnPartida.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends JugadoresEnPartidaFindManyArgs>(args?: SelectSubset<T, JugadoresEnPartidaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a JugadoresEnPartida.
-     * @param {JugadoresEnPartidaCreateArgs} args - Arguments to create a JugadoresEnPartida.
-     * @example
-     * // Create one JugadoresEnPartida
-     * const JugadoresEnPartida = await prisma.jugadoresEnPartida.create({
-     *   data: {
-     *     // ... data to create a JugadoresEnPartida
-     *   }
-     * })
-     * 
-     */
-    create<T extends JugadoresEnPartidaCreateArgs>(args: SelectSubset<T, JugadoresEnPartidaCreateArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many JugadoresEnPartidas.
-     * @param {JugadoresEnPartidaCreateManyArgs} args - Arguments to create many JugadoresEnPartidas.
-     * @example
-     * // Create many JugadoresEnPartidas
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends JugadoresEnPartidaCreateManyArgs>(args?: SelectSubset<T, JugadoresEnPartidaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a JugadoresEnPartida.
-     * @param {JugadoresEnPartidaDeleteArgs} args - Arguments to delete one JugadoresEnPartida.
-     * @example
-     * // Delete one JugadoresEnPartida
-     * const JugadoresEnPartida = await prisma.jugadoresEnPartida.delete({
-     *   where: {
-     *     // ... filter to delete one JugadoresEnPartida
-     *   }
-     * })
-     * 
-     */
-    delete<T extends JugadoresEnPartidaDeleteArgs>(args: SelectSubset<T, JugadoresEnPartidaDeleteArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one JugadoresEnPartida.
-     * @param {JugadoresEnPartidaUpdateArgs} args - Arguments to update one JugadoresEnPartida.
-     * @example
-     * // Update one JugadoresEnPartida
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends JugadoresEnPartidaUpdateArgs>(args: SelectSubset<T, JugadoresEnPartidaUpdateArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more JugadoresEnPartidas.
-     * @param {JugadoresEnPartidaDeleteManyArgs} args - Arguments to filter JugadoresEnPartidas to delete.
-     * @example
-     * // Delete a few JugadoresEnPartidas
-     * const { count } = await prisma.jugadoresEnPartida.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends JugadoresEnPartidaDeleteManyArgs>(args?: SelectSubset<T, JugadoresEnPartidaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more JugadoresEnPartidas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {JugadoresEnPartidaUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many JugadoresEnPartidas
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends JugadoresEnPartidaUpdateManyArgs>(args: SelectSubset<T, JugadoresEnPartidaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one JugadoresEnPartida.
-     * @param {JugadoresEnPartidaUpsertArgs} args - Arguments to update or create a JugadoresEnPartida.
-     * @example
-     * // Update or create a JugadoresEnPartida
-     * const jugadoresEnPartida = await prisma.jugadoresEnPartida.upsert({
-     *   create: {
-     *     // ... data to create a JugadoresEnPartida
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the JugadoresEnPartida we want to update
-     *   }
-     * })
-     */
-    upsert<T extends JugadoresEnPartidaUpsertArgs>(args: SelectSubset<T, JugadoresEnPartidaUpsertArgs<ExtArgs>>): Prisma__JugadoresEnPartidaClient<$Result.GetResult<Prisma.$JugadoresEnPartidaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of JugadoresEnPartidas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {JugadoresEnPartidaCountArgs} args - Arguments to filter JugadoresEnPartidas to count.
-     * @example
-     * // Count the number of JugadoresEnPartidas
-     * const count = await prisma.jugadoresEnPartida.count({
-     *   where: {
-     *     // ... the filter for the JugadoresEnPartidas we want to count
-     *   }
-     * })
-    **/
-    count<T extends JugadoresEnPartidaCountArgs>(
-      args?: Subset<T, JugadoresEnPartidaCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], JugadoresEnPartidaCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a JugadoresEnPartida.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {JugadoresEnPartidaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends JugadoresEnPartidaAggregateArgs>(args: Subset<T, JugadoresEnPartidaAggregateArgs>): Prisma.PrismaPromise<GetJugadoresEnPartidaAggregateType<T>>
-
-    /**
-     * Group by JugadoresEnPartida.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {JugadoresEnPartidaGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends JugadoresEnPartidaGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: JugadoresEnPartidaGroupByArgs['orderBy'] }
-        : { orderBy?: JugadoresEnPartidaGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, JugadoresEnPartidaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJugadoresEnPartidaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the JugadoresEnPartida model
-   */
-  readonly fields: JugadoresEnPartidaFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for JugadoresEnPartida.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__JugadoresEnPartidaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    partida<T extends PartidasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PartidasDefaultArgs<ExtArgs>>): Prisma__PartidasClient<$Result.GetResult<Prisma.$PartidasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the JugadoresEnPartida model
-   */
-  interface JugadoresEnPartidaFieldRefs {
-    readonly id: FieldRef<"JugadoresEnPartida", 'Int'>
-    readonly partida_id: FieldRef<"JugadoresEnPartida", 'Int'>
-    readonly user_id: FieldRef<"JugadoresEnPartida", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * JugadoresEnPartida findUnique
-   */
-  export type JugadoresEnPartidaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * Filter, which JugadoresEnPartida to fetch.
-     */
-    where: JugadoresEnPartidaWhereUniqueInput
-  }
-
-  /**
-   * JugadoresEnPartida findUniqueOrThrow
-   */
-  export type JugadoresEnPartidaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * Filter, which JugadoresEnPartida to fetch.
-     */
-    where: JugadoresEnPartidaWhereUniqueInput
-  }
-
-  /**
-   * JugadoresEnPartida findFirst
-   */
-  export type JugadoresEnPartidaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * Filter, which JugadoresEnPartida to fetch.
-     */
-    where?: JugadoresEnPartidaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of JugadoresEnPartidas to fetch.
-     */
-    orderBy?: JugadoresEnPartidaOrderByWithRelationInput | JugadoresEnPartidaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for JugadoresEnPartidas.
-     */
-    cursor?: JugadoresEnPartidaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` JugadoresEnPartidas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` JugadoresEnPartidas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of JugadoresEnPartidas.
-     */
-    distinct?: JugadoresEnPartidaScalarFieldEnum | JugadoresEnPartidaScalarFieldEnum[]
-  }
-
-  /**
-   * JugadoresEnPartida findFirstOrThrow
-   */
-  export type JugadoresEnPartidaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * Filter, which JugadoresEnPartida to fetch.
-     */
-    where?: JugadoresEnPartidaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of JugadoresEnPartidas to fetch.
-     */
-    orderBy?: JugadoresEnPartidaOrderByWithRelationInput | JugadoresEnPartidaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for JugadoresEnPartidas.
-     */
-    cursor?: JugadoresEnPartidaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` JugadoresEnPartidas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` JugadoresEnPartidas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of JugadoresEnPartidas.
-     */
-    distinct?: JugadoresEnPartidaScalarFieldEnum | JugadoresEnPartidaScalarFieldEnum[]
-  }
-
-  /**
-   * JugadoresEnPartida findMany
-   */
-  export type JugadoresEnPartidaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * Filter, which JugadoresEnPartidas to fetch.
-     */
-    where?: JugadoresEnPartidaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of JugadoresEnPartidas to fetch.
-     */
-    orderBy?: JugadoresEnPartidaOrderByWithRelationInput | JugadoresEnPartidaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing JugadoresEnPartidas.
-     */
-    cursor?: JugadoresEnPartidaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` JugadoresEnPartidas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` JugadoresEnPartidas.
-     */
-    skip?: number
-    distinct?: JugadoresEnPartidaScalarFieldEnum | JugadoresEnPartidaScalarFieldEnum[]
-  }
-
-  /**
-   * JugadoresEnPartida create
-   */
-  export type JugadoresEnPartidaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * The data needed to create a JugadoresEnPartida.
-     */
-    data: XOR<JugadoresEnPartidaCreateInput, JugadoresEnPartidaUncheckedCreateInput>
-  }
-
-  /**
-   * JugadoresEnPartida createMany
-   */
-  export type JugadoresEnPartidaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many JugadoresEnPartidas.
-     */
-    data: JugadoresEnPartidaCreateManyInput | JugadoresEnPartidaCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * JugadoresEnPartida update
-   */
-  export type JugadoresEnPartidaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * The data needed to update a JugadoresEnPartida.
-     */
-    data: XOR<JugadoresEnPartidaUpdateInput, JugadoresEnPartidaUncheckedUpdateInput>
-    /**
-     * Choose, which JugadoresEnPartida to update.
-     */
-    where: JugadoresEnPartidaWhereUniqueInput
-  }
-
-  /**
-   * JugadoresEnPartida updateMany
-   */
-  export type JugadoresEnPartidaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update JugadoresEnPartidas.
-     */
-    data: XOR<JugadoresEnPartidaUpdateManyMutationInput, JugadoresEnPartidaUncheckedUpdateManyInput>
-    /**
-     * Filter which JugadoresEnPartidas to update
-     */
-    where?: JugadoresEnPartidaWhereInput
-    /**
-     * Limit how many JugadoresEnPartidas to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * JugadoresEnPartida upsert
-   */
-  export type JugadoresEnPartidaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * The filter to search for the JugadoresEnPartida to update in case it exists.
-     */
-    where: JugadoresEnPartidaWhereUniqueInput
-    /**
-     * In case the JugadoresEnPartida found by the `where` argument doesn't exist, create a new JugadoresEnPartida with this data.
-     */
-    create: XOR<JugadoresEnPartidaCreateInput, JugadoresEnPartidaUncheckedCreateInput>
-    /**
-     * In case the JugadoresEnPartida was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<JugadoresEnPartidaUpdateInput, JugadoresEnPartidaUncheckedUpdateInput>
-  }
-
-  /**
-   * JugadoresEnPartida delete
-   */
-  export type JugadoresEnPartidaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
-    /**
-     * Filter which JugadoresEnPartida to delete.
-     */
-    where: JugadoresEnPartidaWhereUniqueInput
-  }
-
-  /**
-   * JugadoresEnPartida deleteMany
-   */
-  export type JugadoresEnPartidaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which JugadoresEnPartidas to delete
-     */
-    where?: JugadoresEnPartidaWhereInput
-    /**
-     * Limit how many JugadoresEnPartidas to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * JugadoresEnPartida without action
-   */
-  export type JugadoresEnPartidaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JugadoresEnPartida
-     */
-    select?: JugadoresEnPartidaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the JugadoresEnPartida
-     */
-    omit?: JugadoresEnPartidaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JugadoresEnPartidaInclude<ExtArgs> | null
+    include?: PartidaInclude<ExtArgs> | null
   }
 
 
@@ -7217,7 +6133,6 @@ export namespace Prisma {
 
 
   export const UsuarioScalarFieldEnum: {
-    id: 'id',
     discord_id: 'discord_id'
   };
 
@@ -7225,20 +6140,20 @@ export namespace Prisma {
 
 
   export const GuildScalarFieldEnum: {
-    id: 'id',
     discord_id: 'discord_id'
   };
 
   export type GuildScalarFieldEnum = (typeof GuildScalarFieldEnum)[keyof typeof GuildScalarFieldEnum]
 
 
-  export const UserInGuildScalarFieldEnum: {
-    id: 'id',
+  export const GuildMemberScalarFieldEnum: {
+    guild_id: 'guild_id',
     usuario_id: 'usuario_id',
-    guild_id: 'guild_id'
+    partida_id: 'partida_id',
+    created_at: 'created_at'
   };
 
-  export type UserInGuildScalarFieldEnum = (typeof UserInGuildScalarFieldEnum)[keyof typeof UserInGuildScalarFieldEnum]
+  export type GuildMemberScalarFieldEnum = (typeof GuildMemberScalarFieldEnum)[keyof typeof GuildMemberScalarFieldEnum]
 
 
   export const JuegosScalarFieldEnum: {
@@ -7250,7 +6165,7 @@ export namespace Prisma {
   export type JuegosScalarFieldEnum = (typeof JuegosScalarFieldEnum)[keyof typeof JuegosScalarFieldEnum]
 
 
-  export const PartidasScalarFieldEnum: {
+  export const PartidaScalarFieldEnum: {
     id: 'id',
     guild_id: 'guild_id',
     juego_id: 'juego_id',
@@ -7258,16 +6173,7 @@ export namespace Prisma {
     created_at: 'created_at'
   };
 
-  export type PartidasScalarFieldEnum = (typeof PartidasScalarFieldEnum)[keyof typeof PartidasScalarFieldEnum]
-
-
-  export const JugadoresEnPartidaScalarFieldEnum: {
-    id: 'id',
-    partida_id: 'partida_id',
-    user_id: 'user_id'
-  };
-
-  export type JugadoresEnPartidaScalarFieldEnum = (typeof JugadoresEnPartidaScalarFieldEnum)[keyof typeof JugadoresEnPartidaScalarFieldEnum]
+  export type PartidaScalarFieldEnum = (typeof PartidaScalarFieldEnum)[keyof typeof PartidaScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7292,12 +6198,20 @@ export namespace Prisma {
   export type GuildOrderByRelevanceFieldEnum = (typeof GuildOrderByRelevanceFieldEnum)[keyof typeof GuildOrderByRelevanceFieldEnum]
 
 
-  export const UserInGuildOrderByRelevanceFieldEnum: {
-    usuario_id: 'usuario_id',
-    guild_id: 'guild_id'
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
   };
 
-  export type UserInGuildOrderByRelevanceFieldEnum = (typeof UserInGuildOrderByRelevanceFieldEnum)[keyof typeof UserInGuildOrderByRelevanceFieldEnum]
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const GuildMemberOrderByRelevanceFieldEnum: {
+    guild_id: 'guild_id',
+    usuario_id: 'usuario_id'
+  };
+
+  export type GuildMemberOrderByRelevanceFieldEnum = (typeof GuildMemberOrderByRelevanceFieldEnum)[keyof typeof GuildMemberOrderByRelevanceFieldEnum]
 
 
   export const JuegosOrderByRelevanceFieldEnum: {
@@ -7307,19 +6221,12 @@ export namespace Prisma {
   export type JuegosOrderByRelevanceFieldEnum = (typeof JuegosOrderByRelevanceFieldEnum)[keyof typeof JuegosOrderByRelevanceFieldEnum]
 
 
-  export const PartidasOrderByRelevanceFieldEnum: {
+  export const PartidaOrderByRelevanceFieldEnum: {
     guild_id: 'guild_id',
     estado_partida: 'estado_partida'
   };
 
-  export type PartidasOrderByRelevanceFieldEnum = (typeof PartidasOrderByRelevanceFieldEnum)[keyof typeof PartidasOrderByRelevanceFieldEnum]
-
-
-  export const JugadoresEnPartidaOrderByRelevanceFieldEnum: {
-    user_id: 'user_id'
-  };
-
-  export type JugadoresEnPartidaOrderByRelevanceFieldEnum = (typeof JugadoresEnPartidaOrderByRelevanceFieldEnum)[keyof typeof JugadoresEnPartidaOrderByRelevanceFieldEnum]
+  export type PartidaOrderByRelevanceFieldEnum = (typeof PartidaOrderByRelevanceFieldEnum)[keyof typeof PartidaOrderByRelevanceFieldEnum]
 
 
   /**
@@ -7328,16 +6235,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'String'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
     
 
 
   /**
-   * Reference to a field of type 'String'
+   * Reference to a field of type 'Int'
    */
-  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -7362,42 +6269,35 @@ export namespace Prisma {
     AND?: UsuarioWhereInput | UsuarioWhereInput[]
     OR?: UsuarioWhereInput[]
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
-    id?: IntFilter<"Usuario"> | number
     discord_id?: StringFilter<"Usuario"> | string
-    guilds?: UserInGuildListRelationFilter
+    guilds?: GuildMemberListRelationFilter
   }
 
   export type UsuarioOrderByWithRelationInput = {
-    id?: SortOrder
     discord_id?: SortOrder
-    guilds?: UserInGuildOrderByRelationAggregateInput
+    guilds?: GuildMemberOrderByRelationAggregateInput
     _relevance?: UsuarioOrderByRelevanceInput
   }
 
   export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
     discord_id?: string
     AND?: UsuarioWhereInput | UsuarioWhereInput[]
     OR?: UsuarioWhereInput[]
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
-    guilds?: UserInGuildListRelationFilter
-  }, "id" | "discord_id">
+    guilds?: GuildMemberListRelationFilter
+  }, "discord_id">
 
   export type UsuarioOrderByWithAggregationInput = {
-    id?: SortOrder
     discord_id?: SortOrder
     _count?: UsuarioCountOrderByAggregateInput
-    _avg?: UsuarioAvgOrderByAggregateInput
     _max?: UsuarioMaxOrderByAggregateInput
     _min?: UsuarioMinOrderByAggregateInput
-    _sum?: UsuarioSumOrderByAggregateInput
   }
 
   export type UsuarioScalarWhereWithAggregatesInput = {
     AND?: UsuarioScalarWhereWithAggregatesInput | UsuarioScalarWhereWithAggregatesInput[]
     OR?: UsuarioScalarWhereWithAggregatesInput[]
     NOT?: UsuarioScalarWhereWithAggregatesInput | UsuarioScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Usuario"> | number
     discord_id?: StringWithAggregatesFilter<"Usuario"> | string
   }
 
@@ -7405,97 +6305,99 @@ export namespace Prisma {
     AND?: GuildWhereInput | GuildWhereInput[]
     OR?: GuildWhereInput[]
     NOT?: GuildWhereInput | GuildWhereInput[]
-    id?: IntFilter<"Guild"> | number
     discord_id?: StringFilter<"Guild"> | string
-    partidas?: PartidasListRelationFilter
-    usuarios_en_guild?: UserInGuildListRelationFilter
+    partidas?: PartidaListRelationFilter
+    miembros?: GuildMemberListRelationFilter
   }
 
   export type GuildOrderByWithRelationInput = {
-    id?: SortOrder
     discord_id?: SortOrder
-    partidas?: PartidasOrderByRelationAggregateInput
-    usuarios_en_guild?: UserInGuildOrderByRelationAggregateInput
+    partidas?: PartidaOrderByRelationAggregateInput
+    miembros?: GuildMemberOrderByRelationAggregateInput
     _relevance?: GuildOrderByRelevanceInput
   }
 
   export type GuildWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
     discord_id?: string
     AND?: GuildWhereInput | GuildWhereInput[]
     OR?: GuildWhereInput[]
     NOT?: GuildWhereInput | GuildWhereInput[]
-    partidas?: PartidasListRelationFilter
-    usuarios_en_guild?: UserInGuildListRelationFilter
-  }, "id" | "discord_id">
+    partidas?: PartidaListRelationFilter
+    miembros?: GuildMemberListRelationFilter
+  }, "discord_id">
 
   export type GuildOrderByWithAggregationInput = {
-    id?: SortOrder
     discord_id?: SortOrder
     _count?: GuildCountOrderByAggregateInput
-    _avg?: GuildAvgOrderByAggregateInput
     _max?: GuildMaxOrderByAggregateInput
     _min?: GuildMinOrderByAggregateInput
-    _sum?: GuildSumOrderByAggregateInput
   }
 
   export type GuildScalarWhereWithAggregatesInput = {
     AND?: GuildScalarWhereWithAggregatesInput | GuildScalarWhereWithAggregatesInput[]
     OR?: GuildScalarWhereWithAggregatesInput[]
     NOT?: GuildScalarWhereWithAggregatesInput | GuildScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Guild"> | number
     discord_id?: StringWithAggregatesFilter<"Guild"> | string
   }
 
-  export type UserInGuildWhereInput = {
-    AND?: UserInGuildWhereInput | UserInGuildWhereInput[]
-    OR?: UserInGuildWhereInput[]
-    NOT?: UserInGuildWhereInput | UserInGuildWhereInput[]
-    id?: IntFilter<"UserInGuild"> | number
-    usuario_id?: StringFilter<"UserInGuild"> | string
-    guild_id?: StringFilter<"UserInGuild"> | string
+  export type GuildMemberWhereInput = {
+    AND?: GuildMemberWhereInput | GuildMemberWhereInput[]
+    OR?: GuildMemberWhereInput[]
+    NOT?: GuildMemberWhereInput | GuildMemberWhereInput[]
+    guild_id?: StringFilter<"GuildMember"> | string
+    usuario_id?: StringFilter<"GuildMember"> | string
+    partida_id?: IntNullableFilter<"GuildMember"> | number | null
+    created_at?: DateTimeFilter<"GuildMember"> | Date | string
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
+    partida?: XOR<PartidaNullableScalarRelationFilter, PartidaWhereInput> | null
   }
 
-  export type UserInGuildOrderByWithRelationInput = {
-    id?: SortOrder
-    usuario_id?: SortOrder
+  export type GuildMemberOrderByWithRelationInput = {
     guild_id?: SortOrder
+    usuario_id?: SortOrder
+    partida_id?: SortOrderInput | SortOrder
+    created_at?: SortOrder
     usuario?: UsuarioOrderByWithRelationInput
     guild?: GuildOrderByWithRelationInput
-    _relevance?: UserInGuildOrderByRelevanceInput
+    partida?: PartidaOrderByWithRelationInput
+    _relevance?: GuildMemberOrderByRelevanceInput
   }
 
-  export type UserInGuildWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: UserInGuildWhereInput | UserInGuildWhereInput[]
-    OR?: UserInGuildWhereInput[]
-    NOT?: UserInGuildWhereInput | UserInGuildWhereInput[]
-    usuario_id?: StringFilter<"UserInGuild"> | string
-    guild_id?: StringFilter<"UserInGuild"> | string
+  export type GuildMemberWhereUniqueInput = Prisma.AtLeast<{
+    usuario_id_guild_id?: GuildMemberUsuario_idGuild_idCompoundUniqueInput
+    AND?: GuildMemberWhereInput | GuildMemberWhereInput[]
+    OR?: GuildMemberWhereInput[]
+    NOT?: GuildMemberWhereInput | GuildMemberWhereInput[]
+    guild_id?: StringFilter<"GuildMember"> | string
+    usuario_id?: StringFilter<"GuildMember"> | string
+    partida_id?: IntNullableFilter<"GuildMember"> | number | null
+    created_at?: DateTimeFilter<"GuildMember"> | Date | string
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
-  }, "id">
+    partida?: XOR<PartidaNullableScalarRelationFilter, PartidaWhereInput> | null
+  }, "usuario_id_guild_id">
 
-  export type UserInGuildOrderByWithAggregationInput = {
-    id?: SortOrder
-    usuario_id?: SortOrder
+  export type GuildMemberOrderByWithAggregationInput = {
     guild_id?: SortOrder
-    _count?: UserInGuildCountOrderByAggregateInput
-    _avg?: UserInGuildAvgOrderByAggregateInput
-    _max?: UserInGuildMaxOrderByAggregateInput
-    _min?: UserInGuildMinOrderByAggregateInput
-    _sum?: UserInGuildSumOrderByAggregateInput
+    usuario_id?: SortOrder
+    partida_id?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    _count?: GuildMemberCountOrderByAggregateInput
+    _avg?: GuildMemberAvgOrderByAggregateInput
+    _max?: GuildMemberMaxOrderByAggregateInput
+    _min?: GuildMemberMinOrderByAggregateInput
+    _sum?: GuildMemberSumOrderByAggregateInput
   }
 
-  export type UserInGuildScalarWhereWithAggregatesInput = {
-    AND?: UserInGuildScalarWhereWithAggregatesInput | UserInGuildScalarWhereWithAggregatesInput[]
-    OR?: UserInGuildScalarWhereWithAggregatesInput[]
-    NOT?: UserInGuildScalarWhereWithAggregatesInput | UserInGuildScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"UserInGuild"> | number
-    usuario_id?: StringWithAggregatesFilter<"UserInGuild"> | string
-    guild_id?: StringWithAggregatesFilter<"UserInGuild"> | string
+  export type GuildMemberScalarWhereWithAggregatesInput = {
+    AND?: GuildMemberScalarWhereWithAggregatesInput | GuildMemberScalarWhereWithAggregatesInput[]
+    OR?: GuildMemberScalarWhereWithAggregatesInput[]
+    NOT?: GuildMemberScalarWhereWithAggregatesInput | GuildMemberScalarWhereWithAggregatesInput[]
+    guild_id?: StringWithAggregatesFilter<"GuildMember"> | string
+    usuario_id?: StringWithAggregatesFilter<"GuildMember"> | string
+    partida_id?: IntNullableWithAggregatesFilter<"GuildMember"> | number | null
+    created_at?: DateTimeWithAggregatesFilter<"GuildMember"> | Date | string
   }
 
   export type JuegosWhereInput = {
@@ -7505,14 +6407,14 @@ export namespace Prisma {
     id?: IntFilter<"Juegos"> | number
     nombre?: StringFilter<"Juegos"> | string
     veces_jugado?: IntFilter<"Juegos"> | number
-    partidas?: PartidasListRelationFilter
+    partidas?: PartidaListRelationFilter
   }
 
   export type JuegosOrderByWithRelationInput = {
     id?: SortOrder
     nombre?: SortOrder
     veces_jugado?: SortOrder
-    partidas?: PartidasOrderByRelationAggregateInput
+    partidas?: PartidaOrderByRelationAggregateInput
     _relevance?: JuegosOrderByRelevanceInput
   }
 
@@ -7523,7 +6425,7 @@ export namespace Prisma {
     NOT?: JuegosWhereInput | JuegosWhereInput[]
     nombre?: StringFilter<"Juegos"> | string
     veces_jugado?: IntFilter<"Juegos"> | number
-    partidas?: PartidasListRelationFilter
+    partidas?: PartidaListRelationFilter
   }, "id">
 
   export type JuegosOrderByWithAggregationInput = {
@@ -7546,21 +6448,21 @@ export namespace Prisma {
     veces_jugado?: IntWithAggregatesFilter<"Juegos"> | number
   }
 
-  export type PartidasWhereInput = {
-    AND?: PartidasWhereInput | PartidasWhereInput[]
-    OR?: PartidasWhereInput[]
-    NOT?: PartidasWhereInput | PartidasWhereInput[]
-    id?: IntFilter<"Partidas"> | number
-    guild_id?: StringFilter<"Partidas"> | string
-    juego_id?: IntFilter<"Partidas"> | number
-    estado_partida?: StringFilter<"Partidas"> | string
-    created_at?: DateTimeFilter<"Partidas"> | Date | string
+  export type PartidaWhereInput = {
+    AND?: PartidaWhereInput | PartidaWhereInput[]
+    OR?: PartidaWhereInput[]
+    NOT?: PartidaWhereInput | PartidaWhereInput[]
+    id?: IntFilter<"Partida"> | number
+    guild_id?: StringFilter<"Partida"> | string
+    juego_id?: IntFilter<"Partida"> | number
+    estado_partida?: StringFilter<"Partida"> | string
+    created_at?: DateTimeFilter<"Partida"> | Date | string
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
     juego?: XOR<JuegosScalarRelationFilter, JuegosWhereInput>
-    jugadores?: JugadoresEnPartidaListRelationFilter
+    miembros?: GuildMemberListRelationFilter
   }
 
-  export type PartidasOrderByWithRelationInput = {
+  export type PartidaOrderByWithRelationInput = {
     id?: SortOrder
     guild_id?: SortOrder
     juego_id?: SortOrder
@@ -7568,121 +6470,69 @@ export namespace Prisma {
     created_at?: SortOrder
     guild?: GuildOrderByWithRelationInput
     juego?: JuegosOrderByWithRelationInput
-    jugadores?: JugadoresEnPartidaOrderByRelationAggregateInput
-    _relevance?: PartidasOrderByRelevanceInput
+    miembros?: GuildMemberOrderByRelationAggregateInput
+    _relevance?: PartidaOrderByRelevanceInput
   }
 
-  export type PartidasWhereUniqueInput = Prisma.AtLeast<{
+  export type PartidaWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: PartidasWhereInput | PartidasWhereInput[]
-    OR?: PartidasWhereInput[]
-    NOT?: PartidasWhereInput | PartidasWhereInput[]
-    guild_id?: StringFilter<"Partidas"> | string
-    juego_id?: IntFilter<"Partidas"> | number
-    estado_partida?: StringFilter<"Partidas"> | string
-    created_at?: DateTimeFilter<"Partidas"> | Date | string
+    AND?: PartidaWhereInput | PartidaWhereInput[]
+    OR?: PartidaWhereInput[]
+    NOT?: PartidaWhereInput | PartidaWhereInput[]
+    guild_id?: StringFilter<"Partida"> | string
+    juego_id?: IntFilter<"Partida"> | number
+    estado_partida?: StringFilter<"Partida"> | string
+    created_at?: DateTimeFilter<"Partida"> | Date | string
     guild?: XOR<GuildScalarRelationFilter, GuildWhereInput>
     juego?: XOR<JuegosScalarRelationFilter, JuegosWhereInput>
-    jugadores?: JugadoresEnPartidaListRelationFilter
+    miembros?: GuildMemberListRelationFilter
   }, "id">
 
-  export type PartidasOrderByWithAggregationInput = {
+  export type PartidaOrderByWithAggregationInput = {
     id?: SortOrder
     guild_id?: SortOrder
     juego_id?: SortOrder
     estado_partida?: SortOrder
     created_at?: SortOrder
-    _count?: PartidasCountOrderByAggregateInput
-    _avg?: PartidasAvgOrderByAggregateInput
-    _max?: PartidasMaxOrderByAggregateInput
-    _min?: PartidasMinOrderByAggregateInput
-    _sum?: PartidasSumOrderByAggregateInput
+    _count?: PartidaCountOrderByAggregateInput
+    _avg?: PartidaAvgOrderByAggregateInput
+    _max?: PartidaMaxOrderByAggregateInput
+    _min?: PartidaMinOrderByAggregateInput
+    _sum?: PartidaSumOrderByAggregateInput
   }
 
-  export type PartidasScalarWhereWithAggregatesInput = {
-    AND?: PartidasScalarWhereWithAggregatesInput | PartidasScalarWhereWithAggregatesInput[]
-    OR?: PartidasScalarWhereWithAggregatesInput[]
-    NOT?: PartidasScalarWhereWithAggregatesInput | PartidasScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Partidas"> | number
-    guild_id?: StringWithAggregatesFilter<"Partidas"> | string
-    juego_id?: IntWithAggregatesFilter<"Partidas"> | number
-    estado_partida?: StringWithAggregatesFilter<"Partidas"> | string
-    created_at?: DateTimeWithAggregatesFilter<"Partidas"> | Date | string
-  }
-
-  export type JugadoresEnPartidaWhereInput = {
-    AND?: JugadoresEnPartidaWhereInput | JugadoresEnPartidaWhereInput[]
-    OR?: JugadoresEnPartidaWhereInput[]
-    NOT?: JugadoresEnPartidaWhereInput | JugadoresEnPartidaWhereInput[]
-    id?: IntFilter<"JugadoresEnPartida"> | number
-    partida_id?: IntFilter<"JugadoresEnPartida"> | number
-    user_id?: StringFilter<"JugadoresEnPartida"> | string
-    partida?: XOR<PartidasScalarRelationFilter, PartidasWhereInput>
-  }
-
-  export type JugadoresEnPartidaOrderByWithRelationInput = {
-    id?: SortOrder
-    partida_id?: SortOrder
-    user_id?: SortOrder
-    partida?: PartidasOrderByWithRelationInput
-    _relevance?: JugadoresEnPartidaOrderByRelevanceInput
-  }
-
-  export type JugadoresEnPartidaWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    partida_id_user_id?: JugadoresEnPartidaPartida_idUser_idCompoundUniqueInput
-    AND?: JugadoresEnPartidaWhereInput | JugadoresEnPartidaWhereInput[]
-    OR?: JugadoresEnPartidaWhereInput[]
-    NOT?: JugadoresEnPartidaWhereInput | JugadoresEnPartidaWhereInput[]
-    partida_id?: IntFilter<"JugadoresEnPartida"> | number
-    user_id?: StringFilter<"JugadoresEnPartida"> | string
-    partida?: XOR<PartidasScalarRelationFilter, PartidasWhereInput>
-  }, "id" | "partida_id_user_id">
-
-  export type JugadoresEnPartidaOrderByWithAggregationInput = {
-    id?: SortOrder
-    partida_id?: SortOrder
-    user_id?: SortOrder
-    _count?: JugadoresEnPartidaCountOrderByAggregateInput
-    _avg?: JugadoresEnPartidaAvgOrderByAggregateInput
-    _max?: JugadoresEnPartidaMaxOrderByAggregateInput
-    _min?: JugadoresEnPartidaMinOrderByAggregateInput
-    _sum?: JugadoresEnPartidaSumOrderByAggregateInput
-  }
-
-  export type JugadoresEnPartidaScalarWhereWithAggregatesInput = {
-    AND?: JugadoresEnPartidaScalarWhereWithAggregatesInput | JugadoresEnPartidaScalarWhereWithAggregatesInput[]
-    OR?: JugadoresEnPartidaScalarWhereWithAggregatesInput[]
-    NOT?: JugadoresEnPartidaScalarWhereWithAggregatesInput | JugadoresEnPartidaScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"JugadoresEnPartida"> | number
-    partida_id?: IntWithAggregatesFilter<"JugadoresEnPartida"> | number
-    user_id?: StringWithAggregatesFilter<"JugadoresEnPartida"> | string
+  export type PartidaScalarWhereWithAggregatesInput = {
+    AND?: PartidaScalarWhereWithAggregatesInput | PartidaScalarWhereWithAggregatesInput[]
+    OR?: PartidaScalarWhereWithAggregatesInput[]
+    NOT?: PartidaScalarWhereWithAggregatesInput | PartidaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Partida"> | number
+    guild_id?: StringWithAggregatesFilter<"Partida"> | string
+    juego_id?: IntWithAggregatesFilter<"Partida"> | number
+    estado_partida?: StringWithAggregatesFilter<"Partida"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Partida"> | Date | string
   }
 
   export type UsuarioCreateInput = {
     discord_id: string
-    guilds?: UserInGuildCreateNestedManyWithoutUsuarioInput
+    guilds?: GuildMemberCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateInput = {
-    id?: number
     discord_id: string
-    guilds?: UserInGuildUncheckedCreateNestedManyWithoutUsuarioInput
+    guilds?: GuildMemberUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUpdateInput = {
     discord_id?: StringFieldUpdateOperationsInput | string
-    guilds?: UserInGuildUpdateManyWithoutUsuarioNestedInput
+    guilds?: GuildMemberUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     discord_id?: StringFieldUpdateOperationsInput | string
-    guilds?: UserInGuildUncheckedUpdateManyWithoutUsuarioNestedInput
+    guilds?: GuildMemberUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioCreateManyInput = {
-    id?: number
     discord_id: string
   }
 
@@ -7691,38 +6541,34 @@ export namespace Prisma {
   }
 
   export type UsuarioUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     discord_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type GuildCreateInput = {
     discord_id: string
-    partidas?: PartidasCreateNestedManyWithoutGuildInput
-    usuarios_en_guild?: UserInGuildCreateNestedManyWithoutGuildInput
+    partidas?: PartidaCreateNestedManyWithoutGuildInput
+    miembros?: GuildMemberCreateNestedManyWithoutGuildInput
   }
 
   export type GuildUncheckedCreateInput = {
-    id?: number
     discord_id: string
-    partidas?: PartidasUncheckedCreateNestedManyWithoutGuildInput
-    usuarios_en_guild?: UserInGuildUncheckedCreateNestedManyWithoutGuildInput
+    partidas?: PartidaUncheckedCreateNestedManyWithoutGuildInput
+    miembros?: GuildMemberUncheckedCreateNestedManyWithoutGuildInput
   }
 
   export type GuildUpdateInput = {
     discord_id?: StringFieldUpdateOperationsInput | string
-    partidas?: PartidasUpdateManyWithoutGuildNestedInput
-    usuarios_en_guild?: UserInGuildUpdateManyWithoutGuildNestedInput
+    partidas?: PartidaUpdateManyWithoutGuildNestedInput
+    miembros?: GuildMemberUpdateManyWithoutGuildNestedInput
   }
 
   export type GuildUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     discord_id?: StringFieldUpdateOperationsInput | string
-    partidas?: PartidasUncheckedUpdateManyWithoutGuildNestedInput
-    usuarios_en_guild?: UserInGuildUncheckedUpdateManyWithoutGuildNestedInput
+    partidas?: PartidaUncheckedUpdateManyWithoutGuildNestedInput
+    miembros?: GuildMemberUncheckedUpdateManyWithoutGuildNestedInput
   }
 
   export type GuildCreateManyInput = {
-    id?: number
     discord_id: string
   }
 
@@ -7731,72 +6577,79 @@ export namespace Prisma {
   }
 
   export type GuildUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     discord_id?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserInGuildCreateInput = {
+  export type GuildMemberCreateInput = {
+    created_at?: Date | string
     usuario: UsuarioCreateNestedOneWithoutGuildsInput
-    guild: GuildCreateNestedOneWithoutUsuarios_en_guildInput
+    guild: GuildCreateNestedOneWithoutMiembrosInput
+    partida?: PartidaCreateNestedOneWithoutMiembrosInput
   }
 
-  export type UserInGuildUncheckedCreateInput = {
-    id?: number
-    usuario_id: string
+  export type GuildMemberUncheckedCreateInput = {
     guild_id: string
+    usuario_id: string
+    partida_id?: number | null
+    created_at?: Date | string
   }
 
-  export type UserInGuildUpdateInput = {
+  export type GuildMemberUpdateInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     usuario?: UsuarioUpdateOneRequiredWithoutGuildsNestedInput
-    guild?: GuildUpdateOneRequiredWithoutUsuarios_en_guildNestedInput
+    guild?: GuildUpdateOneRequiredWithoutMiembrosNestedInput
+    partida?: PartidaUpdateOneWithoutMiembrosNestedInput
   }
 
-  export type UserInGuildUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    usuario_id?: StringFieldUpdateOperationsInput | string
+  export type GuildMemberUncheckedUpdateInput = {
     guild_id?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    partida_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserInGuildCreateManyInput = {
-    id?: number
-    usuario_id: string
+  export type GuildMemberCreateManyInput = {
     guild_id: string
+    usuario_id: string
+    partida_id?: number | null
+    created_at?: Date | string
   }
 
-  export type UserInGuildUpdateManyMutationInput = {
-
+  export type GuildMemberUpdateManyMutationInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserInGuildUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    usuario_id?: StringFieldUpdateOperationsInput | string
+  export type GuildMemberUncheckedUpdateManyInput = {
     guild_id?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    partida_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JuegosCreateInput = {
     nombre: string
     veces_jugado?: number
-    partidas?: PartidasCreateNestedManyWithoutJuegoInput
+    partidas?: PartidaCreateNestedManyWithoutJuegoInput
   }
 
   export type JuegosUncheckedCreateInput = {
     id?: number
     nombre: string
     veces_jugado?: number
-    partidas?: PartidasUncheckedCreateNestedManyWithoutJuegoInput
+    partidas?: PartidaUncheckedCreateNestedManyWithoutJuegoInput
   }
 
   export type JuegosUpdateInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     veces_jugado?: IntFieldUpdateOperationsInput | number
-    partidas?: PartidasUpdateManyWithoutJuegoNestedInput
+    partidas?: PartidaUpdateManyWithoutJuegoNestedInput
   }
 
   export type JuegosUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     veces_jugado?: IntFieldUpdateOperationsInput | number
-    partidas?: PartidasUncheckedUpdateManyWithoutJuegoNestedInput
+    partidas?: PartidaUncheckedUpdateManyWithoutJuegoNestedInput
   }
 
   export type JuegosCreateManyInput = {
@@ -7816,41 +6669,41 @@ export namespace Prisma {
     veces_jugado?: IntFieldUpdateOperationsInput | number
   }
 
-  export type PartidasCreateInput = {
+  export type PartidaCreateInput = {
     estado_partida?: string
     created_at?: Date | string
     guild: GuildCreateNestedOneWithoutPartidasInput
     juego: JuegosCreateNestedOneWithoutPartidasInput
-    jugadores?: JugadoresEnPartidaCreateNestedManyWithoutPartidaInput
+    miembros?: GuildMemberCreateNestedManyWithoutPartidaInput
   }
 
-  export type PartidasUncheckedCreateInput = {
+  export type PartidaUncheckedCreateInput = {
     id?: number
     guild_id: string
     juego_id: number
     estado_partida?: string
     created_at?: Date | string
-    jugadores?: JugadoresEnPartidaUncheckedCreateNestedManyWithoutPartidaInput
+    miembros?: GuildMemberUncheckedCreateNestedManyWithoutPartidaInput
   }
 
-  export type PartidasUpdateInput = {
+  export type PartidaUpdateInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     guild?: GuildUpdateOneRequiredWithoutPartidasNestedInput
     juego?: JuegosUpdateOneRequiredWithoutPartidasNestedInput
-    jugadores?: JugadoresEnPartidaUpdateManyWithoutPartidaNestedInput
+    miembros?: GuildMemberUpdateManyWithoutPartidaNestedInput
   }
 
-  export type PartidasUncheckedUpdateInput = {
+  export type PartidaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     guild_id?: StringFieldUpdateOperationsInput | string
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    jugadores?: JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaNestedInput
+    miembros?: GuildMemberUncheckedUpdateManyWithoutPartidaNestedInput
   }
 
-  export type PartidasCreateManyInput = {
+  export type PartidaCreateManyInput = {
     id?: number
     guild_id: string
     juego_id: number
@@ -7858,66 +6711,17 @@ export namespace Prisma {
     created_at?: Date | string
   }
 
-  export type PartidasUpdateManyMutationInput = {
+  export type PartidaUpdateManyMutationInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PartidasUncheckedUpdateManyInput = {
+  export type PartidaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     guild_id?: StringFieldUpdateOperationsInput | string
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type JugadoresEnPartidaCreateInput = {
-    user_id: string
-    partida: PartidasCreateNestedOneWithoutJugadoresInput
-  }
-
-  export type JugadoresEnPartidaUncheckedCreateInput = {
-    id?: number
-    partida_id: number
-    user_id: string
-  }
-
-  export type JugadoresEnPartidaUpdateInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
-    partida?: PartidasUpdateOneRequiredWithoutJugadoresNestedInput
-  }
-
-  export type JugadoresEnPartidaUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    partida_id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type JugadoresEnPartidaCreateManyInput = {
-    id?: number
-    partida_id: number
-    user_id: string
-  }
-
-  export type JugadoresEnPartidaUpdateManyMutationInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type JugadoresEnPartidaUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    partida_id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7935,13 +6739,13 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type UserInGuildListRelationFilter = {
-    every?: UserInGuildWhereInput
-    some?: UserInGuildWhereInput
-    none?: UserInGuildWhereInput
+  export type GuildMemberListRelationFilter = {
+    every?: GuildMemberWhereInput
+    some?: GuildMemberWhereInput
+    none?: GuildMemberWhereInput
   }
 
-  export type UserInGuildOrderByRelationAggregateInput = {
+  export type GuildMemberOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7952,42 +6756,15 @@ export namespace Prisma {
   }
 
   export type UsuarioCountOrderByAggregateInput = {
-    id?: SortOrder
     discord_id?: SortOrder
   }
 
-  export type UsuarioAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type UsuarioMaxOrderByAggregateInput = {
-    id?: SortOrder
     discord_id?: SortOrder
   }
 
   export type UsuarioMinOrderByAggregateInput = {
-    id?: SortOrder
     discord_id?: SortOrder
-  }
-
-  export type UsuarioSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -8008,13 +6785,13 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type PartidasListRelationFilter = {
-    every?: PartidasWhereInput
-    some?: PartidasWhereInput
-    none?: PartidasWhereInput
+  export type PartidaListRelationFilter = {
+    every?: PartidaWhereInput
+    some?: PartidaWhereInput
+    none?: PartidaWhereInput
   }
 
-  export type PartidasOrderByRelationAggregateInput = {
+  export type PartidaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8025,26 +6802,37 @@ export namespace Prisma {
   }
 
   export type GuildCountOrderByAggregateInput = {
-    id?: SortOrder
     discord_id?: SortOrder
   }
 
-  export type GuildAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type GuildMaxOrderByAggregateInput = {
-    id?: SortOrder
     discord_id?: SortOrder
   }
 
   export type GuildMinOrderByAggregateInput = {
-    id?: SortOrder
     discord_id?: SortOrder
   }
 
-  export type GuildSumOrderByAggregateInput = {
-    id?: SortOrder
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type UsuarioScalarRelationFilter = {
@@ -8057,36 +6845,95 @@ export namespace Prisma {
     isNot?: GuildWhereInput
   }
 
-  export type UserInGuildOrderByRelevanceInput = {
-    fields: UserInGuildOrderByRelevanceFieldEnum | UserInGuildOrderByRelevanceFieldEnum[]
+  export type PartidaNullableScalarRelationFilter = {
+    is?: PartidaWhereInput | null
+    isNot?: PartidaWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type GuildMemberOrderByRelevanceInput = {
+    fields: GuildMemberOrderByRelevanceFieldEnum | GuildMemberOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type UserInGuildCountOrderByAggregateInput = {
-    id?: SortOrder
-    usuario_id?: SortOrder
+  export type GuildMemberUsuario_idGuild_idCompoundUniqueInput = {
+    usuario_id: string
+    guild_id: string
+  }
+
+  export type GuildMemberCountOrderByAggregateInput = {
     guild_id?: SortOrder
-  }
-
-  export type UserInGuildAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type UserInGuildMaxOrderByAggregateInput = {
-    id?: SortOrder
     usuario_id?: SortOrder
-    guild_id?: SortOrder
+    partida_id?: SortOrder
+    created_at?: SortOrder
   }
 
-  export type UserInGuildMinOrderByAggregateInput = {
-    id?: SortOrder
+  export type GuildMemberAvgOrderByAggregateInput = {
+    partida_id?: SortOrder
+  }
+
+  export type GuildMemberMaxOrderByAggregateInput = {
+    guild_id?: SortOrder
     usuario_id?: SortOrder
-    guild_id?: SortOrder
+    partida_id?: SortOrder
+    created_at?: SortOrder
   }
 
-  export type UserInGuildSumOrderByAggregateInput = {
-    id?: SortOrder
+  export type GuildMemberMinOrderByAggregateInput = {
+    guild_id?: SortOrder
+    usuario_id?: SortOrder
+    partida_id?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type GuildMemberSumOrderByAggregateInput = {
+    partida_id?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type JuegosOrderByRelevanceInput = {
@@ -8123,15 +6970,20 @@ export namespace Prisma {
     veces_jugado?: SortOrder
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type JuegosScalarRelationFilter = {
@@ -8139,23 +6991,13 @@ export namespace Prisma {
     isNot?: JuegosWhereInput
   }
 
-  export type JugadoresEnPartidaListRelationFilter = {
-    every?: JugadoresEnPartidaWhereInput
-    some?: JugadoresEnPartidaWhereInput
-    none?: JugadoresEnPartidaWhereInput
-  }
-
-  export type JugadoresEnPartidaOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PartidasOrderByRelevanceInput = {
-    fields: PartidasOrderByRelevanceFieldEnum | PartidasOrderByRelevanceFieldEnum[]
+  export type PartidaOrderByRelevanceInput = {
+    fields: PartidaOrderByRelevanceFieldEnum | PartidaOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type PartidasCountOrderByAggregateInput = {
+  export type PartidaCountOrderByAggregateInput = {
     id?: SortOrder
     guild_id?: SortOrder
     juego_id?: SortOrder
@@ -8163,12 +7005,12 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type PartidasAvgOrderByAggregateInput = {
+  export type PartidaAvgOrderByAggregateInput = {
     id?: SortOrder
     juego_id?: SortOrder
   }
 
-  export type PartidasMaxOrderByAggregateInput = {
+  export type PartidaMaxOrderByAggregateInput = {
     id?: SortOrder
     guild_id?: SortOrder
     juego_id?: SortOrder
@@ -8176,7 +7018,7 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type PartidasMinOrderByAggregateInput = {
+  export type PartidaMinOrderByAggregateInput = {
     id?: SortOrder
     guild_id?: SortOrder
     juego_id?: SortOrder
@@ -8184,205 +7026,139 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type PartidasSumOrderByAggregateInput = {
+  export type PartidaSumOrderByAggregateInput = {
     id?: SortOrder
     juego_id?: SortOrder
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+  export type GuildMemberCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<GuildMemberCreateWithoutUsuarioInput, GuildMemberUncheckedCreateWithoutUsuarioInput> | GuildMemberCreateWithoutUsuarioInput[] | GuildMemberUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutUsuarioInput | GuildMemberCreateOrConnectWithoutUsuarioInput[]
+    createMany?: GuildMemberCreateManyUsuarioInputEnvelope
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
   }
 
-  export type PartidasScalarRelationFilter = {
-    is?: PartidasWhereInput
-    isNot?: PartidasWhereInput
-  }
-
-  export type JugadoresEnPartidaOrderByRelevanceInput = {
-    fields: JugadoresEnPartidaOrderByRelevanceFieldEnum | JugadoresEnPartidaOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type JugadoresEnPartidaPartida_idUser_idCompoundUniqueInput = {
-    partida_id: number
-    user_id: string
-  }
-
-  export type JugadoresEnPartidaCountOrderByAggregateInput = {
-    id?: SortOrder
-    partida_id?: SortOrder
-    user_id?: SortOrder
-  }
-
-  export type JugadoresEnPartidaAvgOrderByAggregateInput = {
-    id?: SortOrder
-    partida_id?: SortOrder
-  }
-
-  export type JugadoresEnPartidaMaxOrderByAggregateInput = {
-    id?: SortOrder
-    partida_id?: SortOrder
-    user_id?: SortOrder
-  }
-
-  export type JugadoresEnPartidaMinOrderByAggregateInput = {
-    id?: SortOrder
-    partida_id?: SortOrder
-    user_id?: SortOrder
-  }
-
-  export type JugadoresEnPartidaSumOrderByAggregateInput = {
-    id?: SortOrder
-    partida_id?: SortOrder
-  }
-
-  export type UserInGuildCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<UserInGuildCreateWithoutUsuarioInput, UserInGuildUncheckedCreateWithoutUsuarioInput> | UserInGuildCreateWithoutUsuarioInput[] | UserInGuildUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutUsuarioInput | UserInGuildCreateOrConnectWithoutUsuarioInput[]
-    createMany?: UserInGuildCreateManyUsuarioInputEnvelope
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-  }
-
-  export type UserInGuildUncheckedCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<UserInGuildCreateWithoutUsuarioInput, UserInGuildUncheckedCreateWithoutUsuarioInput> | UserInGuildCreateWithoutUsuarioInput[] | UserInGuildUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutUsuarioInput | UserInGuildCreateOrConnectWithoutUsuarioInput[]
-    createMany?: UserInGuildCreateManyUsuarioInputEnvelope
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
+  export type GuildMemberUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<GuildMemberCreateWithoutUsuarioInput, GuildMemberUncheckedCreateWithoutUsuarioInput> | GuildMemberCreateWithoutUsuarioInput[] | GuildMemberUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutUsuarioInput | GuildMemberCreateOrConnectWithoutUsuarioInput[]
+    createMany?: GuildMemberCreateManyUsuarioInputEnvelope
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type UserInGuildUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<UserInGuildCreateWithoutUsuarioInput, UserInGuildUncheckedCreateWithoutUsuarioInput> | UserInGuildCreateWithoutUsuarioInput[] | UserInGuildUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutUsuarioInput | UserInGuildCreateOrConnectWithoutUsuarioInput[]
-    upsert?: UserInGuildUpsertWithWhereUniqueWithoutUsuarioInput | UserInGuildUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: UserInGuildCreateManyUsuarioInputEnvelope
-    set?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    disconnect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    delete?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    update?: UserInGuildUpdateWithWhereUniqueWithoutUsuarioInput | UserInGuildUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: UserInGuildUpdateManyWithWhereWithoutUsuarioInput | UserInGuildUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: UserInGuildScalarWhereInput | UserInGuildScalarWhereInput[]
+  export type GuildMemberUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<GuildMemberCreateWithoutUsuarioInput, GuildMemberUncheckedCreateWithoutUsuarioInput> | GuildMemberCreateWithoutUsuarioInput[] | GuildMemberUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutUsuarioInput | GuildMemberCreateOrConnectWithoutUsuarioInput[]
+    upsert?: GuildMemberUpsertWithWhereUniqueWithoutUsuarioInput | GuildMemberUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: GuildMemberCreateManyUsuarioInputEnvelope
+    set?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    disconnect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    delete?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    update?: GuildMemberUpdateWithWhereUniqueWithoutUsuarioInput | GuildMemberUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: GuildMemberUpdateManyWithWhereWithoutUsuarioInput | GuildMemberUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type GuildMemberUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<GuildMemberCreateWithoutUsuarioInput, GuildMemberUncheckedCreateWithoutUsuarioInput> | GuildMemberCreateWithoutUsuarioInput[] | GuildMemberUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutUsuarioInput | GuildMemberCreateOrConnectWithoutUsuarioInput[]
+    upsert?: GuildMemberUpsertWithWhereUniqueWithoutUsuarioInput | GuildMemberUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: GuildMemberCreateManyUsuarioInputEnvelope
+    set?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    disconnect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    delete?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    update?: GuildMemberUpdateWithWhereUniqueWithoutUsuarioInput | GuildMemberUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: GuildMemberUpdateManyWithWhereWithoutUsuarioInput | GuildMemberUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
   }
 
-  export type UserInGuildUncheckedUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<UserInGuildCreateWithoutUsuarioInput, UserInGuildUncheckedCreateWithoutUsuarioInput> | UserInGuildCreateWithoutUsuarioInput[] | UserInGuildUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutUsuarioInput | UserInGuildCreateOrConnectWithoutUsuarioInput[]
-    upsert?: UserInGuildUpsertWithWhereUniqueWithoutUsuarioInput | UserInGuildUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: UserInGuildCreateManyUsuarioInputEnvelope
-    set?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    disconnect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    delete?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    update?: UserInGuildUpdateWithWhereUniqueWithoutUsuarioInput | UserInGuildUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: UserInGuildUpdateManyWithWhereWithoutUsuarioInput | UserInGuildUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: UserInGuildScalarWhereInput | UserInGuildScalarWhereInput[]
+  export type PartidaCreateNestedManyWithoutGuildInput = {
+    create?: XOR<PartidaCreateWithoutGuildInput, PartidaUncheckedCreateWithoutGuildInput> | PartidaCreateWithoutGuildInput[] | PartidaUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutGuildInput | PartidaCreateOrConnectWithoutGuildInput[]
+    createMany?: PartidaCreateManyGuildInputEnvelope
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
   }
 
-  export type PartidasCreateNestedManyWithoutGuildInput = {
-    create?: XOR<PartidasCreateWithoutGuildInput, PartidasUncheckedCreateWithoutGuildInput> | PartidasCreateWithoutGuildInput[] | PartidasUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutGuildInput | PartidasCreateOrConnectWithoutGuildInput[]
-    createMany?: PartidasCreateManyGuildInputEnvelope
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
+  export type GuildMemberCreateNestedManyWithoutGuildInput = {
+    create?: XOR<GuildMemberCreateWithoutGuildInput, GuildMemberUncheckedCreateWithoutGuildInput> | GuildMemberCreateWithoutGuildInput[] | GuildMemberUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutGuildInput | GuildMemberCreateOrConnectWithoutGuildInput[]
+    createMany?: GuildMemberCreateManyGuildInputEnvelope
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
   }
 
-  export type UserInGuildCreateNestedManyWithoutGuildInput = {
-    create?: XOR<UserInGuildCreateWithoutGuildInput, UserInGuildUncheckedCreateWithoutGuildInput> | UserInGuildCreateWithoutGuildInput[] | UserInGuildUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutGuildInput | UserInGuildCreateOrConnectWithoutGuildInput[]
-    createMany?: UserInGuildCreateManyGuildInputEnvelope
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
+  export type PartidaUncheckedCreateNestedManyWithoutGuildInput = {
+    create?: XOR<PartidaCreateWithoutGuildInput, PartidaUncheckedCreateWithoutGuildInput> | PartidaCreateWithoutGuildInput[] | PartidaUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutGuildInput | PartidaCreateOrConnectWithoutGuildInput[]
+    createMany?: PartidaCreateManyGuildInputEnvelope
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
   }
 
-  export type PartidasUncheckedCreateNestedManyWithoutGuildInput = {
-    create?: XOR<PartidasCreateWithoutGuildInput, PartidasUncheckedCreateWithoutGuildInput> | PartidasCreateWithoutGuildInput[] | PartidasUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutGuildInput | PartidasCreateOrConnectWithoutGuildInput[]
-    createMany?: PartidasCreateManyGuildInputEnvelope
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
+  export type GuildMemberUncheckedCreateNestedManyWithoutGuildInput = {
+    create?: XOR<GuildMemberCreateWithoutGuildInput, GuildMemberUncheckedCreateWithoutGuildInput> | GuildMemberCreateWithoutGuildInput[] | GuildMemberUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutGuildInput | GuildMemberCreateOrConnectWithoutGuildInput[]
+    createMany?: GuildMemberCreateManyGuildInputEnvelope
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
   }
 
-  export type UserInGuildUncheckedCreateNestedManyWithoutGuildInput = {
-    create?: XOR<UserInGuildCreateWithoutGuildInput, UserInGuildUncheckedCreateWithoutGuildInput> | UserInGuildCreateWithoutGuildInput[] | UserInGuildUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutGuildInput | UserInGuildCreateOrConnectWithoutGuildInput[]
-    createMany?: UserInGuildCreateManyGuildInputEnvelope
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
+  export type PartidaUpdateManyWithoutGuildNestedInput = {
+    create?: XOR<PartidaCreateWithoutGuildInput, PartidaUncheckedCreateWithoutGuildInput> | PartidaCreateWithoutGuildInput[] | PartidaUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutGuildInput | PartidaCreateOrConnectWithoutGuildInput[]
+    upsert?: PartidaUpsertWithWhereUniqueWithoutGuildInput | PartidaUpsertWithWhereUniqueWithoutGuildInput[]
+    createMany?: PartidaCreateManyGuildInputEnvelope
+    set?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    disconnect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    delete?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    update?: PartidaUpdateWithWhereUniqueWithoutGuildInput | PartidaUpdateWithWhereUniqueWithoutGuildInput[]
+    updateMany?: PartidaUpdateManyWithWhereWithoutGuildInput | PartidaUpdateManyWithWhereWithoutGuildInput[]
+    deleteMany?: PartidaScalarWhereInput | PartidaScalarWhereInput[]
   }
 
-  export type PartidasUpdateManyWithoutGuildNestedInput = {
-    create?: XOR<PartidasCreateWithoutGuildInput, PartidasUncheckedCreateWithoutGuildInput> | PartidasCreateWithoutGuildInput[] | PartidasUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutGuildInput | PartidasCreateOrConnectWithoutGuildInput[]
-    upsert?: PartidasUpsertWithWhereUniqueWithoutGuildInput | PartidasUpsertWithWhereUniqueWithoutGuildInput[]
-    createMany?: PartidasCreateManyGuildInputEnvelope
-    set?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    disconnect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    delete?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    update?: PartidasUpdateWithWhereUniqueWithoutGuildInput | PartidasUpdateWithWhereUniqueWithoutGuildInput[]
-    updateMany?: PartidasUpdateManyWithWhereWithoutGuildInput | PartidasUpdateManyWithWhereWithoutGuildInput[]
-    deleteMany?: PartidasScalarWhereInput | PartidasScalarWhereInput[]
+  export type GuildMemberUpdateManyWithoutGuildNestedInput = {
+    create?: XOR<GuildMemberCreateWithoutGuildInput, GuildMemberUncheckedCreateWithoutGuildInput> | GuildMemberCreateWithoutGuildInput[] | GuildMemberUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutGuildInput | GuildMemberCreateOrConnectWithoutGuildInput[]
+    upsert?: GuildMemberUpsertWithWhereUniqueWithoutGuildInput | GuildMemberUpsertWithWhereUniqueWithoutGuildInput[]
+    createMany?: GuildMemberCreateManyGuildInputEnvelope
+    set?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    disconnect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    delete?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    update?: GuildMemberUpdateWithWhereUniqueWithoutGuildInput | GuildMemberUpdateWithWhereUniqueWithoutGuildInput[]
+    updateMany?: GuildMemberUpdateManyWithWhereWithoutGuildInput | GuildMemberUpdateManyWithWhereWithoutGuildInput[]
+    deleteMany?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
   }
 
-  export type UserInGuildUpdateManyWithoutGuildNestedInput = {
-    create?: XOR<UserInGuildCreateWithoutGuildInput, UserInGuildUncheckedCreateWithoutGuildInput> | UserInGuildCreateWithoutGuildInput[] | UserInGuildUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutGuildInput | UserInGuildCreateOrConnectWithoutGuildInput[]
-    upsert?: UserInGuildUpsertWithWhereUniqueWithoutGuildInput | UserInGuildUpsertWithWhereUniqueWithoutGuildInput[]
-    createMany?: UserInGuildCreateManyGuildInputEnvelope
-    set?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    disconnect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    delete?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    update?: UserInGuildUpdateWithWhereUniqueWithoutGuildInput | UserInGuildUpdateWithWhereUniqueWithoutGuildInput[]
-    updateMany?: UserInGuildUpdateManyWithWhereWithoutGuildInput | UserInGuildUpdateManyWithWhereWithoutGuildInput[]
-    deleteMany?: UserInGuildScalarWhereInput | UserInGuildScalarWhereInput[]
+  export type PartidaUncheckedUpdateManyWithoutGuildNestedInput = {
+    create?: XOR<PartidaCreateWithoutGuildInput, PartidaUncheckedCreateWithoutGuildInput> | PartidaCreateWithoutGuildInput[] | PartidaUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutGuildInput | PartidaCreateOrConnectWithoutGuildInput[]
+    upsert?: PartidaUpsertWithWhereUniqueWithoutGuildInput | PartidaUpsertWithWhereUniqueWithoutGuildInput[]
+    createMany?: PartidaCreateManyGuildInputEnvelope
+    set?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    disconnect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    delete?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    update?: PartidaUpdateWithWhereUniqueWithoutGuildInput | PartidaUpdateWithWhereUniqueWithoutGuildInput[]
+    updateMany?: PartidaUpdateManyWithWhereWithoutGuildInput | PartidaUpdateManyWithWhereWithoutGuildInput[]
+    deleteMany?: PartidaScalarWhereInput | PartidaScalarWhereInput[]
   }
 
-  export type PartidasUncheckedUpdateManyWithoutGuildNestedInput = {
-    create?: XOR<PartidasCreateWithoutGuildInput, PartidasUncheckedCreateWithoutGuildInput> | PartidasCreateWithoutGuildInput[] | PartidasUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutGuildInput | PartidasCreateOrConnectWithoutGuildInput[]
-    upsert?: PartidasUpsertWithWhereUniqueWithoutGuildInput | PartidasUpsertWithWhereUniqueWithoutGuildInput[]
-    createMany?: PartidasCreateManyGuildInputEnvelope
-    set?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    disconnect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    delete?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    update?: PartidasUpdateWithWhereUniqueWithoutGuildInput | PartidasUpdateWithWhereUniqueWithoutGuildInput[]
-    updateMany?: PartidasUpdateManyWithWhereWithoutGuildInput | PartidasUpdateManyWithWhereWithoutGuildInput[]
-    deleteMany?: PartidasScalarWhereInput | PartidasScalarWhereInput[]
-  }
-
-  export type UserInGuildUncheckedUpdateManyWithoutGuildNestedInput = {
-    create?: XOR<UserInGuildCreateWithoutGuildInput, UserInGuildUncheckedCreateWithoutGuildInput> | UserInGuildCreateWithoutGuildInput[] | UserInGuildUncheckedCreateWithoutGuildInput[]
-    connectOrCreate?: UserInGuildCreateOrConnectWithoutGuildInput | UserInGuildCreateOrConnectWithoutGuildInput[]
-    upsert?: UserInGuildUpsertWithWhereUniqueWithoutGuildInput | UserInGuildUpsertWithWhereUniqueWithoutGuildInput[]
-    createMany?: UserInGuildCreateManyGuildInputEnvelope
-    set?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    disconnect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    delete?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    connect?: UserInGuildWhereUniqueInput | UserInGuildWhereUniqueInput[]
-    update?: UserInGuildUpdateWithWhereUniqueWithoutGuildInput | UserInGuildUpdateWithWhereUniqueWithoutGuildInput[]
-    updateMany?: UserInGuildUpdateManyWithWhereWithoutGuildInput | UserInGuildUpdateManyWithWhereWithoutGuildInput[]
-    deleteMany?: UserInGuildScalarWhereInput | UserInGuildScalarWhereInput[]
+  export type GuildMemberUncheckedUpdateManyWithoutGuildNestedInput = {
+    create?: XOR<GuildMemberCreateWithoutGuildInput, GuildMemberUncheckedCreateWithoutGuildInput> | GuildMemberCreateWithoutGuildInput[] | GuildMemberUncheckedCreateWithoutGuildInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutGuildInput | GuildMemberCreateOrConnectWithoutGuildInput[]
+    upsert?: GuildMemberUpsertWithWhereUniqueWithoutGuildInput | GuildMemberUpsertWithWhereUniqueWithoutGuildInput[]
+    createMany?: GuildMemberCreateManyGuildInputEnvelope
+    set?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    disconnect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    delete?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    update?: GuildMemberUpdateWithWhereUniqueWithoutGuildInput | GuildMemberUpdateWithWhereUniqueWithoutGuildInput[]
+    updateMany?: GuildMemberUpdateManyWithWhereWithoutGuildInput | GuildMemberUpdateManyWithWhereWithoutGuildInput[]
+    deleteMany?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
   }
 
   export type UsuarioCreateNestedOneWithoutGuildsInput = {
@@ -8391,10 +7167,20 @@ export namespace Prisma {
     connect?: UsuarioWhereUniqueInput
   }
 
-  export type GuildCreateNestedOneWithoutUsuarios_en_guildInput = {
-    create?: XOR<GuildCreateWithoutUsuarios_en_guildInput, GuildUncheckedCreateWithoutUsuarios_en_guildInput>
-    connectOrCreate?: GuildCreateOrConnectWithoutUsuarios_en_guildInput
+  export type GuildCreateNestedOneWithoutMiembrosInput = {
+    create?: XOR<GuildCreateWithoutMiembrosInput, GuildUncheckedCreateWithoutMiembrosInput>
+    connectOrCreate?: GuildCreateOrConnectWithoutMiembrosInput
     connect?: GuildWhereUniqueInput
+  }
+
+  export type PartidaCreateNestedOneWithoutMiembrosInput = {
+    create?: XOR<PartidaCreateWithoutMiembrosInput, PartidaUncheckedCreateWithoutMiembrosInput>
+    connectOrCreate?: PartidaCreateOrConnectWithoutMiembrosInput
+    connect?: PartidaWhereUniqueInput
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type UsuarioUpdateOneRequiredWithoutGuildsNestedInput = {
@@ -8405,54 +7191,80 @@ export namespace Prisma {
     update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutGuildsInput, UsuarioUpdateWithoutGuildsInput>, UsuarioUncheckedUpdateWithoutGuildsInput>
   }
 
-  export type GuildUpdateOneRequiredWithoutUsuarios_en_guildNestedInput = {
-    create?: XOR<GuildCreateWithoutUsuarios_en_guildInput, GuildUncheckedCreateWithoutUsuarios_en_guildInput>
-    connectOrCreate?: GuildCreateOrConnectWithoutUsuarios_en_guildInput
-    upsert?: GuildUpsertWithoutUsuarios_en_guildInput
+  export type GuildUpdateOneRequiredWithoutMiembrosNestedInput = {
+    create?: XOR<GuildCreateWithoutMiembrosInput, GuildUncheckedCreateWithoutMiembrosInput>
+    connectOrCreate?: GuildCreateOrConnectWithoutMiembrosInput
+    upsert?: GuildUpsertWithoutMiembrosInput
     connect?: GuildWhereUniqueInput
-    update?: XOR<XOR<GuildUpdateToOneWithWhereWithoutUsuarios_en_guildInput, GuildUpdateWithoutUsuarios_en_guildInput>, GuildUncheckedUpdateWithoutUsuarios_en_guildInput>
+    update?: XOR<XOR<GuildUpdateToOneWithWhereWithoutMiembrosInput, GuildUpdateWithoutMiembrosInput>, GuildUncheckedUpdateWithoutMiembrosInput>
   }
 
-  export type PartidasCreateNestedManyWithoutJuegoInput = {
-    create?: XOR<PartidasCreateWithoutJuegoInput, PartidasUncheckedCreateWithoutJuegoInput> | PartidasCreateWithoutJuegoInput[] | PartidasUncheckedCreateWithoutJuegoInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutJuegoInput | PartidasCreateOrConnectWithoutJuegoInput[]
-    createMany?: PartidasCreateManyJuegoInputEnvelope
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
+  export type PartidaUpdateOneWithoutMiembrosNestedInput = {
+    create?: XOR<PartidaCreateWithoutMiembrosInput, PartidaUncheckedCreateWithoutMiembrosInput>
+    connectOrCreate?: PartidaCreateOrConnectWithoutMiembrosInput
+    upsert?: PartidaUpsertWithoutMiembrosInput
+    disconnect?: PartidaWhereInput | boolean
+    delete?: PartidaWhereInput | boolean
+    connect?: PartidaWhereUniqueInput
+    update?: XOR<XOR<PartidaUpdateToOneWithWhereWithoutMiembrosInput, PartidaUpdateWithoutMiembrosInput>, PartidaUncheckedUpdateWithoutMiembrosInput>
   }
 
-  export type PartidasUncheckedCreateNestedManyWithoutJuegoInput = {
-    create?: XOR<PartidasCreateWithoutJuegoInput, PartidasUncheckedCreateWithoutJuegoInput> | PartidasCreateWithoutJuegoInput[] | PartidasUncheckedCreateWithoutJuegoInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutJuegoInput | PartidasCreateOrConnectWithoutJuegoInput[]
-    createMany?: PartidasCreateManyJuegoInputEnvelope
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
-  export type PartidasUpdateManyWithoutJuegoNestedInput = {
-    create?: XOR<PartidasCreateWithoutJuegoInput, PartidasUncheckedCreateWithoutJuegoInput> | PartidasCreateWithoutJuegoInput[] | PartidasUncheckedCreateWithoutJuegoInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutJuegoInput | PartidasCreateOrConnectWithoutJuegoInput[]
-    upsert?: PartidasUpsertWithWhereUniqueWithoutJuegoInput | PartidasUpsertWithWhereUniqueWithoutJuegoInput[]
-    createMany?: PartidasCreateManyJuegoInputEnvelope
-    set?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    disconnect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    delete?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    update?: PartidasUpdateWithWhereUniqueWithoutJuegoInput | PartidasUpdateWithWhereUniqueWithoutJuegoInput[]
-    updateMany?: PartidasUpdateManyWithWhereWithoutJuegoInput | PartidasUpdateManyWithWhereWithoutJuegoInput[]
-    deleteMany?: PartidasScalarWhereInput | PartidasScalarWhereInput[]
+  export type PartidaCreateNestedManyWithoutJuegoInput = {
+    create?: XOR<PartidaCreateWithoutJuegoInput, PartidaUncheckedCreateWithoutJuegoInput> | PartidaCreateWithoutJuegoInput[] | PartidaUncheckedCreateWithoutJuegoInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutJuegoInput | PartidaCreateOrConnectWithoutJuegoInput[]
+    createMany?: PartidaCreateManyJuegoInputEnvelope
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
   }
 
-  export type PartidasUncheckedUpdateManyWithoutJuegoNestedInput = {
-    create?: XOR<PartidasCreateWithoutJuegoInput, PartidasUncheckedCreateWithoutJuegoInput> | PartidasCreateWithoutJuegoInput[] | PartidasUncheckedCreateWithoutJuegoInput[]
-    connectOrCreate?: PartidasCreateOrConnectWithoutJuegoInput | PartidasCreateOrConnectWithoutJuegoInput[]
-    upsert?: PartidasUpsertWithWhereUniqueWithoutJuegoInput | PartidasUpsertWithWhereUniqueWithoutJuegoInput[]
-    createMany?: PartidasCreateManyJuegoInputEnvelope
-    set?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    disconnect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    delete?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    connect?: PartidasWhereUniqueInput | PartidasWhereUniqueInput[]
-    update?: PartidasUpdateWithWhereUniqueWithoutJuegoInput | PartidasUpdateWithWhereUniqueWithoutJuegoInput[]
-    updateMany?: PartidasUpdateManyWithWhereWithoutJuegoInput | PartidasUpdateManyWithWhereWithoutJuegoInput[]
-    deleteMany?: PartidasScalarWhereInput | PartidasScalarWhereInput[]
+  export type PartidaUncheckedCreateNestedManyWithoutJuegoInput = {
+    create?: XOR<PartidaCreateWithoutJuegoInput, PartidaUncheckedCreateWithoutJuegoInput> | PartidaCreateWithoutJuegoInput[] | PartidaUncheckedCreateWithoutJuegoInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutJuegoInput | PartidaCreateOrConnectWithoutJuegoInput[]
+    createMany?: PartidaCreateManyJuegoInputEnvelope
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type PartidaUpdateManyWithoutJuegoNestedInput = {
+    create?: XOR<PartidaCreateWithoutJuegoInput, PartidaUncheckedCreateWithoutJuegoInput> | PartidaCreateWithoutJuegoInput[] | PartidaUncheckedCreateWithoutJuegoInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutJuegoInput | PartidaCreateOrConnectWithoutJuegoInput[]
+    upsert?: PartidaUpsertWithWhereUniqueWithoutJuegoInput | PartidaUpsertWithWhereUniqueWithoutJuegoInput[]
+    createMany?: PartidaCreateManyJuegoInputEnvelope
+    set?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    disconnect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    delete?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    update?: PartidaUpdateWithWhereUniqueWithoutJuegoInput | PartidaUpdateWithWhereUniqueWithoutJuegoInput[]
+    updateMany?: PartidaUpdateManyWithWhereWithoutJuegoInput | PartidaUpdateManyWithWhereWithoutJuegoInput[]
+    deleteMany?: PartidaScalarWhereInput | PartidaScalarWhereInput[]
+  }
+
+  export type PartidaUncheckedUpdateManyWithoutJuegoNestedInput = {
+    create?: XOR<PartidaCreateWithoutJuegoInput, PartidaUncheckedCreateWithoutJuegoInput> | PartidaCreateWithoutJuegoInput[] | PartidaUncheckedCreateWithoutJuegoInput[]
+    connectOrCreate?: PartidaCreateOrConnectWithoutJuegoInput | PartidaCreateOrConnectWithoutJuegoInput[]
+    upsert?: PartidaUpsertWithWhereUniqueWithoutJuegoInput | PartidaUpsertWithWhereUniqueWithoutJuegoInput[]
+    createMany?: PartidaCreateManyJuegoInputEnvelope
+    set?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    disconnect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    delete?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    connect?: PartidaWhereUniqueInput | PartidaWhereUniqueInput[]
+    update?: PartidaUpdateWithWhereUniqueWithoutJuegoInput | PartidaUpdateWithWhereUniqueWithoutJuegoInput[]
+    updateMany?: PartidaUpdateManyWithWhereWithoutJuegoInput | PartidaUpdateManyWithWhereWithoutJuegoInput[]
+    deleteMany?: PartidaScalarWhereInput | PartidaScalarWhereInput[]
   }
 
   export type GuildCreateNestedOneWithoutPartidasInput = {
@@ -8467,22 +7279,18 @@ export namespace Prisma {
     connect?: JuegosWhereUniqueInput
   }
 
-  export type JugadoresEnPartidaCreateNestedManyWithoutPartidaInput = {
-    create?: XOR<JugadoresEnPartidaCreateWithoutPartidaInput, JugadoresEnPartidaUncheckedCreateWithoutPartidaInput> | JugadoresEnPartidaCreateWithoutPartidaInput[] | JugadoresEnPartidaUncheckedCreateWithoutPartidaInput[]
-    connectOrCreate?: JugadoresEnPartidaCreateOrConnectWithoutPartidaInput | JugadoresEnPartidaCreateOrConnectWithoutPartidaInput[]
-    createMany?: JugadoresEnPartidaCreateManyPartidaInputEnvelope
-    connect?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
+  export type GuildMemberCreateNestedManyWithoutPartidaInput = {
+    create?: XOR<GuildMemberCreateWithoutPartidaInput, GuildMemberUncheckedCreateWithoutPartidaInput> | GuildMemberCreateWithoutPartidaInput[] | GuildMemberUncheckedCreateWithoutPartidaInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutPartidaInput | GuildMemberCreateOrConnectWithoutPartidaInput[]
+    createMany?: GuildMemberCreateManyPartidaInputEnvelope
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
   }
 
-  export type JugadoresEnPartidaUncheckedCreateNestedManyWithoutPartidaInput = {
-    create?: XOR<JugadoresEnPartidaCreateWithoutPartidaInput, JugadoresEnPartidaUncheckedCreateWithoutPartidaInput> | JugadoresEnPartidaCreateWithoutPartidaInput[] | JugadoresEnPartidaUncheckedCreateWithoutPartidaInput[]
-    connectOrCreate?: JugadoresEnPartidaCreateOrConnectWithoutPartidaInput | JugadoresEnPartidaCreateOrConnectWithoutPartidaInput[]
-    createMany?: JugadoresEnPartidaCreateManyPartidaInputEnvelope
-    connect?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type GuildMemberUncheckedCreateNestedManyWithoutPartidaInput = {
+    create?: XOR<GuildMemberCreateWithoutPartidaInput, GuildMemberUncheckedCreateWithoutPartidaInput> | GuildMemberCreateWithoutPartidaInput[] | GuildMemberUncheckedCreateWithoutPartidaInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutPartidaInput | GuildMemberCreateOrConnectWithoutPartidaInput[]
+    createMany?: GuildMemberCreateManyPartidaInputEnvelope
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
   }
 
   export type GuildUpdateOneRequiredWithoutPartidasNestedInput = {
@@ -8501,57 +7309,32 @@ export namespace Prisma {
     update?: XOR<XOR<JuegosUpdateToOneWithWhereWithoutPartidasInput, JuegosUpdateWithoutPartidasInput>, JuegosUncheckedUpdateWithoutPartidasInput>
   }
 
-  export type JugadoresEnPartidaUpdateManyWithoutPartidaNestedInput = {
-    create?: XOR<JugadoresEnPartidaCreateWithoutPartidaInput, JugadoresEnPartidaUncheckedCreateWithoutPartidaInput> | JugadoresEnPartidaCreateWithoutPartidaInput[] | JugadoresEnPartidaUncheckedCreateWithoutPartidaInput[]
-    connectOrCreate?: JugadoresEnPartidaCreateOrConnectWithoutPartidaInput | JugadoresEnPartidaCreateOrConnectWithoutPartidaInput[]
-    upsert?: JugadoresEnPartidaUpsertWithWhereUniqueWithoutPartidaInput | JugadoresEnPartidaUpsertWithWhereUniqueWithoutPartidaInput[]
-    createMany?: JugadoresEnPartidaCreateManyPartidaInputEnvelope
-    set?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    disconnect?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    delete?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    connect?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    update?: JugadoresEnPartidaUpdateWithWhereUniqueWithoutPartidaInput | JugadoresEnPartidaUpdateWithWhereUniqueWithoutPartidaInput[]
-    updateMany?: JugadoresEnPartidaUpdateManyWithWhereWithoutPartidaInput | JugadoresEnPartidaUpdateManyWithWhereWithoutPartidaInput[]
-    deleteMany?: JugadoresEnPartidaScalarWhereInput | JugadoresEnPartidaScalarWhereInput[]
+  export type GuildMemberUpdateManyWithoutPartidaNestedInput = {
+    create?: XOR<GuildMemberCreateWithoutPartidaInput, GuildMemberUncheckedCreateWithoutPartidaInput> | GuildMemberCreateWithoutPartidaInput[] | GuildMemberUncheckedCreateWithoutPartidaInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutPartidaInput | GuildMemberCreateOrConnectWithoutPartidaInput[]
+    upsert?: GuildMemberUpsertWithWhereUniqueWithoutPartidaInput | GuildMemberUpsertWithWhereUniqueWithoutPartidaInput[]
+    createMany?: GuildMemberCreateManyPartidaInputEnvelope
+    set?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    disconnect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    delete?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    update?: GuildMemberUpdateWithWhereUniqueWithoutPartidaInput | GuildMemberUpdateWithWhereUniqueWithoutPartidaInput[]
+    updateMany?: GuildMemberUpdateManyWithWhereWithoutPartidaInput | GuildMemberUpdateManyWithWhereWithoutPartidaInput[]
+    deleteMany?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
   }
 
-  export type JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaNestedInput = {
-    create?: XOR<JugadoresEnPartidaCreateWithoutPartidaInput, JugadoresEnPartidaUncheckedCreateWithoutPartidaInput> | JugadoresEnPartidaCreateWithoutPartidaInput[] | JugadoresEnPartidaUncheckedCreateWithoutPartidaInput[]
-    connectOrCreate?: JugadoresEnPartidaCreateOrConnectWithoutPartidaInput | JugadoresEnPartidaCreateOrConnectWithoutPartidaInput[]
-    upsert?: JugadoresEnPartidaUpsertWithWhereUniqueWithoutPartidaInput | JugadoresEnPartidaUpsertWithWhereUniqueWithoutPartidaInput[]
-    createMany?: JugadoresEnPartidaCreateManyPartidaInputEnvelope
-    set?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    disconnect?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    delete?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    connect?: JugadoresEnPartidaWhereUniqueInput | JugadoresEnPartidaWhereUniqueInput[]
-    update?: JugadoresEnPartidaUpdateWithWhereUniqueWithoutPartidaInput | JugadoresEnPartidaUpdateWithWhereUniqueWithoutPartidaInput[]
-    updateMany?: JugadoresEnPartidaUpdateManyWithWhereWithoutPartidaInput | JugadoresEnPartidaUpdateManyWithWhereWithoutPartidaInput[]
-    deleteMany?: JugadoresEnPartidaScalarWhereInput | JugadoresEnPartidaScalarWhereInput[]
-  }
-
-  export type PartidasCreateNestedOneWithoutJugadoresInput = {
-    create?: XOR<PartidasCreateWithoutJugadoresInput, PartidasUncheckedCreateWithoutJugadoresInput>
-    connectOrCreate?: PartidasCreateOrConnectWithoutJugadoresInput
-    connect?: PartidasWhereUniqueInput
-  }
-
-  export type PartidasUpdateOneRequiredWithoutJugadoresNestedInput = {
-    create?: XOR<PartidasCreateWithoutJugadoresInput, PartidasUncheckedCreateWithoutJugadoresInput>
-    connectOrCreate?: PartidasCreateOrConnectWithoutJugadoresInput
-    upsert?: PartidasUpsertWithoutJugadoresInput
-    connect?: PartidasWhereUniqueInput
-    update?: XOR<XOR<PartidasUpdateToOneWithWhereWithoutJugadoresInput, PartidasUpdateWithoutJugadoresInput>, PartidasUncheckedUpdateWithoutJugadoresInput>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type GuildMemberUncheckedUpdateManyWithoutPartidaNestedInput = {
+    create?: XOR<GuildMemberCreateWithoutPartidaInput, GuildMemberUncheckedCreateWithoutPartidaInput> | GuildMemberCreateWithoutPartidaInput[] | GuildMemberUncheckedCreateWithoutPartidaInput[]
+    connectOrCreate?: GuildMemberCreateOrConnectWithoutPartidaInput | GuildMemberCreateOrConnectWithoutPartidaInput[]
+    upsert?: GuildMemberUpsertWithWhereUniqueWithoutPartidaInput | GuildMemberUpsertWithWhereUniqueWithoutPartidaInput[]
+    createMany?: GuildMemberCreateManyPartidaInputEnvelope
+    set?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    disconnect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    delete?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    connect?: GuildMemberWhereUniqueInput | GuildMemberWhereUniqueInput[]
+    update?: GuildMemberUpdateWithWhereUniqueWithoutPartidaInput | GuildMemberUpdateWithWhereUniqueWithoutPartidaInput[]
+    updateMany?: GuildMemberUpdateManyWithWhereWithoutPartidaInput | GuildMemberUpdateManyWithWhereWithoutPartidaInput[]
+    deleteMany?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8567,6 +7350,98 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -8596,178 +7471,142 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+  export type GuildMemberCreateWithoutUsuarioInput = {
+    created_at?: Date | string
+    guild: GuildCreateNestedOneWithoutMiembrosInput
+    partida?: PartidaCreateNestedOneWithoutMiembrosInput
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type UserInGuildCreateWithoutUsuarioInput = {
-    guild: GuildCreateNestedOneWithoutUsuarios_en_guildInput
-  }
-
-  export type UserInGuildUncheckedCreateWithoutUsuarioInput = {
-    id?: number
+  export type GuildMemberUncheckedCreateWithoutUsuarioInput = {
     guild_id: string
+    partida_id?: number | null
+    created_at?: Date | string
   }
 
-  export type UserInGuildCreateOrConnectWithoutUsuarioInput = {
-    where: UserInGuildWhereUniqueInput
-    create: XOR<UserInGuildCreateWithoutUsuarioInput, UserInGuildUncheckedCreateWithoutUsuarioInput>
+  export type GuildMemberCreateOrConnectWithoutUsuarioInput = {
+    where: GuildMemberWhereUniqueInput
+    create: XOR<GuildMemberCreateWithoutUsuarioInput, GuildMemberUncheckedCreateWithoutUsuarioInput>
   }
 
-  export type UserInGuildCreateManyUsuarioInputEnvelope = {
-    data: UserInGuildCreateManyUsuarioInput | UserInGuildCreateManyUsuarioInput[]
+  export type GuildMemberCreateManyUsuarioInputEnvelope = {
+    data: GuildMemberCreateManyUsuarioInput | GuildMemberCreateManyUsuarioInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserInGuildUpsertWithWhereUniqueWithoutUsuarioInput = {
-    where: UserInGuildWhereUniqueInput
-    update: XOR<UserInGuildUpdateWithoutUsuarioInput, UserInGuildUncheckedUpdateWithoutUsuarioInput>
-    create: XOR<UserInGuildCreateWithoutUsuarioInput, UserInGuildUncheckedCreateWithoutUsuarioInput>
+  export type GuildMemberUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: GuildMemberWhereUniqueInput
+    update: XOR<GuildMemberUpdateWithoutUsuarioInput, GuildMemberUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<GuildMemberCreateWithoutUsuarioInput, GuildMemberUncheckedCreateWithoutUsuarioInput>
   }
 
-  export type UserInGuildUpdateWithWhereUniqueWithoutUsuarioInput = {
-    where: UserInGuildWhereUniqueInput
-    data: XOR<UserInGuildUpdateWithoutUsuarioInput, UserInGuildUncheckedUpdateWithoutUsuarioInput>
+  export type GuildMemberUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: GuildMemberWhereUniqueInput
+    data: XOR<GuildMemberUpdateWithoutUsuarioInput, GuildMemberUncheckedUpdateWithoutUsuarioInput>
   }
 
-  export type UserInGuildUpdateManyWithWhereWithoutUsuarioInput = {
-    where: UserInGuildScalarWhereInput
-    data: XOR<UserInGuildUpdateManyMutationInput, UserInGuildUncheckedUpdateManyWithoutUsuarioInput>
+  export type GuildMemberUpdateManyWithWhereWithoutUsuarioInput = {
+    where: GuildMemberScalarWhereInput
+    data: XOR<GuildMemberUpdateManyMutationInput, GuildMemberUncheckedUpdateManyWithoutUsuarioInput>
   }
 
-  export type UserInGuildScalarWhereInput = {
-    AND?: UserInGuildScalarWhereInput | UserInGuildScalarWhereInput[]
-    OR?: UserInGuildScalarWhereInput[]
-    NOT?: UserInGuildScalarWhereInput | UserInGuildScalarWhereInput[]
-    id?: IntFilter<"UserInGuild"> | number
-    usuario_id?: StringFilter<"UserInGuild"> | string
-    guild_id?: StringFilter<"UserInGuild"> | string
+  export type GuildMemberScalarWhereInput = {
+    AND?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
+    OR?: GuildMemberScalarWhereInput[]
+    NOT?: GuildMemberScalarWhereInput | GuildMemberScalarWhereInput[]
+    guild_id?: StringFilter<"GuildMember"> | string
+    usuario_id?: StringFilter<"GuildMember"> | string
+    partida_id?: IntNullableFilter<"GuildMember"> | number | null
+    created_at?: DateTimeFilter<"GuildMember"> | Date | string
   }
 
-  export type PartidasCreateWithoutGuildInput = {
+  export type PartidaCreateWithoutGuildInput = {
     estado_partida?: string
     created_at?: Date | string
     juego: JuegosCreateNestedOneWithoutPartidasInput
-    jugadores?: JugadoresEnPartidaCreateNestedManyWithoutPartidaInput
+    miembros?: GuildMemberCreateNestedManyWithoutPartidaInput
   }
 
-  export type PartidasUncheckedCreateWithoutGuildInput = {
+  export type PartidaUncheckedCreateWithoutGuildInput = {
     id?: number
     juego_id: number
     estado_partida?: string
     created_at?: Date | string
-    jugadores?: JugadoresEnPartidaUncheckedCreateNestedManyWithoutPartidaInput
+    miembros?: GuildMemberUncheckedCreateNestedManyWithoutPartidaInput
   }
 
-  export type PartidasCreateOrConnectWithoutGuildInput = {
-    where: PartidasWhereUniqueInput
-    create: XOR<PartidasCreateWithoutGuildInput, PartidasUncheckedCreateWithoutGuildInput>
+  export type PartidaCreateOrConnectWithoutGuildInput = {
+    where: PartidaWhereUniqueInput
+    create: XOR<PartidaCreateWithoutGuildInput, PartidaUncheckedCreateWithoutGuildInput>
   }
 
-  export type PartidasCreateManyGuildInputEnvelope = {
-    data: PartidasCreateManyGuildInput | PartidasCreateManyGuildInput[]
+  export type PartidaCreateManyGuildInputEnvelope = {
+    data: PartidaCreateManyGuildInput | PartidaCreateManyGuildInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserInGuildCreateWithoutGuildInput = {
+  export type GuildMemberCreateWithoutGuildInput = {
+    created_at?: Date | string
     usuario: UsuarioCreateNestedOneWithoutGuildsInput
+    partida?: PartidaCreateNestedOneWithoutMiembrosInput
   }
 
-  export type UserInGuildUncheckedCreateWithoutGuildInput = {
-    id?: number
+  export type GuildMemberUncheckedCreateWithoutGuildInput = {
     usuario_id: string
+    partida_id?: number | null
+    created_at?: Date | string
   }
 
-  export type UserInGuildCreateOrConnectWithoutGuildInput = {
-    where: UserInGuildWhereUniqueInput
-    create: XOR<UserInGuildCreateWithoutGuildInput, UserInGuildUncheckedCreateWithoutGuildInput>
+  export type GuildMemberCreateOrConnectWithoutGuildInput = {
+    where: GuildMemberWhereUniqueInput
+    create: XOR<GuildMemberCreateWithoutGuildInput, GuildMemberUncheckedCreateWithoutGuildInput>
   }
 
-  export type UserInGuildCreateManyGuildInputEnvelope = {
-    data: UserInGuildCreateManyGuildInput | UserInGuildCreateManyGuildInput[]
+  export type GuildMemberCreateManyGuildInputEnvelope = {
+    data: GuildMemberCreateManyGuildInput | GuildMemberCreateManyGuildInput[]
     skipDuplicates?: boolean
   }
 
-  export type PartidasUpsertWithWhereUniqueWithoutGuildInput = {
-    where: PartidasWhereUniqueInput
-    update: XOR<PartidasUpdateWithoutGuildInput, PartidasUncheckedUpdateWithoutGuildInput>
-    create: XOR<PartidasCreateWithoutGuildInput, PartidasUncheckedCreateWithoutGuildInput>
+  export type PartidaUpsertWithWhereUniqueWithoutGuildInput = {
+    where: PartidaWhereUniqueInput
+    update: XOR<PartidaUpdateWithoutGuildInput, PartidaUncheckedUpdateWithoutGuildInput>
+    create: XOR<PartidaCreateWithoutGuildInput, PartidaUncheckedCreateWithoutGuildInput>
   }
 
-  export type PartidasUpdateWithWhereUniqueWithoutGuildInput = {
-    where: PartidasWhereUniqueInput
-    data: XOR<PartidasUpdateWithoutGuildInput, PartidasUncheckedUpdateWithoutGuildInput>
+  export type PartidaUpdateWithWhereUniqueWithoutGuildInput = {
+    where: PartidaWhereUniqueInput
+    data: XOR<PartidaUpdateWithoutGuildInput, PartidaUncheckedUpdateWithoutGuildInput>
   }
 
-  export type PartidasUpdateManyWithWhereWithoutGuildInput = {
-    where: PartidasScalarWhereInput
-    data: XOR<PartidasUpdateManyMutationInput, PartidasUncheckedUpdateManyWithoutGuildInput>
+  export type PartidaUpdateManyWithWhereWithoutGuildInput = {
+    where: PartidaScalarWhereInput
+    data: XOR<PartidaUpdateManyMutationInput, PartidaUncheckedUpdateManyWithoutGuildInput>
   }
 
-  export type PartidasScalarWhereInput = {
-    AND?: PartidasScalarWhereInput | PartidasScalarWhereInput[]
-    OR?: PartidasScalarWhereInput[]
-    NOT?: PartidasScalarWhereInput | PartidasScalarWhereInput[]
-    id?: IntFilter<"Partidas"> | number
-    guild_id?: StringFilter<"Partidas"> | string
-    juego_id?: IntFilter<"Partidas"> | number
-    estado_partida?: StringFilter<"Partidas"> | string
-    created_at?: DateTimeFilter<"Partidas"> | Date | string
+  export type PartidaScalarWhereInput = {
+    AND?: PartidaScalarWhereInput | PartidaScalarWhereInput[]
+    OR?: PartidaScalarWhereInput[]
+    NOT?: PartidaScalarWhereInput | PartidaScalarWhereInput[]
+    id?: IntFilter<"Partida"> | number
+    guild_id?: StringFilter<"Partida"> | string
+    juego_id?: IntFilter<"Partida"> | number
+    estado_partida?: StringFilter<"Partida"> | string
+    created_at?: DateTimeFilter<"Partida"> | Date | string
   }
 
-  export type UserInGuildUpsertWithWhereUniqueWithoutGuildInput = {
-    where: UserInGuildWhereUniqueInput
-    update: XOR<UserInGuildUpdateWithoutGuildInput, UserInGuildUncheckedUpdateWithoutGuildInput>
-    create: XOR<UserInGuildCreateWithoutGuildInput, UserInGuildUncheckedCreateWithoutGuildInput>
+  export type GuildMemberUpsertWithWhereUniqueWithoutGuildInput = {
+    where: GuildMemberWhereUniqueInput
+    update: XOR<GuildMemberUpdateWithoutGuildInput, GuildMemberUncheckedUpdateWithoutGuildInput>
+    create: XOR<GuildMemberCreateWithoutGuildInput, GuildMemberUncheckedCreateWithoutGuildInput>
   }
 
-  export type UserInGuildUpdateWithWhereUniqueWithoutGuildInput = {
-    where: UserInGuildWhereUniqueInput
-    data: XOR<UserInGuildUpdateWithoutGuildInput, UserInGuildUncheckedUpdateWithoutGuildInput>
+  export type GuildMemberUpdateWithWhereUniqueWithoutGuildInput = {
+    where: GuildMemberWhereUniqueInput
+    data: XOR<GuildMemberUpdateWithoutGuildInput, GuildMemberUncheckedUpdateWithoutGuildInput>
   }
 
-  export type UserInGuildUpdateManyWithWhereWithoutGuildInput = {
-    where: UserInGuildScalarWhereInput
-    data: XOR<UserInGuildUpdateManyMutationInput, UserInGuildUncheckedUpdateManyWithoutGuildInput>
+  export type GuildMemberUpdateManyWithWhereWithoutGuildInput = {
+    where: GuildMemberScalarWhereInput
+    data: XOR<GuildMemberUpdateManyMutationInput, GuildMemberUncheckedUpdateManyWithoutGuildInput>
   }
 
   export type UsuarioCreateWithoutGuildsInput = {
@@ -8775,7 +7614,6 @@ export namespace Prisma {
   }
 
   export type UsuarioUncheckedCreateWithoutGuildsInput = {
-    id?: number
     discord_id: string
   }
 
@@ -8784,20 +7622,39 @@ export namespace Prisma {
     create: XOR<UsuarioCreateWithoutGuildsInput, UsuarioUncheckedCreateWithoutGuildsInput>
   }
 
-  export type GuildCreateWithoutUsuarios_en_guildInput = {
+  export type GuildCreateWithoutMiembrosInput = {
     discord_id: string
-    partidas?: PartidasCreateNestedManyWithoutGuildInput
+    partidas?: PartidaCreateNestedManyWithoutGuildInput
   }
 
-  export type GuildUncheckedCreateWithoutUsuarios_en_guildInput = {
-    id?: number
+  export type GuildUncheckedCreateWithoutMiembrosInput = {
     discord_id: string
-    partidas?: PartidasUncheckedCreateNestedManyWithoutGuildInput
+    partidas?: PartidaUncheckedCreateNestedManyWithoutGuildInput
   }
 
-  export type GuildCreateOrConnectWithoutUsuarios_en_guildInput = {
+  export type GuildCreateOrConnectWithoutMiembrosInput = {
     where: GuildWhereUniqueInput
-    create: XOR<GuildCreateWithoutUsuarios_en_guildInput, GuildUncheckedCreateWithoutUsuarios_en_guildInput>
+    create: XOR<GuildCreateWithoutMiembrosInput, GuildUncheckedCreateWithoutMiembrosInput>
+  }
+
+  export type PartidaCreateWithoutMiembrosInput = {
+    estado_partida?: string
+    created_at?: Date | string
+    guild: GuildCreateNestedOneWithoutPartidasInput
+    juego: JuegosCreateNestedOneWithoutPartidasInput
+  }
+
+  export type PartidaUncheckedCreateWithoutMiembrosInput = {
+    id?: number
+    guild_id: string
+    juego_id: number
+    estado_partida?: string
+    created_at?: Date | string
+  }
+
+  export type PartidaCreateOrConnectWithoutMiembrosInput = {
+    where: PartidaWhereUniqueInput
+    create: XOR<PartidaCreateWithoutMiembrosInput, PartidaUncheckedCreateWithoutMiembrosInput>
   }
 
   export type UsuarioUpsertWithoutGuildsInput = {
@@ -8816,82 +7673,105 @@ export namespace Prisma {
   }
 
   export type UsuarioUncheckedUpdateWithoutGuildsInput = {
-    id?: IntFieldUpdateOperationsInput | number
     discord_id?: StringFieldUpdateOperationsInput | string
   }
 
-  export type GuildUpsertWithoutUsuarios_en_guildInput = {
-    update: XOR<GuildUpdateWithoutUsuarios_en_guildInput, GuildUncheckedUpdateWithoutUsuarios_en_guildInput>
-    create: XOR<GuildCreateWithoutUsuarios_en_guildInput, GuildUncheckedCreateWithoutUsuarios_en_guildInput>
+  export type GuildUpsertWithoutMiembrosInput = {
+    update: XOR<GuildUpdateWithoutMiembrosInput, GuildUncheckedUpdateWithoutMiembrosInput>
+    create: XOR<GuildCreateWithoutMiembrosInput, GuildUncheckedCreateWithoutMiembrosInput>
     where?: GuildWhereInput
   }
 
-  export type GuildUpdateToOneWithWhereWithoutUsuarios_en_guildInput = {
+  export type GuildUpdateToOneWithWhereWithoutMiembrosInput = {
     where?: GuildWhereInput
-    data: XOR<GuildUpdateWithoutUsuarios_en_guildInput, GuildUncheckedUpdateWithoutUsuarios_en_guildInput>
+    data: XOR<GuildUpdateWithoutMiembrosInput, GuildUncheckedUpdateWithoutMiembrosInput>
   }
 
-  export type GuildUpdateWithoutUsuarios_en_guildInput = {
+  export type GuildUpdateWithoutMiembrosInput = {
     discord_id?: StringFieldUpdateOperationsInput | string
-    partidas?: PartidasUpdateManyWithoutGuildNestedInput
+    partidas?: PartidaUpdateManyWithoutGuildNestedInput
   }
 
-  export type GuildUncheckedUpdateWithoutUsuarios_en_guildInput = {
+  export type GuildUncheckedUpdateWithoutMiembrosInput = {
+    discord_id?: StringFieldUpdateOperationsInput | string
+    partidas?: PartidaUncheckedUpdateManyWithoutGuildNestedInput
+  }
+
+  export type PartidaUpsertWithoutMiembrosInput = {
+    update: XOR<PartidaUpdateWithoutMiembrosInput, PartidaUncheckedUpdateWithoutMiembrosInput>
+    create: XOR<PartidaCreateWithoutMiembrosInput, PartidaUncheckedCreateWithoutMiembrosInput>
+    where?: PartidaWhereInput
+  }
+
+  export type PartidaUpdateToOneWithWhereWithoutMiembrosInput = {
+    where?: PartidaWhereInput
+    data: XOR<PartidaUpdateWithoutMiembrosInput, PartidaUncheckedUpdateWithoutMiembrosInput>
+  }
+
+  export type PartidaUpdateWithoutMiembrosInput = {
+    estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guild?: GuildUpdateOneRequiredWithoutPartidasNestedInput
+    juego?: JuegosUpdateOneRequiredWithoutPartidasNestedInput
+  }
+
+  export type PartidaUncheckedUpdateWithoutMiembrosInput = {
     id?: IntFieldUpdateOperationsInput | number
-    discord_id?: StringFieldUpdateOperationsInput | string
-    partidas?: PartidasUncheckedUpdateManyWithoutGuildNestedInput
+    guild_id?: StringFieldUpdateOperationsInput | string
+    juego_id?: IntFieldUpdateOperationsInput | number
+    estado_partida?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PartidasCreateWithoutJuegoInput = {
+  export type PartidaCreateWithoutJuegoInput = {
     estado_partida?: string
     created_at?: Date | string
     guild: GuildCreateNestedOneWithoutPartidasInput
-    jugadores?: JugadoresEnPartidaCreateNestedManyWithoutPartidaInput
+    miembros?: GuildMemberCreateNestedManyWithoutPartidaInput
   }
 
-  export type PartidasUncheckedCreateWithoutJuegoInput = {
+  export type PartidaUncheckedCreateWithoutJuegoInput = {
     id?: number
     guild_id: string
     estado_partida?: string
     created_at?: Date | string
-    jugadores?: JugadoresEnPartidaUncheckedCreateNestedManyWithoutPartidaInput
+    miembros?: GuildMemberUncheckedCreateNestedManyWithoutPartidaInput
   }
 
-  export type PartidasCreateOrConnectWithoutJuegoInput = {
-    where: PartidasWhereUniqueInput
-    create: XOR<PartidasCreateWithoutJuegoInput, PartidasUncheckedCreateWithoutJuegoInput>
+  export type PartidaCreateOrConnectWithoutJuegoInput = {
+    where: PartidaWhereUniqueInput
+    create: XOR<PartidaCreateWithoutJuegoInput, PartidaUncheckedCreateWithoutJuegoInput>
   }
 
-  export type PartidasCreateManyJuegoInputEnvelope = {
-    data: PartidasCreateManyJuegoInput | PartidasCreateManyJuegoInput[]
+  export type PartidaCreateManyJuegoInputEnvelope = {
+    data: PartidaCreateManyJuegoInput | PartidaCreateManyJuegoInput[]
     skipDuplicates?: boolean
   }
 
-  export type PartidasUpsertWithWhereUniqueWithoutJuegoInput = {
-    where: PartidasWhereUniqueInput
-    update: XOR<PartidasUpdateWithoutJuegoInput, PartidasUncheckedUpdateWithoutJuegoInput>
-    create: XOR<PartidasCreateWithoutJuegoInput, PartidasUncheckedCreateWithoutJuegoInput>
+  export type PartidaUpsertWithWhereUniqueWithoutJuegoInput = {
+    where: PartidaWhereUniqueInput
+    update: XOR<PartidaUpdateWithoutJuegoInput, PartidaUncheckedUpdateWithoutJuegoInput>
+    create: XOR<PartidaCreateWithoutJuegoInput, PartidaUncheckedCreateWithoutJuegoInput>
   }
 
-  export type PartidasUpdateWithWhereUniqueWithoutJuegoInput = {
-    where: PartidasWhereUniqueInput
-    data: XOR<PartidasUpdateWithoutJuegoInput, PartidasUncheckedUpdateWithoutJuegoInput>
+  export type PartidaUpdateWithWhereUniqueWithoutJuegoInput = {
+    where: PartidaWhereUniqueInput
+    data: XOR<PartidaUpdateWithoutJuegoInput, PartidaUncheckedUpdateWithoutJuegoInput>
   }
 
-  export type PartidasUpdateManyWithWhereWithoutJuegoInput = {
-    where: PartidasScalarWhereInput
-    data: XOR<PartidasUpdateManyMutationInput, PartidasUncheckedUpdateManyWithoutJuegoInput>
+  export type PartidaUpdateManyWithWhereWithoutJuegoInput = {
+    where: PartidaScalarWhereInput
+    data: XOR<PartidaUpdateManyMutationInput, PartidaUncheckedUpdateManyWithoutJuegoInput>
   }
 
   export type GuildCreateWithoutPartidasInput = {
     discord_id: string
-    usuarios_en_guild?: UserInGuildCreateNestedManyWithoutGuildInput
+    miembros?: GuildMemberCreateNestedManyWithoutGuildInput
   }
 
   export type GuildUncheckedCreateWithoutPartidasInput = {
-    id?: number
     discord_id: string
-    usuarios_en_guild?: UserInGuildUncheckedCreateNestedManyWithoutGuildInput
+    miembros?: GuildMemberUncheckedCreateNestedManyWithoutGuildInput
   }
 
   export type GuildCreateOrConnectWithoutPartidasInput = {
@@ -8915,22 +7795,25 @@ export namespace Prisma {
     create: XOR<JuegosCreateWithoutPartidasInput, JuegosUncheckedCreateWithoutPartidasInput>
   }
 
-  export type JugadoresEnPartidaCreateWithoutPartidaInput = {
-    user_id: string
+  export type GuildMemberCreateWithoutPartidaInput = {
+    created_at?: Date | string
+    usuario: UsuarioCreateNestedOneWithoutGuildsInput
+    guild: GuildCreateNestedOneWithoutMiembrosInput
   }
 
-  export type JugadoresEnPartidaUncheckedCreateWithoutPartidaInput = {
-    id?: number
-    user_id: string
+  export type GuildMemberUncheckedCreateWithoutPartidaInput = {
+    guild_id: string
+    usuario_id: string
+    created_at?: Date | string
   }
 
-  export type JugadoresEnPartidaCreateOrConnectWithoutPartidaInput = {
-    where: JugadoresEnPartidaWhereUniqueInput
-    create: XOR<JugadoresEnPartidaCreateWithoutPartidaInput, JugadoresEnPartidaUncheckedCreateWithoutPartidaInput>
+  export type GuildMemberCreateOrConnectWithoutPartidaInput = {
+    where: GuildMemberWhereUniqueInput
+    create: XOR<GuildMemberCreateWithoutPartidaInput, GuildMemberUncheckedCreateWithoutPartidaInput>
   }
 
-  export type JugadoresEnPartidaCreateManyPartidaInputEnvelope = {
-    data: JugadoresEnPartidaCreateManyPartidaInput | JugadoresEnPartidaCreateManyPartidaInput[]
+  export type GuildMemberCreateManyPartidaInputEnvelope = {
+    data: GuildMemberCreateManyPartidaInput | GuildMemberCreateManyPartidaInput[]
     skipDuplicates?: boolean
   }
 
@@ -8947,13 +7830,12 @@ export namespace Prisma {
 
   export type GuildUpdateWithoutPartidasInput = {
     discord_id?: StringFieldUpdateOperationsInput | string
-    usuarios_en_guild?: UserInGuildUpdateManyWithoutGuildNestedInput
+    miembros?: GuildMemberUpdateManyWithoutGuildNestedInput
   }
 
   export type GuildUncheckedUpdateWithoutPartidasInput = {
-    id?: IntFieldUpdateOperationsInput | number
     discord_id?: StringFieldUpdateOperationsInput | string
-    usuarios_en_guild?: UserInGuildUncheckedUpdateManyWithoutGuildNestedInput
+    miembros?: GuildMemberUncheckedUpdateManyWithoutGuildNestedInput
   }
 
   export type JuegosUpsertWithoutPartidasInput = {
@@ -8978,190 +7860,150 @@ export namespace Prisma {
     veces_jugado?: IntFieldUpdateOperationsInput | number
   }
 
-  export type JugadoresEnPartidaUpsertWithWhereUniqueWithoutPartidaInput = {
-    where: JugadoresEnPartidaWhereUniqueInput
-    update: XOR<JugadoresEnPartidaUpdateWithoutPartidaInput, JugadoresEnPartidaUncheckedUpdateWithoutPartidaInput>
-    create: XOR<JugadoresEnPartidaCreateWithoutPartidaInput, JugadoresEnPartidaUncheckedCreateWithoutPartidaInput>
+  export type GuildMemberUpsertWithWhereUniqueWithoutPartidaInput = {
+    where: GuildMemberWhereUniqueInput
+    update: XOR<GuildMemberUpdateWithoutPartidaInput, GuildMemberUncheckedUpdateWithoutPartidaInput>
+    create: XOR<GuildMemberCreateWithoutPartidaInput, GuildMemberUncheckedCreateWithoutPartidaInput>
   }
 
-  export type JugadoresEnPartidaUpdateWithWhereUniqueWithoutPartidaInput = {
-    where: JugadoresEnPartidaWhereUniqueInput
-    data: XOR<JugadoresEnPartidaUpdateWithoutPartidaInput, JugadoresEnPartidaUncheckedUpdateWithoutPartidaInput>
+  export type GuildMemberUpdateWithWhereUniqueWithoutPartidaInput = {
+    where: GuildMemberWhereUniqueInput
+    data: XOR<GuildMemberUpdateWithoutPartidaInput, GuildMemberUncheckedUpdateWithoutPartidaInput>
   }
 
-  export type JugadoresEnPartidaUpdateManyWithWhereWithoutPartidaInput = {
-    where: JugadoresEnPartidaScalarWhereInput
-    data: XOR<JugadoresEnPartidaUpdateManyMutationInput, JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaInput>
+  export type GuildMemberUpdateManyWithWhereWithoutPartidaInput = {
+    where: GuildMemberScalarWhereInput
+    data: XOR<GuildMemberUpdateManyMutationInput, GuildMemberUncheckedUpdateManyWithoutPartidaInput>
   }
 
-  export type JugadoresEnPartidaScalarWhereInput = {
-    AND?: JugadoresEnPartidaScalarWhereInput | JugadoresEnPartidaScalarWhereInput[]
-    OR?: JugadoresEnPartidaScalarWhereInput[]
-    NOT?: JugadoresEnPartidaScalarWhereInput | JugadoresEnPartidaScalarWhereInput[]
-    id?: IntFilter<"JugadoresEnPartida"> | number
-    partida_id?: IntFilter<"JugadoresEnPartida"> | number
-    user_id?: StringFilter<"JugadoresEnPartida"> | string
-  }
-
-  export type PartidasCreateWithoutJugadoresInput = {
-    estado_partida?: string
-    created_at?: Date | string
-    guild: GuildCreateNestedOneWithoutPartidasInput
-    juego: JuegosCreateNestedOneWithoutPartidasInput
-  }
-
-  export type PartidasUncheckedCreateWithoutJugadoresInput = {
-    id?: number
+  export type GuildMemberCreateManyUsuarioInput = {
     guild_id: string
-    juego_id: number
-    estado_partida?: string
+    partida_id?: number | null
     created_at?: Date | string
   }
 
-  export type PartidasCreateOrConnectWithoutJugadoresInput = {
-    where: PartidasWhereUniqueInput
-    create: XOR<PartidasCreateWithoutJugadoresInput, PartidasUncheckedCreateWithoutJugadoresInput>
-  }
-
-  export type PartidasUpsertWithoutJugadoresInput = {
-    update: XOR<PartidasUpdateWithoutJugadoresInput, PartidasUncheckedUpdateWithoutJugadoresInput>
-    create: XOR<PartidasCreateWithoutJugadoresInput, PartidasUncheckedCreateWithoutJugadoresInput>
-    where?: PartidasWhereInput
-  }
-
-  export type PartidasUpdateToOneWithWhereWithoutJugadoresInput = {
-    where?: PartidasWhereInput
-    data: XOR<PartidasUpdateWithoutJugadoresInput, PartidasUncheckedUpdateWithoutJugadoresInput>
-  }
-
-  export type PartidasUpdateWithoutJugadoresInput = {
-    estado_partida?: StringFieldUpdateOperationsInput | string
+  export type GuildMemberUpdateWithoutUsuarioInput = {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    guild?: GuildUpdateOneRequiredWithoutPartidasNestedInput
-    juego?: JuegosUpdateOneRequiredWithoutPartidasNestedInput
+    guild?: GuildUpdateOneRequiredWithoutMiembrosNestedInput
+    partida?: PartidaUpdateOneWithoutMiembrosNestedInput
   }
 
-  export type PartidasUncheckedUpdateWithoutJugadoresInput = {
-    id?: IntFieldUpdateOperationsInput | number
+  export type GuildMemberUncheckedUpdateWithoutUsuarioInput = {
     guild_id?: StringFieldUpdateOperationsInput | string
-    juego_id?: IntFieldUpdateOperationsInput | number
-    estado_partida?: StringFieldUpdateOperationsInput | string
+    partida_id?: NullableIntFieldUpdateOperationsInput | number | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserInGuildCreateManyUsuarioInput = {
-    id?: number
-    guild_id: string
-  }
-
-  export type UserInGuildUpdateWithoutUsuarioInput = {
-    guild?: GuildUpdateOneRequiredWithoutUsuarios_en_guildNestedInput
-  }
-
-  export type UserInGuildUncheckedUpdateWithoutUsuarioInput = {
-    id?: IntFieldUpdateOperationsInput | number
+  export type GuildMemberUncheckedUpdateManyWithoutUsuarioInput = {
     guild_id?: StringFieldUpdateOperationsInput | string
+    partida_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserInGuildUncheckedUpdateManyWithoutUsuarioInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    guild_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type PartidasCreateManyGuildInput = {
+  export type PartidaCreateManyGuildInput = {
     id?: number
     juego_id: number
     estado_partida?: string
     created_at?: Date | string
   }
 
-  export type UserInGuildCreateManyGuildInput = {
-    id?: number
+  export type GuildMemberCreateManyGuildInput = {
     usuario_id: string
+    partida_id?: number | null
+    created_at?: Date | string
   }
 
-  export type PartidasUpdateWithoutGuildInput = {
+  export type PartidaUpdateWithoutGuildInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     juego?: JuegosUpdateOneRequiredWithoutPartidasNestedInput
-    jugadores?: JugadoresEnPartidaUpdateManyWithoutPartidaNestedInput
+    miembros?: GuildMemberUpdateManyWithoutPartidaNestedInput
   }
 
-  export type PartidasUncheckedUpdateWithoutGuildInput = {
+  export type PartidaUncheckedUpdateWithoutGuildInput = {
     id?: IntFieldUpdateOperationsInput | number
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    jugadores?: JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaNestedInput
+    miembros?: GuildMemberUncheckedUpdateManyWithoutPartidaNestedInput
   }
 
-  export type PartidasUncheckedUpdateManyWithoutGuildInput = {
+  export type PartidaUncheckedUpdateManyWithoutGuildInput = {
     id?: IntFieldUpdateOperationsInput | number
     juego_id?: IntFieldUpdateOperationsInput | number
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserInGuildUpdateWithoutGuildInput = {
+  export type GuildMemberUpdateWithoutGuildInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     usuario?: UsuarioUpdateOneRequiredWithoutGuildsNestedInput
+    partida?: PartidaUpdateOneWithoutMiembrosNestedInput
   }
 
-  export type UserInGuildUncheckedUpdateWithoutGuildInput = {
-    id?: IntFieldUpdateOperationsInput | number
+  export type GuildMemberUncheckedUpdateWithoutGuildInput = {
     usuario_id?: StringFieldUpdateOperationsInput | string
+    partida_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserInGuildUncheckedUpdateManyWithoutGuildInput = {
-    id?: IntFieldUpdateOperationsInput | number
+  export type GuildMemberUncheckedUpdateManyWithoutGuildInput = {
     usuario_id?: StringFieldUpdateOperationsInput | string
+    partida_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PartidasCreateManyJuegoInput = {
+  export type PartidaCreateManyJuegoInput = {
     id?: number
     guild_id: string
     estado_partida?: string
     created_at?: Date | string
   }
 
-  export type PartidasUpdateWithoutJuegoInput = {
+  export type PartidaUpdateWithoutJuegoInput = {
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     guild?: GuildUpdateOneRequiredWithoutPartidasNestedInput
-    jugadores?: JugadoresEnPartidaUpdateManyWithoutPartidaNestedInput
+    miembros?: GuildMemberUpdateManyWithoutPartidaNestedInput
   }
 
-  export type PartidasUncheckedUpdateWithoutJuegoInput = {
+  export type PartidaUncheckedUpdateWithoutJuegoInput = {
     id?: IntFieldUpdateOperationsInput | number
     guild_id?: StringFieldUpdateOperationsInput | string
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    jugadores?: JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaNestedInput
+    miembros?: GuildMemberUncheckedUpdateManyWithoutPartidaNestedInput
   }
 
-  export type PartidasUncheckedUpdateManyWithoutJuegoInput = {
+  export type PartidaUncheckedUpdateManyWithoutJuegoInput = {
     id?: IntFieldUpdateOperationsInput | number
     guild_id?: StringFieldUpdateOperationsInput | string
     estado_partida?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type JugadoresEnPartidaCreateManyPartidaInput = {
-    id?: number
-    user_id: string
+  export type GuildMemberCreateManyPartidaInput = {
+    guild_id: string
+    usuario_id: string
+    created_at?: Date | string
   }
 
-  export type JugadoresEnPartidaUpdateWithoutPartidaInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+  export type GuildMemberUpdateWithoutPartidaInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutGuildsNestedInput
+    guild?: GuildUpdateOneRequiredWithoutMiembrosNestedInput
   }
 
-  export type JugadoresEnPartidaUncheckedUpdateWithoutPartidaInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
+  export type GuildMemberUncheckedUpdateWithoutPartidaInput = {
+    guild_id?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type JugadoresEnPartidaUncheckedUpdateManyWithoutPartidaInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
+  export type GuildMemberUncheckedUpdateManyWithoutPartidaInput = {
+    guild_id?: StringFieldUpdateOperationsInput | string
+    usuario_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
